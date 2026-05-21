@@ -1,2 +1,6 @@
-schtasks /Delete /TN "InvestmentFundDailyReport" /F 2>$null
-Write-Host "已删除任务 InvestmentFundDailyReport（若存在）"
+schtasks /Delete /TN "InvestmentFundDailyReport" /F 2>nul
+if %ERRORLEVEL%==0 (
+    echo Deleted task InvestmentFundDailyReport
+) else (
+    echo Task InvestmentFundDailyReport not found or already removed
+)

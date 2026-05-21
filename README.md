@@ -93,23 +93,30 @@ crontab -e
 35 12 * * * /path/to/scripts/run_daily.sh
 ```
 
-### Windows（任务计划程序）
+### Windows（本机手动调试，不注册定时）
+
+已改用 **GitHub Actions** 定时发邮件时，请**不要**再注册本机计划任务。若以前注册过，删除方式：
 
 ```powershell
-# 注册：每天 20:35 自动跑日报+发邮件
-powershell -ExecutionPolicy Bypass -File scripts\register_scheduled_task.ps1
+# 删除本机计划任务（推荐）
+schtasks /Delete /TN "InvestmentFundDailyReport" /F
 
-# 立即试跑
-schtasks /Run /TN "InvestmentFundDailyReport"
-
-# 手动运行（写日志到 logs/）
-scripts\run_daily.bat
-
-# 删除任务
-powershell -File scripts\unregister_scheduled_task.ps1
+# 或
+scripts\unregister_scheduled_task.bat
 ```
 
-任务失败时会尝试发送告警邮件；日志见 `logs/daily_YYYY-MM-DD.log`。
+本机仅用于手动试跑（不写定时、不依赖电脑 20:35 开机）：
+
+```powershell
+python scripts/daily_report.py          # 完整流程
+python scripts/daily_report.py --no-email   # 不发邮件，只看报告
+scripts\run_daily.bat                   # 写 logs/，仍不注册定时
+```
+
+```powershell
+# 以下仅在你仍想用本机定时时才需要（一般不必）
+powershell -ExecutionPolicy Bypass -File scripts\register_scheduled_task.ps1
+```
 
 ## 策略说明
 
