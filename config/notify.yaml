@@ -1,0 +1,7 @@
+# Phase 3 通知配置
+email:
+  enabled: true
+  to: "346157791@qq.com"
+  # 发件邮箱通常与 SMTP 登录账号相同，可在 .env 覆盖
+  smtp_host: smtp.qq.com
+  smtp_port: 465

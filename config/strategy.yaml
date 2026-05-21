@@ -1,0 +1,36 @@
+# 投资策略配置（已按当前持仓校准，2026-05）
+# 主仓：012734 人工智能主题（支付宝）
+# 关注：270042 纳斯达克100 QDII，仅定投、不主动换基
+
+investor:
+  risk_level: moderate
+  horizon_years: 5
+  max_drawdown_tolerance: 0.15
+  notes: "小资金积累阶段，允许单基集中；市值上万后再按上限逐步分散"
+
+allocation:
+  # 账户市值 ≥ relax_caps_when_value_below 时，才检查下列上限
+  max_single_fund_ratio: 0.80
+  max_theme_ratio: 0.80
+  cash_buffer_ratio: 0.10
+  relax_caps_when_value_below: 10000
+
+signals:
+  rebalance_threshold: 0.05
+  stop_loss_ratio: -0.15
+  take_profit_ratio: 0.40
+
+trading:
+  mode: semi_auto
+  min_days_between_switch: 30
+  max_daily_buy_amount: 500
+  dca_only_funds:
+    - "270042"
+
+portfolio_plan:
+  core_fund: "012734"
+  dca_fund: "270042"
+  dca_channel: "支付宝"
+
+benchmark:
+  index_code: "000300.SH"
