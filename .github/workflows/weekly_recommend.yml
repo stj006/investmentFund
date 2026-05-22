@@ -1,9 +1,7 @@
 name: 每周选基邮件
 
 on:
-  schedule:
-    # 每周日 UTC 02:00 = 北京时间周日 10:00
-    - cron: '0 2 * * 0'
+  # 定时改由 cron-job.org 触发，见 docs/外部定时触发-cron-job.org.md
   workflow_dispatch:
 
 permissions:
