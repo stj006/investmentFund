@@ -48,14 +48,14 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
           REPORT_PUBLIC_BASE_URL: https://stj8888.github.io/investmentFund
-        run: python scripts/daily_report.py
+        run: python scripts/daily_report.py --no-cache
 
-      - name: Commit published report
+      - name: Commit published report and batch state
         if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/reports/
+          git add docs/reports/ config/batch_state.json
           git diff --staged --quiet || git commit -m "chore: publish daily report"
           git push
 

@@ -10,6 +10,7 @@ from pathlib import Path
 import akshare as ak
 import pandas as pd
 
+from src.collectors.freshness import needs_fresh_market_data
 from src.config_loader import ROOT
 
 INDEX_SYMBOL_MAP = {
@@ -162,12 +163,15 @@ def fetch_index_snapshot(
     cache_file = _cache_path(symbol)
 
     if use_cache and cache_file.exists():
-        age_h = (datetime.now().timestamp() - cache_file.stat().st_mtime) / 3600
-        if age_h < CACHE_MAX_AGE_HOURS:
-            df = _load_cache(symbol)
-            if df is not None and len(df) > 0:
-                snap = _snapshot_from_df(df, index_code, symbol, "本地缓存")
-                return snap
+        df = _load_cache(symbol)
+        if df is not None and len(df) > 0:
+            age_h = (datetime.now().timestamp() - cache_file.stat().st_mtime) / 3600
+            latest_date = df.iloc[-1]["日期"].date()
+            fresh_enough = age_h < CACHE_MAX_AGE_HOURS and not needs_fresh_market_data(
+                latest_date
+            )
+            if fresh_enough:
+                return _snapshot_from_df(df, index_code, symbol, "本地缓存")
 
     try:
         df, source = _try_fetchers(symbol)

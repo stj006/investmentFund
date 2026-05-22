@@ -105,6 +105,8 @@ def build_slim_daily_email(
     report_public_url: str | None = None,
     report_footer_plain: str = "",
     report_footer_html: str = "",
+    data_quality_plain: str = "",
+    data_quality_html: str = "",
 ) -> tuple[str, str, str]:
     """返回 (subject, plain, html)。"""
     action_label, action_reason = _one_line_conclusion(advice, checklist_items)
@@ -148,6 +150,9 @@ def build_slim_daily_email(
     if rules:
         plain_parts.extend(["", "【规则提醒】", *[f"  - {r}" for r in rules]])
 
+    if data_quality_plain:
+        plain_parts.extend(["", data_quality_plain])
+
     plain_parts.extend(["", report_footer_plain or "完整报告见邮件附件。", "不构成投资建议。"])
     plain = "\n".join(plain_parts)
 
@@ -172,6 +177,7 @@ def build_slim_daily_email(
   <h3>今日操作</h3>
   {_checklist_rows_html(checklist_items) if any(op.action != 'hold' for op in checklist_items) else '<p>无；270042 日定投 10 元继续</p>'}
   {rules_html}
+  {data_quality_html}
   {report_footer_html}
   <p style="color:#888;font-size:12px;margin-top:16px">不构成投资建议</p>
 </body></html>"""

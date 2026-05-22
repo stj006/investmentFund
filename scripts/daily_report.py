@@ -23,6 +23,7 @@ if str(ROOT) not in sys.path:
 from src.advisor.advisor import generate_advice, save_advice_audit
 from src.analytics.portfolio import build_portfolio_summary, build_watchlist
 from src.collectors.index_benchmark import fetch_index_snapshot
+from src.collectors.data_quality import collect_stale_data_notes
 from src.collectors.nav import fetch_fund_nav_history, get_fund_nav_snapshot
 from src.config_loader import all_fund_codes, load_fund_universe, load_positions, load_strategy
 from src.executor.checklist import (
@@ -167,6 +168,7 @@ def main() -> int:
                 f"，收件人默认 {email_cfg.notify_to}"
             )
         else:
+            dq_plain, dq_html = collect_stale_data_notes(nav_map, benchmark, data_as_of)
             subject, plain, html_body = build_slim_daily_email(
                 report_date,
                 portfolio,
@@ -175,6 +177,8 @@ def main() -> int:
                 report_public_url=public_url,
                 report_footer_plain=footer_plain,
                 report_footer_html=footer_html,
+                data_quality_plain=dq_plain,
+                data_quality_html=dq_html,
             )
             html_attachment = html_path.read_text(encoding="utf-8")
             try:

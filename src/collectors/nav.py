@@ -10,6 +10,8 @@ from pathlib import Path
 import akshare as ak
 import pandas as pd
 
+from src.collectors.freshness import needs_fresh_market_data
+
 ROOT = Path(__file__).resolve().parents[2]
 CACHE_DIR = ROOT / "data" / "nav"
 
@@ -106,9 +108,13 @@ def get_fund_nav_snapshot(fund_code: str, use_cache: bool = True) -> FundNavSnap
 
     if use_cache and cache_file.exists():
         age_h = (datetime.now().timestamp() - cache_file.stat().st_mtime) / 3600
-        if age_h < CACHE_MAX_AGE_HOURS:
-            df = _load_cache(cache_file)
-            if df is not None and len(df) > 0:
+        df = _load_cache(cache_file)
+        if df is not None and len(df) > 0:
+            latest_date = df.iloc[-1]["净值日期"].date()
+            fresh_enough = age_h < CACHE_MAX_AGE_HOURS and not needs_fresh_market_data(
+                latest_date
+            )
+            if fresh_enough:
                 return _snapshot_from_df(df, fund_code, data_source="本地缓存")
 
     try:
