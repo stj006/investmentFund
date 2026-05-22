@@ -48,7 +48,7 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
           REPORT_PUBLIC_BASE_URL: https://stj8888.github.io/investmentFund
-        run: python scripts/daily_report.py --no-cache
+        run: python scripts/daily_report.py
 
       - name: Commit published report and batch state
         if: success()

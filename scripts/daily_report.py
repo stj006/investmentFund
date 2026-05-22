@@ -3,7 +3,7 @@
 
 用法（在项目根目录）:
     python scripts/daily_report.py
-    python scripts/daily_report.py --no-cache
+    python scripts/daily_report.py --cache      # 调试：优先读本地净值缓存
     python scripts/daily_report.py --no-ai      # 仅程序+规则，不调用 LLM
     python scripts/daily_report.py --no-email   # 不发送邮件
 """
@@ -24,7 +24,7 @@ from src.advisor.advisor import generate_advice, save_advice_audit
 from src.analytics.portfolio import build_portfolio_summary, build_watchlist
 from src.collectors.index_benchmark import fetch_index_snapshot
 from src.collectors.data_quality import collect_stale_data_notes
-from src.collectors.nav import fetch_fund_nav_history, get_fund_nav_snapshot
+from src.collectors.nav import get_fund_nav_snapshot
 from src.config_loader import all_fund_codes, load_fund_universe, load_positions, load_strategy
 from src.executor.checklist import (
     build_operation_checklist,
@@ -43,9 +43,9 @@ from src.reports.publish import footer_report_lines, publish_markdown_report
 def main() -> int:
     parser = argparse.ArgumentParser(description="生成基金每日涨跌报告（含 AI 建议）")
     parser.add_argument(
-        "--no-cache",
+        "--cache",
         action="store_true",
-        help="忽略本地净值缓存，强制从网络重新拉取",
+        help="优先使用本地净值/指数缓存（默认每次从网络拉取最新）",
     )
     parser.add_argument(
         "--no-ai",
@@ -75,12 +75,7 @@ def main() -> int:
         if i > 0:
             time.sleep(1.5)
         try:
-            if args.no_cache:
-                df = fetch_fund_nav_history(code)
-                cache = ROOT / "data" / "nav" / f"{code}.csv"
-                cache.parent.mkdir(parents=True, exist_ok=True)
-                df.to_csv(cache, index=False, encoding="utf-8-sig")
-            nav_map[code] = get_fund_nav_snapshot(code, use_cache=not args.no_cache)
+            nav_map[code] = get_fund_nav_snapshot(code, use_cache=args.cache)
             snap = nav_map[code]
             src = f" [{snap.data_source}]" if snap.data_source else ""
             print(
@@ -94,7 +89,7 @@ def main() -> int:
     benchmark = None
     index_code = strategy.get("benchmark", {}).get("index_code", "000300.SH")
     try:
-        benchmark = fetch_index_snapshot(index_code)
+        benchmark = fetch_index_snapshot(index_code, use_cache=args.cache)
         print(f"基准 {benchmark.name} 收盘 {benchmark.close} ({benchmark.trade_date})")
     except Exception as e:
         print(f"警告：基准指数拉取失败 ({e})，报告中将省略基准段。")

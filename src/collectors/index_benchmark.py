@@ -156,7 +156,7 @@ def _try_fetchers(symbol: str, retries: int = 2) -> tuple[pd.DataFrame, str]:
 def fetch_index_snapshot(
     index_code: str = "000300.SH",
     *,
-    use_cache: bool = True,
+    use_cache: bool = False,
     allow_stale_cache: bool = True,
 ) -> IndexSnapshot:
     symbol = _normalize_index_code(index_code)

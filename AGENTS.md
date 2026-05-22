@@ -12,7 +12,7 @@
 - 常用参数:
   - `--no-ai` — 不调用 LLM，仅数据+规则扫描
   - `--no-email` — 不发送邮件
-  - `--no-cache` — 忽略本地净值缓存，强制重新拉取
+  - `--cache` — 优先读本地净值缓存（默认每次从网络拉最新）
 - 在 Cloud Agent 环境中，由于没有 LLM API Key 和邮箱授权码，请使用 `--no-ai --no-email` 运行
 - 运行前需要激活 venv: `source .venv/bin/activate`
 

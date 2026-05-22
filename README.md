@@ -27,10 +27,10 @@ pip install -r requirements.txt
 python scripts/daily_report.py
 ```
 
-报告输出到 `reports/YYYY-MM-DD.md`。强制刷新净值缓存：
+默认每次从网络拉取最新净值；调试时可加 `--cache` 加速：
 
 ```bash
-python scripts/daily_report.py --no-cache
+python scripts/daily_report.py --cache
 ```
 
 ## Phase 2（AI 建议）

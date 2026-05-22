@@ -103,7 +103,8 @@ def _snapshot_from_df(
     )
 
 
-def get_fund_nav_snapshot(fund_code: str, use_cache: bool = True) -> FundNavSnapshot:
+def get_fund_nav_snapshot(fund_code: str, *, use_cache: bool = False) -> FundNavSnapshot:
+    """拉取基金净值。默认走网络；use_cache=True 时优先读本地缓存（调试加速）。"""
     cache_file = _cache_path(fund_code)
 
     if use_cache and cache_file.exists():
@@ -122,17 +123,16 @@ def get_fund_nav_snapshot(fund_code: str, use_cache: bool = True) -> FundNavSnap
         df.to_csv(cache_file, index=False, encoding="utf-8-sig")
         return _snapshot_from_df(df, fund_code, data_source="东方财富")
     except Exception as e:
-        if use_cache:
-            df = _load_cache(cache_file, max_age_days=STALE_CACHE_MAX_DAYS)
-            if df is not None and len(df) > 0:
-                print(
-                    f"  [警告] {fund_code} 网络拉取失败，使用过期缓存（≤{STALE_CACHE_MAX_DAYS}天）: {e}"
-                )
-                return _snapshot_from_df(
-                    df,
-                    fund_code,
-                    data_source=f"过期缓存（≤{STALE_CACHE_MAX_DAYS}天）",
-                )
+        df = _load_cache(cache_file, max_age_days=STALE_CACHE_MAX_DAYS)
+        if df is not None and len(df) > 0:
+            print(
+                f"  [警告] {fund_code} 网络拉取失败，使用过期缓存（≤{STALE_CACHE_MAX_DAYS}天）: {e}"
+            )
+            return _snapshot_from_df(
+                df,
+                fund_code,
+                data_source=f"过期缓存（≤{STALE_CACHE_MAX_DAYS}天）",
+            )
         raise
 
 
