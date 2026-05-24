@@ -1,97 +1,117 @@
-# 投资策略配置（已按当前持仓校准，2026-05）
-# 主仓：012734 人工智能主题（支付宝）
-# 关注：270042 纳斯达克100 QDII，仅定投 10 元/日
+# =============================================================================
+# 投资策略配置（strategy.yaml）
+# -----------------------------------------------------------------------------
+# 作用：日报规则扫描、AI 建议、每周选基、新闻采集 都读这个文件。
+# 改完后：本地脚本立即生效；GitHub Actions 需 push 后下次运行生效。
+#
+# 相关文件：
+#   config/positions.csv      — 你真实持仓（份额、成本）
+#   config/fund_universe.csv  — AI 允许提到的基金白名单
+#   config/batch_state.json   — 选基跑完后生成的分批日程（自动生成，一般不用手改）
+# =============================================================================
 
+# --- 投资者画像（主要给 AI 写建议时参考，多数不触发硬规则）---
 investor:
-  risk_level: moderate
-  horizon_years: 3
-  max_drawdown_tolerance: 0.15
+  risk_level: moderate          # 风险偏好：conservative | moderate | aggressive
+  horizon_years: 3              # 计划持有年限；偏长则 AI 更少建议频繁换基
+  max_drawdown_tolerance: 0.15  # 心理可接受最大回撤 15%（供 AI 参考，与 stop_loss 不同）
   notes: "已有500人工智能+纳斯达克日定投10元；计划新增约5000元需全市场筛选推荐"
+                                # 自由备注，会注入 AI 上下文
 
+# --- 仓位上限（账户够大时由规则引擎硬检查；小账户可豁免）---
 allocation:
-  max_single_fund_ratio: 0.80
-  max_theme_ratio: 0.80
-  cash_buffer_ratio: 0.10
+  max_single_fund_ratio: 0.80   # 单只基金最多占账户 80%；超出触发 POSITION_CAP 警告
+  max_theme_ratio: 0.80         # 同一主题（如「人工智能」）合计最多 80%；超出触发 THEME_CAP
+  cash_buffer_ratio: 0.10       # 建议留 10% 现金；主要给 AI / 选基参考，不会强制留钱
   relax_caps_when_value_below: 5000
+                                # 总市值低于此金额（元）时，不检查上面两条仓位上限
+                                # 你约 700 元账户 → 一直走「小资金模式」，不因主仓 86% 报警
 
+# --- 止盈止损与再平衡（规则引擎硬检查 + 传给 AI）---
 signals:
-  rebalance_threshold: 0.05
-  stop_loss_ratio: -0.15
-  take_profit_ratio: 0.40
+  rebalance_threshold: 0.05     # 再平衡偏离 5%（目前 mainly 给 AI，规则里未单独触发）
+  stop_loss_ratio: -0.15        # 单只浮亏 ≤ -15% 触发 STOP_LOSS，建议减仓（不是补仓）
+  take_profit_ratio: 0.40       # 单只浮盈 ≥ +40% 触发 TAKE_PROFIT，提示可考虑止盈
 
+# --- 交易行为约束 ---
 trading:
-  mode: semi_auto
-  min_days_between_switch: 30
-  max_daily_buy_amount: 500
-  dca_only_funds:
-    - "270042"
+  mode: semi_auto               # semi_auto = 只发建议/邮件，不自动下单；需在支付宝手动操作
+  min_days_between_switch: 30     # 距上次买入不足 30 天 → SWITCH_COOLDOWN，提示不宜换基
+  max_daily_buy_amount: 500       # 单日建议买入上限（元），用于操作清单参考
+  dca_only_funds:                 # 下列基金只能「定投小金额」，不能作为大额一次性买入
+    - "270042"                    # 纳斯达克 QDII；5000 选基里只占日定投 10 元/天
 
+# --- 你的持仓计划（语义标签；选基时会强制把主仓纳入候选池）---
 portfolio_plan:
-  core_fund: "012734"
-  dca_fund: "270042"
-  dca_channel: "支付宝"
+  core_fund: "012734"           # 主仓基金代码（人工智能主题）
+  dca_fund: "270042"            # 日定投基金
+  dca_channel: "支付宝"          # 定投渠道说明，出现在报告/邮件里
 
+# --- 日报对比基准 ---
 benchmark:
-  index_code: "000300.SH"
+  index_code: "000300.SH"       # 沪深300；日报拉指数涨跌，算持仓「跑赢/跑输」
 
-# 相关新闻（日报/选基前拉取，标题 + LLM 一句话摘要写入 AI 上下文）
+# --- 相关新闻（日报 / 选基前采集，标题 + LLM 一句话摘要写入 AI 上下文）---
 news:
-  enabled: true
-  summarize: true
+  enabled: true                 # false = 不拉新闻
+  summarize: true               # true = 用 LLM 写一句话摘要；false = 只用标题/预览
   auto_keywords_from_holdings: true
-  keywords:
+                                # true = 从持仓名称/主题自动加搜索词（如「创新药」）
+  keywords:                     # 固定新闻搜索关键词（东方财富）
     - 人工智能
     - 创新药
     - 纳斯达克
     - 美联储
-  max_per_keyword: 3
-  max_total: 12
-  max_age_hours: 72
-  request_interval_sec: 1.0
+    - 未来国家政策热点
+  max_per_keyword: 3            # 每个关键词最多取几条
+  max_total: 12                 # 去重后最多几条进入 AI 上下文
+  max_age_hours: 72             # 只保留多少小时以内的新闻
+  request_interval_sec: 1.0     # 关键词之间的请求间隔（秒），减轻反爬
 
-# 全市场基金推荐（运行 scripts/fund_recommend.py）
+# --- 全市场选基（scripts/fund_recommend.py / 每周日 workflow）---
 recommendation:
-  enabled: true
-  budget_cny: 5000
-  fund_types:
+  enabled: true                 # false = 选基脚本直接退出
+  budget_cny: 5000              # 本次计划投入金额（元）；与当前 700 试水无关，可按真实加仓改
+  fund_types:                   # 从东方财富排行拉哪些类型
     - 混合型
     - 指数型
     - 股票型
     - QDII
-  max_candidates: 60
-  min_return_1y: null
-  exclude_name_keywords:
+  max_candidates: 60            # 筛选后最多几只进入 AI 候选池
+  min_return_1y: null           # 近 1 年最低收益门槛；null = 不限制
+  exclude_name_keywords:        # 名称含下列词的基金排除
     - 债券
     - 货币
     - 理财
-  prefer_themes:
+  prefer_themes:                # 名称匹配则加分，排序更靠前（不代表未来收益）
     - 人工智能
     - 科技
     - 纳斯达克
     - 沪深300
     - 中证500
     - 红利
-  max_recommendations: 5
+  max_recommendations: 5        # AI 最终最多推荐几只
 
-  # 5000 入局规则（程序校验 + AI 约束）
+  # 加钱时怎么分配（程序校验 + AI 约束；仅在你跑选基 / 执行 5000 剧本时生效）
   allocation_plan:
-    require_core_add: true
-    core_fund: "012734"
-    min_core_add_cny: 1000
-    broad_index_min_ratio: 0.50
-    broad_index_keywords:
+    require_core_add: true      # true = 推荐里必须包含主仓加仓
+    core_fund: "012734"         # 主仓代码
+    min_core_add_cny: 1000      # 主仓至少加仓多少元；AI 不够则程序补全
+    broad_index_min_ratio: 0.50 # 宽基合计至少占「可部署资金」的 50%
+    broad_index_keywords:       # 基金名称含这些词算「宽基」
       - 沪深300
       - 中证500
       - A500
       - 上证50
       - 红利
-    reserve_cash_ratio: 0.05
+    reserve_cash_ratio: 0.05    # 预算里留 5% 不分配（5000 里约 250 元）
 
-  # 分批买入：5000 不要一天打满
+  # 分批买入（生成 config/batch_state.json；到期日由日报附带发「分批提醒」）
   batch_plan:
-    enabled: true
-    tranches: 3
-    days_between: 7
-    dca_daily_cny: 10
-    dca_fund: "270042"
+    enabled: true               # false = 不生成 3 批计划
+    tranches: 3                 # 分几批买，不要一天打满
+    days_between: 7             # 批与批间隔天数（T+0、T+7、T+14…）
+    dca_daily_cny: 10           # 270042 日定投金额（元/天）
+    dca_fund: "270042"          # 日定投基金代码
     note: "270042 继续日定投10元，不计入本次5000"
+                                # 写进选基报告/邮件的说明文字
