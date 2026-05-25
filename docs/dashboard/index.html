@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>基金投资面板</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>基金投资面板</h1>
+      <p class="subtitle" id="metaLine">加载中…</p>
+    </div>
+    <div class="topbar-actions">
+      <select id="dateSelect" title="历史快照"></select>
+      <a id="reportLink" class="btn" href="../reports/" target="_blank">文字报告</a>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="cards" id="summaryCards"></section>
+
+    <section class="panel wide">
+      <h2>账户走势（归一化 100）</h2>
+      <p class="hint">按当前份额 × 历史净值估算；与沪深300 对比</p>
+      <div id="chartMain" class="chart"></div>
+    </section>
+
+    <section class="panel">
+      <h2>持仓分布</h2>
+      <div id="chartPie" class="chart chart-sm"></div>
+    </section>
+
+    <section class="panel">
+      <h2>持仓明细</h2>
+      <div class="table-wrap">
+        <table id="posTable">
+          <thead>
+            <tr>
+              <th>代码</th><th>名称</th><th>日涨跌</th><th>浮盈</th><th>收益率</th><th>仓位</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>规则扫描</h2>
+      <ul id="ruleList" class="rule-list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>AI 操作建议</h2>
+      <div id="aiBlock" class="ai-block"></div>
+    </section>
+
+    <section class="panel wide">
+      <h2>相关要闻</h2>
+      <ul id="newsList" class="news-list"></ul>
+    </section>
+
+    <section class="panel wide">
+      <h2>分批买入计划</h2>
+      <div id="batchBlock"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>数据来自 GitHub Actions 日报快照 · 不构成投资建议</span>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -37,6 +37,7 @@ from src.notify.email_templates import build_slim_daily_email
 from src.notify.batch_state import get_due_batch_today, mark_batch_sent
 from src.notify.email_templates import build_batch_reminder_email
 from src.reports.daily import render_daily_report, save_daily_report
+from src.reports.dashboard_export import build_dashboard_payload, export_dashboard_json
 from src.reports.publish import footer_report_lines, publish_markdown_report
 
 
@@ -152,6 +153,19 @@ def main() -> int:
         kind="daily",
         title=f"基金日报 {report_date}",
     )
+
+    dash_payload = build_dashboard_payload(
+        report_date,
+        data_as_of,
+        portfolio,
+        watchlist,
+        advice,
+        positions,
+        strategy,
+    )
+    dash_path, latest_path = export_dashboard_json(dash_payload, report_date)
+    print(f"面板数据: {latest_path}")
+
     footer_plain, footer_html = footer_report_lines(public_url)
     if public_url:
         print(f"在线报告: {public_url}")
