@@ -21,7 +21,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from src.advisor.advisor import generate_advice, save_advice_audit
+from src.advisor.market_outlook import generate_market_outlook
 from src.analytics.portfolio import build_portfolio_summary, build_watchlist
+from src.collectors.capital_flow import fetch_capital_flow_snapshot
 from src.collectors.index_benchmark import fetch_index_snapshot
 from src.collectors.data_quality import collect_stale_data_notes
 from src.collectors.nav import get_fund_nav_snapshot
@@ -118,6 +120,48 @@ def main() -> int:
     audit_path = save_advice_audit(advice)
     print(f"建议审计已保存: {audit_path}")
 
+    capital_flow = None
+    if strategy.get("market_flow", {}).get("enabled", True):
+        print("正在采集主力资金流向...")
+        try:
+            capital_flow = fetch_capital_flow_snapshot(strategy, positions, universe)
+            if capital_flow.error and not capital_flow.data_source:
+                print(f"  资金流：失败 — {capital_flow.error}")
+            else:
+                nb = capital_flow.northbound
+                nb_txt = (
+                    f"北向 {nb.total_net_yi:+.2f} 亿"
+                    if nb
+                    else "北向 —"
+                )
+                print(
+                    f"  主力方向：{capital_flow.overall_label} · {nb_txt} · "
+                    f"来源 {capital_flow.data_source or '—'}"
+                )
+                if capital_flow.error:
+                    print(f"  部分失败：{capital_flow.error}")
+        except Exception as e:
+            print(f"  资金流：异常 — {e}")
+
+    market_outlook = generate_market_outlook(
+        date.today().isoformat(),
+        data_as_of,
+        portfolio,
+        capital_flow,
+        advice.news_digest,
+        strategy,
+        positions,
+        universe,
+        use_llm=not args.no_ai,
+    )
+    if market_outlook.skipped:
+        print(f"方向研判：已跳过 — {market_outlook.skip_reason}")
+    else:
+        print(
+            f"方向研判：{market_outlook.overall_bias} "
+            f"（置信 {market_outlook.confidence:.0%}，{market_outlook.horizon}）"
+        )
+
     if advice.skipped:
         print(f"AI：已跳过 — {advice.skip_reason}")
     else:
@@ -162,6 +206,8 @@ def main() -> int:
         advice,
         positions,
         strategy,
+        capital_flow=capital_flow,
+        market_outlook=market_outlook,
     )
     dash_path, latest_path = export_dashboard_json(dash_payload, report_date)
     print(f"面板数据: {latest_path}")

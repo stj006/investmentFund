@@ -10,7 +10,9 @@ from pathlib import Path
 import pandas as pd
 
 from src.advisor.advisor import AdviceResult
+from src.advisor.market_outlook import MarketOutlook
 from src.analytics.portfolio import PortfolioSummary, WatchlistItem
+from src.collectors.capital_flow import CapitalFlowSnapshot
 from src.collectors.index_benchmark import _load_cache, _normalize_index_code
 from src.collectors.nav import CACHE_DIR as NAV_CACHE_DIR, _load_cache as _load_nav_cache
 from src.config_loader import ROOT
@@ -141,6 +143,8 @@ def build_dashboard_payload(
     positions_cfg: list[dict[str, str]],
     strategy: dict,
     *,
+    capital_flow: CapitalFlowSnapshot | None = None,
+    market_outlook=None,
     lookback_days: int = LOOKBACK_DAYS,
 ) -> dict:
     index_code = strategy.get("benchmark", {}).get("index_code", "000300.SH")
@@ -197,6 +201,12 @@ def build_dashboard_payload(
         "benchmark": _benchmark_dict(portfolio.benchmark),
         "watchlist": [asdict(w) for w in watchlist],
         "advice": advice_dict,
+        "market_flow": capital_flow.to_dict() if capital_flow else None,
+        "market_outlook": (
+            market_outlook.to_dict()
+            if isinstance(market_outlook, MarketOutlook)
+            else market_outlook
+        ),
         "charts": {
             "lookback_days": lookback_days,
             "fund_return_indexed": fund_curves,

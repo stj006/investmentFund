@@ -68,6 +68,20 @@ news:
   max_age_hours: 72             # 只保留多少小时以内的新闻
   request_interval_sec: 1.0     # 关键词之间的请求间隔（秒），减轻反爬
 
+# --- 主力资金流向（日报采集 → 面板 + AI 方向分析）---
+market_flow:
+  enabled: true                 # false = 不拉行业/概念/北向资金
+  top_sectors: 5                # 净流入/净流出各展示前几名
+  include_concepts: true        # 是否合并概念板块资金流
+  request_interval_sec: 1.0     # 接口请求间隔（秒）
+  theme_keywords:               # 持仓主题 → 板块名匹配关键词（可选扩展）
+    人工智能: [人工智能, 半导体, 芯片, 算力, 机器人]
+    创新药: [创新药, 医药, 生物, 医疗]
+
+# --- AI 短期方向研判（结合资金流 + 政策要闻，写入面板）---
+market_outlook:
+  enabled: true                 # false = 不调用 LLM 方向分析（仍展示原始资金流）
+
 # --- 全市场选基（scripts/fund_recommend.py / 每周日 workflow）---
 recommendation:
   enabled: true                 # false = 选基脚本直接退出

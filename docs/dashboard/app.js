@@ -4,6 +4,8 @@ const COLORS = ["#58a6ff", "#3fb950", "#d29922", "#f778ba", "#79c0ff", "#ffa657"
 
 let chartMain = null;
 let chartPie = null;
+let chartFlowIn = null;
+let chartFlowOut = null;
 
 function fmtPct(v, signed = true) {
   if (v == null || Number.isNaN(v)) return "—";
@@ -55,6 +57,179 @@ function renderMeta(data) {
   reportLink.href = new URL(`../reports/${data.date}.html`, window.location.href).href;
 }
 
+function biasLabel(bias) {
+  return { bullish: "偏多", neutral: "中性", bearish: "偏空" }[bias] || bias || "—";
+}
+
+function biasClass(bias) {
+  return `bias-${bias || "neutral"}`;
+}
+
+function flowDirLabel(dir) {
+  return { inflow: "净流入", outflow: "净流出", neutral: "中性" }[dir] || dir || "—";
+}
+
+function renderFlow(data) {
+  const flow = data.market_flow;
+  const summaryEl = document.getElementById("flowSummary");
+  const themeEl = document.getElementById("themeFlowBlock");
+
+  if (!flow || (flow.error && !flow.top_inflows?.length)) {
+    summaryEl.innerHTML = `<p class="empty">${escapeHtml(flow?.error || "暂无资金流数据")}</p>`;
+    themeEl.innerHTML = "";
+    if (chartFlowIn) chartFlowIn.clear();
+    if (chartFlowOut) chartFlowOut.clear();
+    return;
+  }
+
+  const nb = flow.northbound;
+  const chips = [
+    {
+      label: "主力方向",
+      value: flow.overall_label || flowDirLabel(flow.overall_direction),
+      cls: flow.overall_direction === "inflow" ? "rise" : flow.overall_direction === "outflow" ? "fall" : "",
+    },
+    nb
+      ? {
+          label: `北向资金（${nb.trade_date}）`,
+          value: `${nb.total_net_yi >= 0 ? "+" : ""}${nb.total_net_yi.toFixed(2)} 亿`,
+          sub: `沪 ${nb.sh_net_yi >= 0 ? "+" : ""}${nb.sh_net_yi.toFixed(2)} · 深 ${nb.sz_net_yi >= 0 ? "+" : ""}${nb.sz_net_yi.toFixed(2)}`,
+          cls: nb.total_net_yi >= 0 ? "rise" : nb.total_net_yi < 0 ? "fall" : "",
+        }
+      : null,
+    { label: "数据日期", value: flow.trade_date || "—" },
+  ].filter(Boolean);
+
+  summaryEl.innerHTML = chips
+    .map(
+      (c) => `<div class="flow-chip">
+      <span class="muted">${c.label}</span>
+      <b class="${c.cls || ""}">${escapeHtml(c.value)}</b>
+      ${c.sub ? `<small class="${c.cls || ""}">${escapeHtml(c.sub)}</small>` : ""}
+    </div>`
+    )
+    .join("");
+
+  if (flow.theme_relevant?.length) {
+    const rows = flow.theme_relevant
+      .map(
+        (t) => `<tr>
+        <td>${escapeHtml(t.name)}</td>
+        <td>${t.flow_type === "concept" ? "概念" : "行业"}</td>
+        <td class="${t.net_inflow_yi >= 0 ? "rise" : "fall"}">${t.net_inflow_yi >= 0 ? "+" : ""}${t.net_inflow_yi.toFixed(2)} 亿</td>
+        <td class="${pctClass(t.change_pct)}">${fmtPct(t.change_pct)}</td>
+      </tr>`
+      )
+      .join("");
+    themeEl.innerHTML = `<h3 class="hint">持仓相关板块</h3>
+      <table><thead><tr><th>板块</th><th>类型</th><th>净流入</th><th>涨跌</th></tr></thead><tbody>${rows}</tbody></table>`;
+  } else {
+    themeEl.innerHTML = "";
+  }
+
+  renderFlowCharts(flow);
+}
+
+function renderFlowCharts(flow) {
+  if (!chartFlowIn) chartFlowIn = echarts.init(document.getElementById("chartFlowIn"));
+  if (!chartFlowOut) chartFlowOut = echarts.init(document.getElementById("chartFlowOut"));
+
+  const inData = (flow.top_inflows || []).slice(0, 5).map((x) => ({
+    name: x.name,
+    value: Math.abs(x.net_inflow_yi),
+    raw: x.net_inflow_yi,
+  }));
+  const outData = (flow.top_outflows || []).slice(0, 5).map((x) => ({
+    name: x.name,
+    value: Math.abs(x.net_inflow_yi),
+    raw: x.net_inflow_yi,
+  }));
+
+  const barOption = (title, items, color) => ({
+    backgroundColor: "transparent",
+    title: { text: title, left: 0, textStyle: { color: "#8b949e", fontSize: 13 } },
+    textStyle: { color: "#8b949e" },
+    tooltip: {
+      trigger: "axis",
+      formatter: (params) => {
+        const p = params[0];
+        const raw = items[p.dataIndex]?.raw ?? p.value;
+        return `${p.name}<br/>${raw >= 0 ? "+" : ""}${raw.toFixed(2)} 亿`;
+      },
+    },
+    grid: { left: 100, right: 16, top: 36, bottom: 20 },
+    xAxis: {
+      type: "value",
+      axisLabel: { formatter: "{value} 亿" },
+      splitLine: { lineStyle: { color: "#2a3544" } },
+    },
+    yAxis: {
+      type: "category",
+      data: items.map((x) => x.name).reverse(),
+      axisLabel: { width: 80, overflow: "truncate" },
+    },
+    series: [
+      {
+        type: "bar",
+        data: items.map((x) => x.value).reverse(),
+        itemStyle: { color },
+        label: {
+          show: true,
+          position: "right",
+          formatter: (p) => {
+            const raw = items[items.length - 1 - p.dataIndex]?.raw ?? p.value;
+            return `${raw >= 0 ? "+" : ""}${raw.toFixed(1)}`;
+          },
+          color: "#e6edf3",
+        },
+      },
+    ],
+  });
+
+  chartFlowIn.setOption(barOption("净流入 TOP", inData, "#ff4d4f"));
+  chartFlowOut.setOption(barOption("净流出 TOP", outData, "#52c41a"));
+}
+
+function renderOutlook(data) {
+  const el = document.getElementById("outlookBlock");
+  const o = data.market_outlook;
+  if (!o) {
+    el.innerHTML = '<p class="empty">暂无方向研判（需运行日报并开启 market_outlook）</p>';
+    return;
+  }
+  if (o.skipped && !o.capital_flow_view && !o.policy_event_view) {
+    el.innerHTML = `<p class="empty">${escapeHtml(o.skip_reason || "方向研判已跳过")}</p>`;
+    return;
+  }
+
+  const themes = (o.theme_outlook || [])
+    .map(
+      (t) => `<div class="outlook-theme">
+      <span class="${biasClass(t.bias)}">${escapeHtml(t.theme)} · ${biasLabel(t.bias)}</span>
+      <div>${escapeHtml(t.reason || "")}</div>
+    </div>`
+    )
+    .join("");
+
+  const risks = (o.key_risks || [])
+    .map((r) => `<li>${escapeHtml(r)}</li>`)
+    .join("");
+
+  el.innerHTML = `
+    <div class="outlook-meta">
+      <span class="outlook-tag ${biasClass(o.overall_bias)}">整体 ${biasLabel(o.overall_bias)}</span>
+      <span class="outlook-tag">周期 ${escapeHtml(o.horizon || "—")}</span>
+      <span class="outlook-tag">置信度 ${Math.round((o.confidence || 0) * 100)}%</span>
+      ${o.skipped ? `<span class="outlook-tag">规则摘要</span>` : `<span class="outlook-tag">AI 分析</span>`}
+    </div>
+    <p><b>资金面</b> ${escapeHtml(o.capital_flow_view || "—")}</p>
+    <p><b>政策与事件</b> ${escapeHtml(o.policy_event_view || "—")}</p>
+    ${themes ? `<div class="outlook-themes">${themes}</div>` : ""}
+    ${risks ? `<ul class="outlook-risks">${risks}</ul>` : ""}
+    <p class="outlook-disclaimer">${escapeHtml(o.disclaimer || "不构成投资建议")}</p>
+  `;
+}
+
 function renderCards(data) {
   const p = data.portfolio;
   const est = p.estimated_daily_pct;
@@ -72,6 +247,19 @@ function renderCards(data) {
       value: fmtPct(est),
       sub: vs != null ? `vs 基准 ${vs >= 0 ? "跑赢" : "跑输"} ${Math.abs(vs).toFixed(2)}%` : "",
       cls: pctClass(est),
+    },
+    {
+      label: "主力方向",
+      value: data.market_flow?.overall_label || flowDirLabel(data.market_flow?.overall_direction) || "—",
+      sub: data.market_outlook?.overall_bias
+        ? `AI ${biasLabel(data.market_outlook.overall_bias)}`
+        : "",
+      cls:
+        data.market_flow?.overall_direction === "inflow"
+          ? "rise"
+          : data.market_flow?.overall_direction === "outflow"
+            ? "fall"
+            : "",
     },
     {
       label: "AI 风险",
@@ -288,6 +476,8 @@ async function populateDateSelect(manifest, currentDate) {
 function renderAll(data) {
   renderMeta(data);
   renderCards(data);
+  renderFlow(data);
+  renderOutlook(data);
   renderPositions(data);
   renderRules(data);
   renderAi(data);
@@ -308,6 +498,8 @@ async function init() {
   window.addEventListener("resize", () => {
     chartMain?.resize();
     chartPie?.resize();
+    chartFlowIn?.resize();
+    chartFlowOut?.resize();
   });
 }
 

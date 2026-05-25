@@ -1,7 +1,7 @@
 {
   "date": "2026-05-25",
   "data_as_of": "2026-05-25",
-  "generated_at": "2026-05-25T14:50:10",
+  "generated_at": "2026-05-25T23:28:37",
   "portfolio": {
     "total_market_value": 733.45,
     "total_cost_value": 650.01,
@@ -48,7 +48,7 @@
     "trade_date": "2026-05-25",
     "close": 4921.597,
     "daily_change_pct": 1.5789367228224211,
-    "data_source": "stock_zh_index_daily"
+    "data_source": "本地缓存"
   },
   "watchlist": [
     {
@@ -93,32 +93,9 @@
     }
   ],
   "advice": {
-    "market_summary": "今日沪深300上涨1.58%，人工智能板块大涨4.0%，创新药板块小幅下跌1.08%。账户总市值733.45元，累计盈利12.84%，主要受益于人工智能持仓。新闻方面，人工智能终端分级国家标准启动，创新药产业进入经营兑现期，美联储新主席面临政策调整。",
+    "market_summary": "",
     "overall_risk_level": "medium",
-    "actions": [
-      {
-        "fund_code": "012734",
-        "action": "hold",
-        "ratio": 1.0,
-        "reason": "人工智能板块强势，持仓盈利15.92%，且距上次买入仅15天，换基冷却期未过，建议持有。",
-        "confidence": 0.9,
-        "rule_hits": [
-          "SWITCH_COOLDOWN"
-        ],
-        "requires_human_confirm": false
-      },
-      {
-        "fund_code": "012737",
-        "action": "hold",
-        "ratio": 1.0,
-        "reason": "创新药小幅亏损，但新闻显示行业进入经营兑现期，长期可期；距上次买入仅10天，换基冷却期未过，建议持有。",
-        "confidence": 0.8,
-        "rule_hits": [
-          "SWITCH_COOLDOWN"
-        ],
-        "requires_human_confirm": false
-      }
-    ],
+    "actions": [],
     "switch_candidates": [],
     "rule_signals": [
       {
@@ -151,8 +128,8 @@
         "source": "第一财经",
         "url": "http://finance.eastmoney.com/a/202605253748465675.html",
         "content_preview": "不过，沃什履新美联储注定带着改变的使命，带着纠偏2008年以来美联储的激进走位，担负着美联储回归保守政策的目的。 2008年次贷危机给世界带来的最突出改变就是美联储，这场危机将一个曾经保守到骨子里的机构，变成了一个激进的货币数量论者。",
-        "summary": "一财社论称，新任美联储主席沃什将推动美联储回归保守政策范式。",
-        "summary_source": "llm"
+        "summary": "不过，沃什履新美联储注定带着改变的使命，带着纠偏2008年以来美联储的激进走位，担负着美联储回归保守政策的目的。 2008年次贷危机给世界带来的最突出改变就是美联储，这场危机将一个曾经保守到骨子里的机构，变成了一个激进的货币数量论者。",
+        "summary_source": "preview"
       },
       {
         "keyword": "人工智能",
@@ -161,8 +138,8 @@
         "source": "财联社",
         "url": "http://finance.eastmoney.com/a/202605253748279991.html",
         "content_preview": "5月25日午后，人工智能板块震荡上扬，截至收盘，中证人工智能主题指数上涨4.0%，中证科创创业人工智能指数上涨3.8%，上证科创板人工智能指数上涨2.6%。",
-        "summary": "5月25日午后，人工智能板块震荡上扬，三大人工智能指数均涨超2.6%。",
-        "summary_source": "llm"
+        "summary": "5月25日午后，人工智能板块震荡上扬，截至收盘，中证人工智能主题指数上涨4.0%，中证科创创业人工智能指数上涨3.8%，上证科创板人工智能指数上涨2.6%。",
+        "summary_source": "preview"
       },
       {
         "keyword": "美联储",
@@ -171,8 +148,8 @@
         "source": "财联社",
         "url": "http://finance.eastmoney.com/a/202605253748242749.html",
         "content_preview": "全球央行 高盛：美联储大幅缩表门槛仍然很高 随着凯文·沃什被提名为下一任美联储主席，市场重新开始关注美联储资产负债表缩减问题。高盛认为，尽管未来几年美联储仍可能放缓扩表速度甚至阶段性维持资产负债表稳定，但真正“大幅缩表”的门槛依然很高。",
-        "summary": "高盛认为，尽管市场关注美联储缩表，但大幅缩表的门槛仍然很高。",
-        "summary_source": "llm"
+        "summary": "全球央行 高盛：美联储大幅缩表门槛仍然很高 随着凯文·沃什被提名为下一任美联储主席，市场重新开始关注美联储资产负债表缩减问题。高盛认为，尽管未来几年美联储仍可能放缓扩表速度甚至阶段性维持资产负债表稳定，但真正“大幅缩表”的门槛依然很高。",
+        "summary_source": "preview"
       },
       {
         "keyword": "创新药",
@@ -181,8 +158,8 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202605253748205252.html",
         "content_preview": "A股创新药：估值运行于历史顶部区间 国证创新药指数选取A股市场主营业务涉及创新药研发的上市公司作为样本，反映沪深市场创新药产业的整体表现。",
-        "summary": "国证创新药指数选取A股创新药公司为样本，反映沪深市场创新药产业表现。",
-        "summary_source": "llm"
+        "summary": "A股创新药：估值运行于历史顶部区间 国证创新药指数选取A股市场主营业务涉及创新药研发的上市公司作为样本，反映沪深市场创新药产业的整体表现。",
+        "summary_source": "preview"
       },
       {
         "keyword": "创新药",
@@ -191,8 +168,8 @@
         "source": "上观新闻",
         "url": "http://finance.eastmoney.com/a/202605253748125391.html",
         "content_preview": "为此，白皮书详细剖析了中国创新药从实验室突破走向市场实现价值兑现的核心瓶颈，系统构建了商业健康险支持创新药械的全流程管理方法论，并明确了以统一产业平台为核心的未来发展路径建议，旨在打造中国创新药多元支付领域的“行业基准文本”，为商业健康险…",
-        "summary": "《中国创新药械多元支付白皮书（2026）》发布，剖析创新药市场价值兑现瓶颈。",
-        "summary_source": "llm"
+        "summary": "为此，白皮书详细剖析了中国创新药从实验室突破走向市场实现价值兑现的核心瓶颈，系统构建了商业健康险支持创新药械的全流程管理方法论，并明确了以统一产业平台为核心的未来发展路径建议，旨在打造中国创新药多元支付领域的“行业基准文本”，为商业健康险…",
+        "summary_source": "preview"
       },
       {
         "keyword": "人工智能",
@@ -201,8 +178,8 @@
         "source": "证券时报网",
         "url": "http://finance.eastmoney.com/a/202605253748112974.html",
         "content_preview": "企查查APP显示，近日，奥尼人工智能技术（深圳）有限公司成立，法定代表人为吴国华，注册资本为1000万元，经营范围包含：人工智能硬件销售；人工智能行业应用系统集成服务；人工智能基础软件开发；电子产品销售等。",
-        "summary": "奥尼电子等成立人工智能技术公司，注册资本1000万元，主营AI硬件及软件。",
-        "summary_source": "llm"
+        "summary": "企查查APP显示，近日，奥尼人工智能技术（深圳）有限公司成立，法定代表人为吴国华，注册资本为1000万元，经营范围包含：人工智能硬件销售；人工智能行业应用系统集成服务；人工智能基础软件开发；电子产品销售等。",
+        "summary_source": "preview"
       },
       {
         "keyword": "创新药",
@@ -211,8 +188,8 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202605253748074221.html",
         "content_preview": "港股创新药ETF景顺(513780)可T+0交易，指数囊括药明生物、信达生物、百济神州等港股创新药龙头；按照申万二级行业分类，指数生物制品+化学制药权重占比超85%，助力高效布局高弹性港股创新药板块。（注：相关个股仅为指数成分股展示，不作…",
-        "summary": "创新药产业进入经营兑现期，预计2026年收入利润增速达25%-30%。",
-        "summary_source": "llm"
+        "summary": "港股创新药ETF景顺(513780)可T+0交易，指数囊括药明生物、信达生物、百济神州等港股创新药龙头；按照申万二级行业分类，指数生物制品+化学制药权重占比超85%，助力高效布局高弹性港股创新药板块。（注：相关个股仅为指数成分股展示，不作…",
+        "summary_source": "preview"
       },
       {
         "keyword": "人工智能",
@@ -221,8 +198,8 @@
         "source": "经济日报",
         "url": "http://finance.eastmoney.com/a/202605253747550568.html",
         "content_preview": "近日，工业和信息化部、商务部、市场监管总局等部门联合启动实施《人工智能终端智能化分级》系列国家标准，为人工智能终端的“聪明程度”划定统一标尺。",
-        "summary": "多部门联合启动实施《人工智能终端智能化分级》系列国家标准。",
-        "summary_source": "llm"
+        "summary": "近日，工业和信息化部、商务部、市场监管总局等部门联合启动实施《人工智能终端智能化分级》系列国家标准，为人工智能终端的“聪明程度”划定统一标尺。",
+        "summary_source": "preview"
       },
       {
         "keyword": "美联储",
@@ -231,8 +208,18 @@
         "source": "上观新闻",
         "url": "http://finance.eastmoney.com/a/202605253747553627.html",
         "content_preview": "这意味着，沃什的上任或许并非单纯的人事更替，而是美联储治理理念、政策沟通方式和政治关系的一次重要调整。 或重塑美联储公信力 沃什面临的最大机遇，是借助“改革型主席”的形象重塑美联储的公信力。",
-        "summary": "新任美联储主席沃什面临治理理念、政策沟通和政治关系调整等四重挑战。",
-        "summary_source": "llm"
+        "summary": "这意味着，沃什的上任或许并非单纯的人事更替，而是美联储治理理念、政策沟通方式和政治关系的一次重要调整。 或重塑美联储公信力 沃什面临的最大机遇，是借助“改革型主席”的形象重塑美联储的公信力。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "未来国家政策热点",
+        "title": "国家发展改革委解读当前经济运行热点 用足用好宏观政策 及时推出相应举措",
+        "published_at": "2026-05-23 06:08:20",
+        "source": "经济日报",
+        "url": "http://finance.eastmoney.com/a/202605233747298317.html",
+        "content_preview": "李超说，国家发展改革委将认真抓好贯彻落实，在落实既定部署方面，用足用好宏观政策，加快推动稳就业、稳企业、稳市场、稳预期相关政策落地见效；在政策预研储备方面，加强经济监测预测预警，不断完善政策工具箱，根据形势需要及时推出相应举措，推动“十五…",
+        "summary": "李超说，国家发展改革委将认真抓好贯彻落实，在落实既定部署方面，用足用好宏观政策，加快推动稳就业、稳企业、稳市场、稳预期相关政策落地见效；在政策预研储备方面，加强经济监测预测预警，不断完善政策工具箱，根据形势需要及时推出相应举措，推动“十五…",
+        "summary_source": "preview"
       },
       {
         "keyword": "纳斯达克",
@@ -241,8 +228,8 @@
         "source": "第一财经",
         "url": "http://finance.eastmoney.com/a/202605233747107421.html",
         "content_preview": "老虎证券跌25.26%，新氧跌16.10%，小赢科技跌8.58%，水滴公司跌7.32%，蔚来跌7.14%。",
-        "summary": "纳斯达克中国金龙指数收跌2.22%，老虎证券跌25.26%。",
-        "summary_source": "llm"
+        "summary": "老虎证券跌25.26%，新氧跌16.10%，小赢科技跌8.58%，水滴公司跌7.32%，蔚来跌7.14%。",
+        "summary_source": "preview"
       },
       {
         "keyword": "纳斯达克",
@@ -251,24 +238,153 @@
         "source": "东方财富Choice数据",
         "url": "http://finance.eastmoney.com/a/202605233747101879.html",
         "content_preview": "纳斯达克中国金龙指数收跌2.21%。 富途控股跌超27%，向上融科跌超25%，美华创富跌超9%，蔚来跌超7%，Enhanced Group Inc.跌超6%。",
-        "summary": "纳斯达克中国金龙指数收跌2.21%，富途控股跌超27%。",
-        "summary_source": "llm"
-      },
-      {
-        "keyword": "纳斯达克",
-        "title": "纳斯达克金龙中国指数跌超2%",
-        "published_at": "2026-05-22 21:33:41",
-        "source": "东方财富Choice数据",
-        "url": "http://finance.eastmoney.com/a/202605223747025845.html",
-        "content_preview": "纳斯达克金龙中国指数跌超2%。",
-        "summary": "纳斯达克金龙中国指数跌超2%。",
-        "summary_source": "llm"
+        "summary": "纳斯达克中国金龙指数收跌2.21%。 富途控股跌超27%，向上融科跌超25%，美华创富跌超9%，蔚来跌超7%，Enhanced Group Inc.跌超6%。",
+        "summary_source": "preview"
       }
     ],
     "news_error": null,
-    "skipped": false,
-    "skip_reason": null,
-    "model": "deepseek-chat"
+    "skipped": true,
+    "skip_reason": "未启用 AI（--no-ai）",
+    "model": null
+  },
+  "market_flow": {
+    "trade_date": "2026-05-25",
+    "overall_direction": "inflow",
+    "overall_label": "主力偏多（净流入）",
+    "northbound": {
+      "trade_date": "2026-05-25",
+      "sh_net_yi": 0.0,
+      "sz_net_yi": 0.0,
+      "total_net_yi": 0.0,
+      "direction": "neutral"
+    },
+    "top_inflows": [
+      {
+        "name": "芯片概念",
+        "net_inflow_yi": 386.75,
+        "change_pct": 2.19,
+        "flow_type": "concept",
+        "inflow_yi": 6099.8,
+        "outflow_yi": 5713.05
+      },
+      {
+        "name": "半导体",
+        "net_inflow_yi": 268.18,
+        "change_pct": 4.52,
+        "flow_type": "industry",
+        "inflow_yi": 2432.09,
+        "outflow_yi": 2163.91
+      },
+      {
+        "name": "存储芯片",
+        "net_inflow_yi": 229.77,
+        "change_pct": 4.01,
+        "flow_type": "concept",
+        "inflow_yi": 2585.41,
+        "outflow_yi": 2355.64
+      },
+      {
+        "name": "共封装光学(CPO)",
+        "net_inflow_yi": 167.51,
+        "change_pct": 2.71,
+        "flow_type": "concept",
+        "inflow_yi": 2563.89,
+        "outflow_yi": 2396.38
+      },
+      {
+        "name": "先进封装",
+        "net_inflow_yi": 145.89,
+        "change_pct": 4.63,
+        "flow_type": "concept",
+        "inflow_yi": 1774.39,
+        "outflow_yi": 1628.5
+      }
+    ],
+    "top_outflows": [
+      {
+        "name": "锂电池概念",
+        "net_inflow_yi": -228.69,
+        "change_pct": -0.5,
+        "flow_type": "concept",
+        "inflow_yi": 1797.65,
+        "outflow_yi": 2026.34
+      },
+      {
+        "name": "固态电池",
+        "net_inflow_yi": -163.62,
+        "change_pct": -0.59,
+        "flow_type": "concept",
+        "inflow_yi": 913.84,
+        "outflow_yi": 1077.46
+      },
+      {
+        "name": "储能",
+        "net_inflow_yi": -149.81,
+        "change_pct": 0.05,
+        "flow_type": "concept",
+        "inflow_yi": 2514.56,
+        "outflow_yi": 2664.36
+      },
+      {
+        "name": "新能源汽车",
+        "net_inflow_yi": -148.75,
+        "change_pct": 0.12,
+        "flow_type": "concept",
+        "inflow_yi": 3090.78,
+        "outflow_yi": 3239.53
+      },
+      {
+        "name": "一带一路",
+        "net_inflow_yi": -148.41,
+        "change_pct": -0.22,
+        "flow_type": "concept",
+        "inflow_yi": 1292.06,
+        "outflow_yi": 1440.48
+      }
+    ],
+    "theme_relevant": [
+      {
+        "name": "芯片概念",
+        "net_inflow_yi": 386.75,
+        "change_pct": 2.19,
+        "flow_type": "concept",
+        "inflow_yi": 6099.8,
+        "outflow_yi": 5713.05
+      },
+      {
+        "name": "半导体",
+        "net_inflow_yi": 268.18,
+        "change_pct": 4.52,
+        "flow_type": "industry",
+        "inflow_yi": 2432.09,
+        "outflow_yi": 2163.91
+      },
+      {
+        "name": "存储芯片",
+        "net_inflow_yi": 229.77,
+        "change_pct": 4.01,
+        "flow_type": "concept",
+        "inflow_yi": 2585.41,
+        "outflow_yi": 2355.64
+      }
+    ],
+    "data_source": "stock_fund_flow_industry+stock_fund_flow_concept+stock_hsgt_fund_flow_summary_em",
+    "error": null
+  },
+  "market_outlook": {
+    "horizon": "1-2周",
+    "overall_bias": "bullish",
+    "capital_flow_view": "程序判定主力方向：主力偏多（净流入）。净流入前列：芯片概念, 半导体, 存储芯片。北向合计 +0.00 亿元（沪 +0.00 / 深 +0.00）。",
+    "policy_event_view": "一财社论：为美联储启动保守范式做好积极准备；人工智能板块震荡上扬，关注人工智能ETF易方达（159819）等配置价值；海外研选日报0525 | 高盛：美联储大幅缩表门槛仍然很高",
+    "theme_outlook": [],
+    "key_risks": [
+      "数据不完整时方向判断可靠性下降"
+    ],
+    "confidence": 0.45,
+    "disclaimer": "以上仅为信息整理与方向研判，不构成投资建议。",
+    "skipped": true,
+    "skip_reason": "未配置 LLM 或已禁用 AI 方向分析",
+    "model": null
   },
   "charts": {
     "lookback_days": 90,
