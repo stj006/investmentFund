@@ -1,12 +1,12 @@
 {
   "date": "2026-05-27",
   "data_as_of": "2026-05-27",
-  "generated_at": "2026-05-27T15:44:54",
+  "generated_at": "2026-05-27T15:54:50",
   "portfolio": {
     "total_market_value": 715.3,
-    "total_cost_value": 715.3,
-    "total_unrealized_pnl": 0.0,
-    "total_unrealized_pnl_pct": 0.0,
+    "total_cost_value": 644.45,
+    "total_unrealized_pnl": 70.85,
+    "total_unrealized_pnl_pct": 10.99,
     "estimated_daily_pct": -1.69,
     "vs_benchmark_daily_pct": -0.89,
     "positions": [
@@ -15,13 +15,13 @@
         "fund_name": "易方达中证人工智能主",
         "channel": "支付宝",
         "shares": 313.77,
-        "cost_per_share": 2.2797,
+        "cost_per_share": 2.0539,
         "unit_nav": 2.2797,
         "nav_date": "2026-05-27",
         "market_value": 715.3,
-        "cost_value": 715.3,
-        "unrealized_pnl": 0.0,
-        "unrealized_pnl_pct": 0.0,
+        "cost_value": 644.45,
+        "unrealized_pnl": 70.85,
+        "unrealized_pnl_pct": 10.99,
         "daily_growth_pct": -1.69,
         "weight_pct": 100.0
       }
@@ -98,18 +98,17 @@
     }
   ],
   "advice": {
-    "market_summary": "今日沪深300下跌0.80%，人工智能板块延续调整，持仓基金易方达中证人工智能主题ETF联接A下跌1.69%。账户市值715.30元，处于小账户模式，以积累为主。新闻方面，人工智能编码初创公司Cognition获10亿美元融资，显示行业长期前景向好。",
+    "market_summary": "今日沪深300下跌0.80%，人工智能板块延续调整，持仓基金易方达中证人工智能ETF联接A下跌1.69%。账户总市值715.30元，累计收益10.99%。新闻方面，人工智能编码初创公司Cognition获10亿美元融资，人工智能ETF易方达昨日净流入约1.5亿元，显示市场对AI板块长期关注。",
     "overall_risk_level": "medium",
     "actions": [
       {
         "fund_code": "012734",
         "action": "hold",
         "ratio": 1.0,
-        "reason": "持有不足7天，赎回有惩罚性费用；且距上次买入不足30天，换基冷却期未过；小账户模式暂不调整。",
+        "reason": "账户市值低于5000元，处于积累阶段；距上次买入仅0天，换基冷却期不足30天；人工智能板块短期调整但长期前景看好，建议继续持有并维持定投。",
         "confidence": 0.9,
         "rule_hits": [
           "SMALL_ACCOUNT_MODE",
-          "REDEMPTION_FEE_7D",
           "SWITCH_COOLDOWN"
         ],
         "requires_human_confirm": false
@@ -122,13 +121,6 @@
         "severity": "info",
         "fund_code": null,
         "message": "账户市值 715.30 元 低于 5000 元，暂不检查单基/主题仓位上限",
-        "suggested_action": "hold"
-      },
-      {
-        "rule_id": "REDEMPTION_FEE_7D",
-        "severity": "warning",
-        "fund_code": "012734",
-        "message": "易方达中证人工智能主 持有仅 0 天，赎回可能收取惩罚性费用",
         "suggested_action": "hold"
       },
       {
@@ -167,7 +159,7 @@
         "source": "21世纪经济报道",
         "url": "http://finance.eastmoney.com/a/202605273751644016.html",
         "content_preview": "目前市场上半导体主题指数主要有6个，分别为科创半导体材料设备指数（950125.CSI）、半导体材料设备指数（931743.CSI）、中证半导指数（931865.CSI）、中证全指半导体指数（H30184.CSI）、半导体行业精选（932…",
-        "summary": "半导体板块高位回调，市场关注6个主要半导体主题指数。",
+        "summary": "半导体板块高位回调，市场关注6个半导体主题指数的配置差异。",
         "summary_source": "llm"
       },
       {
@@ -237,7 +229,7 @@
         "source": "经济日报",
         "url": "http://finance.eastmoney.com/a/202605273750109481.html",
         "content_preview": "人工智能（AI）技术广泛应用引发的“裁员潮”已经蔓延至金融行业。5月19日，英国渣打银行宣布，到2030年计划将公司职能部门岗位减少15%以上，裁员将主要集中于人力资源、风险、合规、运营、技术支持及其他后台职能部门，涉及近8000个工作岗…",
-        "summary": "人工智能技术应用导致金融业裁员，渣打银行计划到2030年裁减15%以上岗位。",
+        "summary": "人工智能技术应用导致金融业裁员，渣打银行计划到2030年裁减部分岗位。",
         "summary_source": "llm"
       },
       {
@@ -327,14 +319,14 @@
         "leader_change_pct": 1510.52
       },
       {
-        "name": "通信设备",
-        "net_inflow_yi": 8.13,
-        "change_pct": -2.25,
-        "flow_type": "industry",
-        "inflow_yi": 839.78,
-        "outflow_yi": 831.66,
-        "leader_stock": "长进光子",
-        "leader_change_pct": 1510.52
+        "name": "MCU芯片",
+        "net_inflow_yi": 7.67,
+        "change_pct": -1.03,
+        "flow_type": "concept",
+        "inflow_yi": 675.58,
+        "outflow_yi": 667.91,
+        "leader_stock": "美格智能",
+        "leader_change_pct": 10.01
       }
     ],
     "top_outflows": [
@@ -417,36 +409,36 @@
   "market_outlook": {
     "horizon": "1-2周",
     "overall_bias": "neutral",
-    "capital_flow_view": "今日主力资金整体净流出，沪深300下跌0.8%。电力板块获主力净流入22.99亿元，粤电力A涨停；消费电子净流入18.69亿元但板块下跌2.44%。芯片概念净流出360.02亿元，人工智能板块延续调整。北向资金数据暂停披露，南向资金净流出77.18亿元。",
-    "policy_event_view": "人工智能编码初创公司获10亿美元融资，显示行业热度不减；但人工智能板块延续调整，ETF逆势净流入约1.5亿元。电力板块受南方电网负荷创新高及改革深化预期提振。半导体板块高位回调，美股半导体盘前拉升，短期或存分歧。",
+    "capital_flow_view": "今日主力资金整体净流出，沪深300下跌0.8%。电力板块获主力净流入22.99亿元，粤电力A涨停；消费电子、通信设备等板块虽有净流入但板块下跌，显示资金分歧。芯片概念净流出360亿元，但MCU芯片逆势净流入7.67亿元，资金在半导体内部轮动。北向资金数据暂停披露，南向资金净流出77.18亿元，港股通方向偏空。",
+    "policy_event_view": "人工智能板块延续调整，但人工智能ETF易方达昨日净流入约1.5亿元，显示资金逢低布局。美股半导体盘前拉升，可能对A股半导体情绪有提振。电力板块受南方电网负荷创新高及改革预期催化，短期热度较高。创新药板块受ASCO会议催化，港股创新药ETF关注度提升。",
     "theme_outlook": [
       {
         "theme": "人工智能",
         "bias": "neutral",
-        "reason": "板块延续调整，但ETF逆势净流入，且行业融资消息积极，短期多空交织。"
+        "reason": "板块延续调整，但ETF资金逆势流入，且Cognition获10亿美元融资显示产业景气度，短期多空交织。"
       },
       {
         "theme": "宽基",
         "bias": "neutral",
-        "reason": "沪深300下跌，主力整体流出，市场情绪偏谨慎，宽基指数短期承压。"
+        "reason": "沪深300下跌，主力资金整体流出，市场缺乏明确方向，宽基指数短期震荡。"
       },
       {
         "theme": "指数型-海外股票",
         "bias": "neutral",
-        "reason": "美股半导体盘前拉升，但南向资金净流出，海外市场波动需关注。"
+        "reason": "美股半导体盘前拉升可能带动相关海外指数，但南向资金净流出港股，海外市场波动需关注。"
       },
       {
         "theme": "指数型-股票",
         "bias": "neutral",
-        "reason": "整体资金流出，板块分化，指数型基金短期缺乏明确方向。"
+        "reason": "市场整体资金流出，板块轮动加快，指数型基金短期难有趋势性机会。"
       }
     ],
     "key_risks": [
       "主力资金整体净流出，市场情绪偏弱",
-      "芯片概念大幅净流出，科技板块承压",
-      "北向资金数据缺失，外资动向不明"
+      "北向资金数据缺失，外资动向不明",
+      "半导体板块高位回调风险"
     ],
-    "confidence": 0.7,
+    "confidence": 0.6,
     "disclaimer": "以上分析基于公开数据与研究性观点，仅供参考，不构成投资建议。",
     "skipped": false,
     "skip_reason": null,
@@ -483,12 +475,16 @@
         "cumulative_net_yi": 18.69
       },
       {
-        "name": "通信设备",
-        "cumulative_net_yi": 16.26
-      },
-      {
         "name": "超级电容",
         "cumulative_net_yi": 11.6
+      },
+      {
+        "name": "通信设备",
+        "cumulative_net_yi": 8.13
+      },
+      {
+        "name": "MCU芯片",
+        "cumulative_net_yi": 7.67
       }
     ],
     "sentiment_score": 38.0,
@@ -497,14 +493,14 @@
   "recommendation_board": {
     "sentiment_score": 38.0,
     "sentiment_label": "偏谨慎",
-    "sentiment_summary": "今日主力主力偏空（净流出）；情绪指数 38.0（偏谨慎）。北向日度净买额已暂停披露，请看行业/概念主力流向。阶段吸金板块：电力(22.99亿)、消费电子(18.69亿)、通信设备(16.26亿)。",
+    "sentiment_summary": "今日主力主力偏空（净流出）；情绪指数 38.0（偏谨慎）。北向日度净买额已暂停披露，请看行业/概念主力流向。阶段吸金板块：电力(22.99亿)、消费电子(18.69亿)、超级电容(11.6亿)。",
     "fund_picks": [
       {
         "fund_code": "012734",
         "fund_name": "易方达中证人工智能主题ETF联接A",
         "action": "hold",
         "theme": "人工智能",
-        "score": 79.54,
+        "score": 79.08,
         "reasons": [
           {
             "type": "flow",
@@ -529,7 +525,7 @@
           {
             "type": "news",
             "label": "相关要闻",
-            "detail": "半导体板块高位回调，市场关注6个主要半导体主题指数。"
+            "detail": "半导体板块高位回调，市场关注6个半导体主题指数的配置差异。"
           },
           {
             "type": "theme",
@@ -546,7 +542,7 @@
         "fund_name": "南方中证500信息技术联接A",
         "action": "watch",
         "theme": "宽基",
-        "score": 67.56,
+        "score": 67.1,
         "reasons": [
           {
             "type": "flow",
@@ -602,7 +598,7 @@
           {
             "type": "flow",
             "label": "近阶段持续吸金",
-            "detail": "近 30 日累计净流入约 16.26 亿"
+            "detail": "近 30 日累计净流入约 8.13 亿"
           }
         ]
       },
@@ -655,6 +651,32 @@
             "type": "flow",
             "label": "近阶段持续吸金",
             "detail": "近 30 日累计净流入约 11.6 亿"
+          }
+        ]
+      },
+      {
+        "name": "美格智能",
+        "sector": "MCU芯片",
+        "sector_net_yi": 7.67,
+        "sector_change_pct": -1.03,
+        "leader_change_pct": 10.01,
+        "flow_type": "concept",
+        "score": 22.06,
+        "reasons": [
+          {
+            "type": "flow",
+            "label": "板块主力净流入",
+            "detail": "MCU芯片 今日净流入 +7.67 亿元，涨幅 -1.03%"
+          },
+          {
+            "type": "sector",
+            "label": "板块龙头",
+            "detail": "美格智能 为 MCU芯片 领涨股，涨幅 10.01%"
+          },
+          {
+            "type": "flow",
+            "label": "近阶段持续吸金",
+            "detail": "近 30 日累计净流入约 7.67 亿"
           }
         ]
       },
