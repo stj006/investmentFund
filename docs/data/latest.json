@@ -1,14 +1,14 @@
 {
   "date": "2026-06-02",
   "data_as_of": "2026-06-02",
-  "generated_at": "2026-06-02T13:00:44",
+  "generated_at": "2026-06-02T13:05:32",
   "portfolio": {
-    "total_market_value": 684.99,
+    "total_market_value": 703.79,
     "total_cost_value": 644.45,
-    "total_unrealized_pnl": 40.54,
-    "total_unrealized_pnl_pct": 6.29,
-    "estimated_daily_pct": -2.38,
-    "vs_benchmark_daily_pct": -3.83,
+    "total_unrealized_pnl": 59.33,
+    "total_unrealized_pnl_pct": 9.21,
+    "estimated_daily_pct": 2.74,
+    "vs_benchmark_daily_pct": 1.29,
     "positions": [
       {
         "fund_code": "012734",
@@ -16,13 +16,13 @@
         "channel": "支付宝",
         "shares": 313.77,
         "cost_per_share": 2.0539,
-        "unit_nav": 2.1831,
-        "nav_date": "2026-06-01",
-        "market_value": 684.99,
+        "unit_nav": 2.243,
+        "nav_date": "2026-06-02",
+        "market_value": 703.79,
         "cost_value": 644.45,
-        "unrealized_pnl": 40.54,
-        "unrealized_pnl_pct": 6.29,
-        "daily_growth_pct": -2.38,
+        "unrealized_pnl": 59.33,
+        "unrealized_pnl_pct": 9.21,
+        "daily_growth_pct": 2.74,
         "weight_pct": 100.0
       }
     ]
@@ -62,9 +62,9 @@
       "theme": "推荐池",
       "risk_tag": "medium",
       "notes": "AI推荐-2026-05-21",
-      "unit_nav": 2.9096,
-      "nav_date": "2026-06-01",
-      "daily_growth_pct": -6.19
+      "unit_nav": 3.1175,
+      "nav_date": "2026-06-02",
+      "daily_growth_pct": 7.15
     },
     {
       "fund_code": "002900",
@@ -82,9 +82,9 @@
       "theme": "指数型-股票",
       "risk_tag": "medium",
       "notes": "",
-      "unit_nav": 0.5403,
-      "nav_date": "2026-06-01",
-      "daily_growth_pct": -1.04
+      "unit_nav": 0.5324,
+      "nav_date": "2026-06-02",
+      "daily_growth_pct": -1.46
     },
     {
       "fund_code": "012043",
@@ -92,24 +92,24 @@
       "theme": "指数型-股票",
       "risk_tag": "medium",
       "notes": "",
-      "unit_nav": 0.4695,
-      "nav_date": "2026-06-01",
-      "daily_growth_pct": -0.36
+      "unit_nav": 0.4625,
+      "nav_date": "2026-06-02",
+      "daily_growth_pct": -1.49
     }
   ],
   "advice": {
-    "market_summary": "账户市值684.99元，单仓持有易方达人工智能ETF联接A，今日净值下跌2.38%，但近90日仍涨25.3%，属上升趋势中回调。今日沪深300涨1.45%，人工智能板块震荡上行，新闻提及AI消费落地大年及中哈AI合作。",
+    "market_summary": "今日账户总市值703.79元，持仓易方达人工智能ETF联接A单日上涨2.74%，近90日上升趋势未破。市场方面，人工智能板块震荡走强，中证人工智能主题指数午间上涨2.5%，消费电子、半导体等科技板块同步活跃。",
     "overall_risk_level": "medium",
     "actions": [
       {
         "fund_code": "012734",
         "action": "hold",
         "ratio": 1.0,
-        "reason": "账户市值低于5000元，触发小账户模式；持仓人工智能上升趋势中回调，且距上次买入仅6天，换基冷却期未过，建议持有观察。",
+        "reason": "上升趋势未破，且距上次买入仅6天，处于换基冷却期，建议继续持有。",
         "confidence": 0.9,
         "rule_hits": [
-          "SMALL_ACCOUNT_MODE",
-          "SWITCH_COOLDOWN"
+          "SWITCH_COOLDOWN",
+          "SMALL_ACCOUNT_MODE"
         ],
         "requires_human_confirm": false
       }
@@ -120,7 +120,7 @@
         "rule_id": "SMALL_ACCOUNT_MODE",
         "severity": "info",
         "fund_code": null,
-        "message": "账户市值 684.99 元 低于 5000 元，暂不检查单基/主题仓位上限",
+        "message": "账户市值 703.79 元 低于 5000 元，暂不检查单基/主题仓位上限",
         "suggested_action": "hold"
       },
       {
@@ -139,7 +139,7 @@
         "source": "财联社",
         "url": "http://finance.eastmoney.com/a/202606023757730611.html",
         "content_preview": "抖音商城618第一阶段数据报告显示，5月15日至5月20日，消费券带动成交额破亿元的商家数量同比增长325%，超15万达人带货成交额同比增长5倍。 从变化看，本届618也被业内视作首个AI消费落地大年。",
-        "summary": "抖音商城618第一阶段消费券带动成交额破亿商家数同比增325%。",
+        "summary": "抖音商城618第一阶段消费券带动成交额破亿元商家数量同比增长325%。",
         "summary_source": "llm"
       },
       {
@@ -149,7 +149,7 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202606023757581893.html",
         "content_preview": "当盈利拐点、BD出海、政策环境三重利好逐步汇聚，创新药板块的价值回归或只是时间问题。 对于希望借道指数布局离岸创新药资产的投资者而言，中证港股通创新药指数（931250.CSI）及其跟踪产品港股创新药ETF景顺（513780），正提供了捕…",
-        "summary": "中证港股通创新药指数及港股创新药ETF景顺为布局离岸创新药资产提供工具。",
+        "summary": "中证港股通创新药指数及其ETF产品为布局离岸创新药资产提供工具。",
         "summary_source": "llm"
       },
       {
@@ -159,7 +159,7 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202606023757530346.html",
         "content_preview": "跟踪中证港股通创新药指数（931250.CSI），从港股通范围精选50只创新药研发、生产及服务标的，聚焦港股创新药核心资产，强调创新属性与可投资性，适合作为参与该细分赛道的指数化工具。 Q4：与其他创新药指数有哪些差异？",
-        "summary": "港股创新药ETF景顺跟踪中证港股通创新药指数，聚焦港股创新药核心资产。",
+        "summary": "中证港股通创新药指数从港股通范围精选50只创新药标的，聚焦核心资产。",
         "summary_source": "llm"
       },
       {
@@ -169,7 +169,7 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202606023757498895.html",
         "content_preview": "估值层面，创新药板块经历深度调整后已处于历史低位。Wind数据显示，截至2026年6月1日，港股创新药ETF景顺跟踪的中证港股通创新药指数最新市盈率（PE-TTM）32.73倍，处于近5年17.22%的分位，即估值低于近5年82.78%以…",
-        "summary": "截至6月1日，中证港股通创新药指数市盈率处于近5年17.22%分位。",
+        "summary": "截至6月1日，中证港股通创新药指数市盈率32.73倍，处于近5年17.22%分位。",
         "summary_source": "llm"
       },
       {
@@ -179,7 +179,7 @@
         "source": "每日经济新闻",
         "url": "http://finance.eastmoney.com/a/202606023757493951.html",
         "content_preview": "消费电子概念股走强，东山精密涨停，工业富联涨超9%，寒武纪涨超6%。 受盘面影响，消费电子ETF涨约4%。",
-        "summary": "消费电子概念股走强，消费电子ETF涨约4%。",
+        "summary": "消费电子概念股走强，东山精密涨停，消费电子ETF涨约4%。",
         "summary_source": "llm"
       },
       {
@@ -189,7 +189,7 @@
         "source": "第一财经",
         "url": "http://finance.eastmoney.com/a/202606023757402822.html",
         "content_preview": "文娱消费板块领跌，下跌3.63%，其中金陵体育下跌12.91%，粤传媒下跌10.02%，舒华体育下跌10.01%，中体产业、共创草坪、天娱数科跌超8%。",
-        "summary": "文娱消费板块领跌，下跌3.63%。",
+        "summary": "文娱消费板块下跌3.63%，金陵体育、粤传媒等个股跌幅超10%。",
         "summary_source": "llm"
       },
       {
@@ -199,7 +199,7 @@
         "source": "每日经济新闻",
         "url": "http://finance.eastmoney.com/a/202606023757428680.html",
         "content_preview": "6月2日，人工智能板块震荡上行，截至午间收盘，中证人工智能主题指数上涨2.5%，中证科创创业人工智能指数上涨2.2%，上证科创板人工智能指数上涨0.8%。 中信证券研报指出，站在当前时点，AI产业进展处于早期阶段，AI带来的机遇大于挑战。",
-        "summary": "6月2日人工智能板块震荡上行，中证人工智能主题指数午间涨2.5%。",
+        "summary": "6月2日人工智能板块震荡上行，中证人工智能主题指数午间上涨2.5%。",
         "summary_source": "llm"
       },
       {
@@ -209,7 +209,7 @@
         "source": "东方财富证券",
         "url": "http://finance.eastmoney.com/a/202606023757323915.html",
         "content_preview": "紫光国微拟19亿元收购瑞能半导体强化SiC布局，车载与AI数据中心市场双轮驱动。晶合集成车规MCU实现风险量产，AI服务器电源管理芯片验证中，2025年电源管理芯片收入同比增193%。",
-        "summary": "半导体ETF鹏华涨超2.5%，紫光国微拟收购瑞能半导体强化SiC布局。",
+        "summary": "紫光国微拟19亿元收购瑞能半导体，晶合集成车规MCU实现风险量产。",
         "summary_source": "llm"
       },
       {
@@ -249,7 +249,7 @@
         "source": "财联社",
         "url": "http://finance.eastmoney.com/a/202606013755832212.html",
         "content_preview": "截至发稿，建滔积层板(01888.HK)跌11%，华虹半导体(01347.HK)跌6%，澜起科技(06809.HK)跌6%，中芯国际(00981.HK)跌2%。",
-        "summary": "半导体港股走低，华虹半导体跌6%。",
+        "summary": "半导体港股走低，华虹半导体跌6%，中芯国际跌2%。",
         "summary_source": "llm"
       }
     ],
@@ -269,14 +269,14 @@
         {
           "name": "易方达中证人工智能主",
           "code": "012734",
-          "trend": "uptrend_pullback",
-          "trend_label": "上升趋势中回调加深",
-          "hint": "近90日仍涨25.3%，但自高点已回落6.5%，回调加深，宜观察是否转弱，暂不建议追涨。",
+          "trend": "uptrend_intact",
+          "trend_label": "上升趋势未破（大涨后小回）",
+          "hint": "近90日涨约28.8%，自高点仅回落3.9%（小回），趋势心法：上升未破，倾向持有或小批加仓，不因单日下跌恐慌换基。",
           "lookback_days": 90,
-          "data_points": 60,
-          "period_return_pct": 25.34,
-          "drawdown_from_peak_pct": -6.51,
-          "bounce_from_trough_pct": 31.88
+          "data_points": 61,
+          "period_return_pct": 28.78,
+          "drawdown_from_peak_pct": -3.94,
+          "bounce_from_trough_pct": 35.5
         }
       ],
       "benchmark": {
@@ -447,34 +447,34 @@
   "market_outlook": {
     "horizon": "1-2周",
     "overall_bias": "bullish",
-    "capital_flow_view": "当日主力资金整体净流入，芯片概念净流入454.15亿元居首，共封装光学(CPO)、5G、数据中心(AIDC)等AI相关概念净流入均超300亿元，显示资金聚焦AI硬件方向。但AI应用、AIGC概念等净流出超百亿，板块内部分化明显。北向数据暂停披露，南向资金净流入22.24亿元，港股通资金温和流入。",
-    "policy_event_view": "人工智能板块震荡上行，中证人工智能主题指数午间涨2.5%，政策强调提升全民人工智能素养，中哈合作开设人工智能专业，产业进展处于早期阶段。半导体ETF涨超2.5%，紫光国微拟收购瑞能半导体强化SiC布局，功率半导体与AI芯片双轮驱动。消费电子ETF涨约4%，618消费数据亮眼，消费券带动成交额破亿商家数同比增325%。",
+    "capital_flow_view": "今日主力资金整体净流入，芯片概念净流入454.15亿元居首，CPO、5G、数据中心等AI相关概念也获大额流入，显示资金聚焦科技硬件方向。但AI应用、AIGC等概念净流出超百亿，内部存在分化。北向数据暂停披露，南向净流入22.24亿元，港股通资金偏积极。",
+    "policy_event_view": "人工智能板块震荡走强，中证人工智能主题指数午间上涨2.5%，政策强调提升全民人工智能素养，中哈合作开设人工智能专业，产业进展处于早期阶段。半导体方面，紫光国微拟收购瑞能半导体强化SiC布局，晶合集成车规MCU量产，利好AI芯片与功率半导体。消费电子ETF涨约4%，618消费数据亮眼，但文娱消费板块下挫，需关注结构分化。",
     "theme_outlook": [
       {
         "theme": "人工智能",
         "bias": "bullish",
-        "reason": "主力资金大幅流入芯片、CPO、5G、数据中心等AI基础设施概念，政策持续支持，板块震荡上行，短期有望延续强势。"
+        "reason": "资金流入芯片、CPO、数据中心等AI硬件方向，政策持续支持，板块震荡上行，但AI应用等细分流出，需关注内部轮动。"
       },
       {
         "theme": "宽基",
         "bias": "neutral",
-        "reason": "沪深300上涨1.45%，但资金流向分散，宽基指数受个股分化影响，短期可能震荡。"
+        "reason": "沪深300上涨1.45%，但资金流向集中于科技板块，宽基指数受益于整体市场情绪，但缺乏明确催化剂。"
       },
       {
         "theme": "指数型-海外股票",
         "bias": "neutral",
-        "reason": "南向资金小幅流入港股，但半导体港股走低，海外市场不确定性仍存，短期中性。"
+        "reason": "南向资金净流入港股，但创新药ETF相关新闻显示估值处于低位，海外市场不确定性仍存，短期中性。"
       },
       {
         "theme": "指数型-股票",
         "bias": "neutral",
-        "reason": "整体市场资金流入，但板块轮动较快，指数型基金表现跟随大盘，短期中性。"
+        "reason": "整体市场资金流入，但板块分化明显，指数型产品表现取决于成分股结构，需关注后续资金持续性。"
       }
     ],
     "key_risks": [
-      "AI应用、AIGC等概念资金流出，板块内部分化可能加剧",
-      "北向资金数据缺失，外资动向不明",
-      "半导体港股走低，海外市场波动风险"
+      "AI应用、AIGC等概念资金流出，科技板块内部轮动可能引发短期波动",
+      "文娱消费板块下挫，消费复苏力度存疑",
+      "北向资金数据缺失，外资动向不明"
     ],
     "confidence": 0.7,
     "disclaimer": "以上分析基于公开数据与研究性观点，仅供参考，不构成投资建议。",
@@ -558,12 +558,12 @@
           {
             "type": "news",
             "label": "相关要闻",
-            "detail": "6月2日人工智能板块震荡上行，中证人工智能主题指数午间涨2.5%。"
+            "detail": "6月2日人工智能板块震荡上行，中证人工智能主题指数午间上涨2.5%。"
           },
           {
             "type": "news",
             "label": "相关要闻",
-            "detail": "半导体ETF鹏华涨超2.5%，紫光国微拟收购瑞能半导体强化SiC布局。"
+            "detail": "紫光国微拟19亿元收购瑞能半导体，晶合集成车规MCU实现风险量产。"
           },
           {
             "type": "theme",
@@ -995,6 +995,10 @@
         {
           "date": "2026-06-01",
           "value": 125.34
+        },
+        {
+          "date": "2026-06-02",
+          "value": 128.78
         }
       ],
       "270042": [
@@ -1721,6 +1725,10 @@
         {
           "date": "2026-06-01",
           "value": 151.87
+        },
+        {
+          "date": "2026-06-02",
+          "value": 162.73
         }
       ],
       "002900": [
@@ -2209,6 +2217,10 @@
         {
           "date": "2026-06-01",
           "value": 98.42
+        },
+        {
+          "date": "2026-06-02",
+          "value": 96.98
         }
       ],
       "012043": [
@@ -2451,6 +2463,10 @@
         {
           "date": "2026-06-01",
           "value": 91.02
+        },
+        {
+          "date": "2026-06-02",
+          "value": 89.67
         }
       ]
     },
@@ -2694,6 +2710,10 @@
       {
         "date": "2026-06-01",
         "value": 125.34
+      },
+      {
+        "date": "2026-06-02",
+        "value": 128.78
       }
     ],
     "portfolio_market_value": [
@@ -2936,6 +2956,10 @@
       {
         "date": "2026-06-01",
         "value": 684.99
+      },
+      {
+        "date": "2026-06-02",
+        "value": 703.79
       }
     ],
     "benchmark_return_indexed": [
