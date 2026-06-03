@@ -85,7 +85,11 @@ def main() -> int:
         if i > 0:
             time.sleep(1.5)
         try:
-            nav_map[code] = get_fund_nav_snapshot(code, use_cache=args.cache)
+            nav_map[code] = get_fund_nav_snapshot(
+                code,
+                use_cache=args.cache,
+                allow_stale_cache=not args.cache,
+            )
             snap = nav_map[code]
             src = f" [{snap.data_source}]" if snap.data_source else ""
             print(
@@ -99,8 +103,20 @@ def main() -> int:
     benchmark = None
     index_code = strategy.get("benchmark", {}).get("index_code", "000300.SH")
     try:
-        benchmark = fetch_index_snapshot(index_code, use_cache=args.cache)
-        print(f"基准 {benchmark.name} 收盘 {benchmark.close} ({benchmark.trade_date})")
+        benchmark = fetch_index_snapshot(
+            index_code,
+            use_cache=args.cache,
+            allow_stale_cache=not args.cache,
+        )
+        print(
+            f"基准 {benchmark.name} 收盘 {benchmark.close} "
+            f"（交易日 {benchmark.trade_date}，来源 {benchmark.data_source}）"
+        )
+        if benchmark.trade_date < date.today():
+            print(
+                f"  提示：指数最新 K 线为 {benchmark.trade_date}（今日 {date.today()}）。"
+                "若已收盘仍无当日数据，请稍后重跑；盘中日报只能显示上一根收盘。"
+            )
     except Exception as e:
         print(f"警告：基准指数拉取失败 ({e})，报告中将省略基准段。")
 

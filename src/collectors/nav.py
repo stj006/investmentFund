@@ -103,8 +103,13 @@ def _snapshot_from_df(
     )
 
 
-def get_fund_nav_snapshot(fund_code: str, *, use_cache: bool = False) -> FundNavSnapshot:
-    """拉取基金净值。默认走网络；use_cache=True 时优先读本地缓存（调试加速）。"""
+def get_fund_nav_snapshot(
+    fund_code: str,
+    *,
+    use_cache: bool = False,
+    allow_stale_cache: bool = True,
+) -> FundNavSnapshot:
+    """拉取基金净值。默认走网络；use_cache=True 时优先读本地缓存（仅调试）。"""
     cache_file = _cache_path(fund_code)
 
     if use_cache and cache_file.exists():
@@ -123,6 +128,8 @@ def get_fund_nav_snapshot(fund_code: str, *, use_cache: bool = False) -> FundNav
         df.to_csv(cache_file, index=False, encoding="utf-8-sig")
         return _snapshot_from_df(df, fund_code, data_source="东方财富")
     except Exception as e:
+        if not allow_stale_cache:
+            raise
         df = _load_cache(cache_file, max_age_days=STALE_CACHE_MAX_DAYS)
         if df is not None and len(df) > 0:
             print(

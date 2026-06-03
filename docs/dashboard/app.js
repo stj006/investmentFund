@@ -48,9 +48,15 @@ async function loadSnapshot(dateStr) {
 }
 
 function renderMeta(data) {
+  const bench = data.benchmark;
+  const navDates = [
+    ...new Set((data.portfolio?.positions || []).map((p) => p.nav_date).filter(Boolean)),
+  ];
   const line = [
-    `数据截至 ${data.data_as_of}`,
-    data.benchmark ? `${data.benchmark.name} ${fmtPct(data.benchmark.daily_change_pct)}` : null,
+    bench
+      ? `指数 ${bench.trade_date} ${fmtPct(bench.daily_change_pct)}`
+      : `数据截至 ${data.data_as_of}`,
+    navDates.length ? `基金净值 ${navDates.join("/")}` : null,
     data.generated_at ? `更新 ${data.generated_at.replace("T", " ")}` : null,
   ].filter(Boolean).join(" · ");
   document.getElementById("metaLine").textContent = line;

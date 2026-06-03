@@ -14,7 +14,11 @@ from src.advisor.market_outlook import MarketOutlook
 from src.analytics.portfolio import PortfolioSummary, WatchlistItem
 from src.analytics.recommendation_board import RecommendationBoard
 from src.collectors.capital_flow import CapitalFlowSnapshot
-from src.collectors.index_benchmark import _load_cache, _normalize_index_code
+from src.collectors.index_benchmark import (
+    _load_cache,
+    _normalize_index_code,
+    refresh_index_history,
+)
 from src.collectors.nav import CACHE_DIR as NAV_CACHE_DIR, _load_cache as _load_nav_cache
 from src.config_loader import ROOT
 from src.notify.batch_state import load_batch_state
@@ -45,9 +49,21 @@ def _nav_history_series(fund_code: str, lookback: int) -> list[dict]:
     return out
 
 
-def _index_history_series(index_code: str, lookback: int) -> list[dict]:
+def _index_history_series(
+    index_code: str,
+    lookback: int,
+    *,
+    min_trade_date: date | None = None,
+) -> list[dict]:
     symbol = _normalize_index_code(index_code)
     df = _load_cache(symbol)
+    if df is not None and not df.empty and min_trade_date is not None:
+        last = df.iloc[-1]["日期"].date()
+        if last < min_trade_date:
+            try:
+                df, _ = refresh_index_history(index_code)
+            except Exception:
+                pass
     if df is None or df.empty:
         return []
     cutoff = pd.Timestamp(date.today() - timedelta(days=lookback))
@@ -163,7 +179,12 @@ def build_dashboard_payload(
         if nav_series.get(code)
     }
 
-    index_raw = _index_history_series(index_code, lookback_days)
+    bench_date = None
+    if portfolio.benchmark:
+        bench_date = portfolio.benchmark.trade_date
+    index_raw = _index_history_series(
+        index_code, lookback_days, min_trade_date=bench_date
+    )
     index_curve = _normalized_curve(
         [{"date": p["date"], "nav": p["close"]} for p in index_raw],
         "nav",

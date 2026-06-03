@@ -207,13 +207,19 @@ def render_daily_report(
                 "## 基准指数",
                 "",
                 f"- 基准：{b.name}（`{benchmark_cfg}`）",
-                f"- 交易日：{b.trade_date}",
+                f"- **指数交易日**：{b.trade_date}（当日收盘涨跌）",
                 f"- 收盘：{b.close:.2f}",
                 f"- 日涨跌：{_fmt_pct(b.daily_change_pct)}",
             ]
         )
         if getattr(b, "data_source", None):
             lines.append(f"- 数据来源：{b.data_source}")
+        nav_dates = {str(p.nav_date) for p in portfolio.positions}
+        if nav_dates and str(b.trade_date) not in nav_dates:
+            lines.append(
+                f"- 说明：持仓基金净值日为 {', '.join(sorted(nav_dates))}，"
+                "场外基金通常 **T+1 公布净值**，与指数交易日相差 1 天属正常。"
+            )
         lines.append("")
 
     lines.extend(

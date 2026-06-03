@@ -153,6 +153,14 @@ def _try_fetchers(symbol: str, retries: int = 2) -> tuple[pd.DataFrame, str]:
     raise last_err or RuntimeError("所有指数数据源均失败")
 
 
+def refresh_index_history(index_code: str = "000300.SH") -> tuple[pd.DataFrame, str]:
+    """从网络拉取完整指数日线并写入 data/index（供图表与快照）。"""
+    symbol = _normalize_index_code(index_code)
+    df, source = _try_fetchers(symbol)
+    _save_cache(symbol, df)
+    return df, source
+
+
 def fetch_index_snapshot(
     index_code: str = "000300.SH",
     *,
@@ -174,8 +182,7 @@ def fetch_index_snapshot(
                 return _snapshot_from_df(df, index_code, symbol, "本地缓存")
 
     try:
-        df, source = _try_fetchers(symbol)
-        _save_cache(symbol, df)
+        df, source = refresh_index_history(index_code)
         return _snapshot_from_df(df, index_code, symbol, source)
     except Exception:
         if not allow_stale_cache:
