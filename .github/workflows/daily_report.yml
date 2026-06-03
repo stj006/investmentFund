@@ -25,17 +25,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Restore market data cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            data/nav
-            data/index
-            data/capital_flow
-          key: market-data-v1
-          restore-keys: |
-            market-data-v1
-
       - name: Run daily report
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
@@ -49,7 +38,8 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
           REPORT_PUBLIC_BASE_URL: https://stj8888.github.io/investmentFund
-        run: python scripts/daily_report.py --cache
+        # 分析必须用实时数据，禁止 --cache
+        run: python scripts/daily_report.py
 
       - name: Commit published report and batch state
         if: success()

@@ -11,7 +11,6 @@
 from __future__ import annotations
 
 import argparse
-import os
 import sys
 import time
 from datetime import date
@@ -69,9 +68,6 @@ def main() -> int:
         help="不发送 QQ 邮件推送",
     )
     args = parser.parse_args()
-    if os.environ.get("GITHUB_ACTIONS") == "true" and not args.cache:
-        args.cache = True
-        print("CI：已自动启用 --cache（优先本地净值/指数缓存，减少境外拉取耗时）")
 
     positions = load_positions()
     universe = load_fund_universe()
@@ -85,10 +81,9 @@ def main() -> int:
     print(f"正在拉取 {len(codes)} 只基金净值: {', '.join(codes)}")
 
     nav_map = {}
-    nav_interval = 0.4 if args.cache else 1.5
     for i, code in enumerate(codes):
-        if i > 0 and nav_interval > 0:
-            time.sleep(nav_interval)
+        if i > 0:
+            time.sleep(1.5)
         try:
             nav_map[code] = get_fund_nav_snapshot(code, use_cache=args.cache)
             snap = nav_map[code]

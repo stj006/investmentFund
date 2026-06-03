@@ -12,7 +12,7 @@
 - 常用参数:
   - `--no-ai` — 不调用 LLM，仅数据+规则扫描
   - `--no-email` — 不发送邮件
-  - `--cache` — 优先读本地净值缓存（默认每次从网络拉最新）
+  - `--cache` — **仅本地调试加速**，优先读 `data/nav` 缓存；**日报分析、GitHub Actions、邮件推送一律不得使用**（默认从网络拉实时净值/指数）
 - 在 Cloud Agent 环境中，由于没有 LLM API Key 和邮箱授权码，请使用 `--no-ai --no-email` 运行
 - 运行前需要激活 venv: `source .venv/bin/activate`
 
@@ -36,6 +36,6 @@
 ### 注意事项
 
 - 净值数据通过 AkShare 从东方财富获取，需要网络访问（无需 API Key）
-- 首次运行会从网络拉取基金净值并缓存到 `data/nav/`，缓存 TTL 为 1 小时
+- 默认每次从网络拉取最新净值；拉取结果会写入 `data/nav/` 供趋势/图表用，**不等于**分析时读旧缓存（勿在 CI 加 `--cache` 或 restore 旧 `data/nav`）
 - 配置文件在 `config/` 目录下（`strategy.yaml`, `positions.csv`, `fund_universe.csv`）
 - `.env` 文件从 `.env.example` 复制而来，包含 LLM 和邮件配置
