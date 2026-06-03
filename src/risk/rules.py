@@ -6,6 +6,8 @@ from dataclasses import asdict, dataclass
 from datetime import date, datetime
 
 from src.analytics.portfolio import PortfolioSummary, PositionMetrics
+from src.analytics.trailing_stop import check_trailing_stop
+from src.analytics.valuation import check_valuation_take_profit
 
 
 @dataclass
@@ -93,6 +95,8 @@ def evaluate_rules(
                 )
 
     # 止损 / 止盈
+    steps = sig.get("take_profit_steps", [])
+    sell_ratio = float(sig.get("take_profit_sell_ratio", 0.33))
     for p in portfolio.positions:
         if p.unrealized_pnl_pct <= stop_loss:
             signals.append(
@@ -114,6 +118,60 @@ def evaluate_rules(
                     suggested_action="reduce",
                 )
             )
+
+        # 分批止盈
+        if steps and p.unrealized_pnl_pct > 0:
+            pnl_ratio = p.unrealized_pnl_pct / 100.0
+            for i, step in enumerate(sorted(steps)):
+                step_pct = float(step) * 100
+                if pnl_ratio >= step:
+                    already = sum(1 for s in signals if s.rule_id == "TAKE_PROFIT_STEP" and s.fund_code == p.fund_code)
+                    if already == i:
+                        signals.append(
+                            RuleSignal(
+                                rule_id="TAKE_PROFIT_STEP",
+                                severity="info",
+                                fund_code=p.fund_code,
+                                message=(
+                                    f"{p.fund_name} 浮盈 {p.unrealized_pnl_pct:.2f}% 达到分批止盈第 {i+1} 档（{step_pct:.0f}%），"
+                                    f"建议卖出 {sell_ratio*100:.0f}% 仓位"
+                                ),
+                                suggested_action="reduce",
+                            )
+                        )
+
+    # 动态回撤止盈
+    for p in portfolio.positions:
+        ts = check_trailing_stop(
+            p.fund_code, p.fund_name, p.unit_nav, p.unrealized_pnl_pct, strategy
+        )
+        if ts and ts.triggered:
+            signals.append(
+                RuleSignal(
+                    rule_id="TRAILING_STOP",
+                    severity="warning",
+                    fund_code=p.fund_code,
+                    message=(
+                        f"{p.fund_name} 浮盈 {ts.profit_pct:.2f}%，"
+                        f"自最高净值 {ts.peak_nav:.4f} 回撤 {abs(ts.drawdown_pct):.1f}%（阈值 10%），"
+                        f"建议止盈锁定利润"
+                    ),
+                    suggested_action="reduce",
+                )
+            )
+
+    # 估值止盈
+    val_sig = check_valuation_take_profit(strategy)
+    if val_sig and val_sig.triggered:
+        signals.append(
+            RuleSignal(
+                rule_id="VALUATION_STOP",
+                severity="warning",
+                fund_code=None,
+                message=val_sig.hint,
+                suggested_action="reduce",
+            )
+        )
 
     # 短期赎回预警（持有不足 7 天）— 按首次建仓日，加仓不重置
     for pos in positions_cfg:
@@ -143,6 +201,43 @@ def evaluate_rules(
                     suggested_action="hold",
                 )
             )
+
+    # 动态回撤止盈
+    for p in portfolio.positions:
+        ts = check_trailing_stop(
+            p.fund_code,
+            p.fund_name,
+            p.unit_nav,
+            p.unrealized_pnl_pct,
+            strategy,
+        )
+        if ts and ts.triggered:
+            signals.append(
+                RuleSignal(
+                    rule_id="TRAILING_STOP",
+                    severity="warning",
+                    fund_code=p.fund_code,
+                    message=(
+                        f"{p.fund_name} 浮盈 {ts.profit_pct:.2f}%，"
+                        f"自最高净值 {ts.peak_nav:.4f} 回撤 {abs(ts.drawdown_pct):.2f}%，"
+                        f"触及动态回撤止盈线，建议止盈"
+                    ),
+                    suggested_action="reduce",
+                )
+            )
+
+    # 估值止盈
+    val = check_valuation_take_profit(strategy)
+    if val and val.triggered:
+        signals.append(
+            RuleSignal(
+                rule_id="VALUATION_STOP",
+                severity="info",
+                fund_code=None,
+                message=val.hint,
+                suggested_action="reduce",
+            )
+        )
 
     return signals
 

@@ -75,38 +75,66 @@ def _render_news_section(advice: AdviceResult | None) -> list[str]:
 
 
 def _render_trend_section(advice: AdviceResult | None) -> list[str]:
-    trend = advice.trend_observation if advice else None
-    if not trend or not trend.get("holdings"):
+    if not advice:
         return []
-    lines = [
-        "",
-        "## 趋势观察",
-        "",
-        f"> {trend.get('philosophy', '').strip() or '阶段涨跌 + 回撤/反弹，仅供参考，不自动下单。'}",
-        "",
-        f"回看 **{trend.get('lookback_days', 90)}** 日；大涨/大跌阈值 **{trend.get('big_move_pct', 12)}%**，小回/小弹阈值 **{trend.get('small_correction_pct', 6)}%**。",
-        "",
-        "| 基金 | 阶段涨跌 | 自高点回落 | 自低点反弹 | 趋势 | 提示 |",
-        "|------|----------|------------|------------|------|------|",
-    ]
-    for h in trend["holdings"]:
-        lines.append(
-            f"| {h.get('name', h.get('code', '—'))} | "
-            f"{_fmt_pct(h.get('period_return_pct'))} | "
-            f"{_fmt_pct(h.get('drawdown_from_peak_pct'))} | "
-            f"{_fmt_pct(h.get('bounce_from_trough_pct'))} | "
-            f"{h.get('trend_label', h.get('trend', '—'))} | {h.get('hint', '—')} |"
-        )
-    bench = trend.get("benchmark")
-    if bench and bench.get("trend") != "insufficient_data":
+    lines: list[str] = []
+
+    trend = advice.trend_observation
+    if trend and trend.get("holdings"):
         lines.extend(
             [
                 "",
-                f"**基准 {bench.get('name', '')}**：{bench.get('trend_label', '')} — {bench.get('hint', '')}",
+                "## 趋势观察",
                 "",
+                f"> {trend.get('philosophy', '').strip() or '阶段涨跌 + 回撤/反弹，仅供参考，不自动下单。'}",
+                "",
+                f"回看 **{trend.get('lookback_days', 90)}** 日；大涨/大跌阈值 **{trend.get('big_move_pct', 12)}%**，小回/小弹阈值 **{trend.get('small_correction_pct', 6)}%**。",
+                "",
+                "| 基金 | 阶段涨跌 | 自高点回落 | 自低点反弹 | 趋势 | 提示 |",
+                "|------|----------|------------|------------|------|------|",
             ]
         )
-    else:
+        for h in trend["holdings"]:
+            lines.append(
+                f"| {h.get('name', h.get('code', '—'))} | "
+                f"{_fmt_pct(h.get('period_return_pct'))} | "
+                f"{_fmt_pct(h.get('drawdown_from_peak_pct'))} | "
+                f"{_fmt_pct(h.get('bounce_from_trough_pct'))} | "
+                f"{h.get('trend_label', h.get('trend', '—'))} | {h.get('hint', '—')} |"
+            )
+        bench = trend.get("benchmark")
+        if bench and bench.get("trend") != "insufficient_data":
+            lines.extend(
+                [
+                    "",
+                    f"**基准 {bench.get('name', '')}**：{bench.get('trend_label', '')} — {bench.get('hint', '')}",
+                    "",
+                ]
+            )
+        else:
+            lines.append("")
+
+    stop_signals = [s for s in advice.rule_signals if s.rule_id in ("TAKE_PROFIT_STEP", "TRAILING_STOP", "VALUATION_STOP")]
+    if stop_signals:
+        lines.extend(
+            [
+                "",
+                "## 止盈策略",
+                "",
+                "> 分批止盈 + 动态回撤止盈 + 估值止盈，三层触发，提示级不强制清仓。",
+                "",
+                "| 规则 | 基金 | 说明 | 建议 |",
+                "|------|------|------|------|",
+            ]
+        )
+        for s in stop_signals:
+            fund = s.fund_code or "—"
+            if s.rule_id == "TAKE_PROFIT_STEP":
+                lines.append(f"| 分批止盈 | {fund} | {s.message} | 减仓 |")
+            elif s.rule_id == "TRAILING_STOP":
+                lines.append(f"| 动态回撤 | {fund} | {s.message} | 止盈 |")
+            elif s.rule_id == "VALUATION_STOP":
+                lines.append(f"| 估值止盈 | {fund} | {s.message} | 谨慎 |")
         lines.append("")
     return lines
 

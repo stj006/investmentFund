@@ -16,6 +16,10 @@
 13. 若 trend_observation 非空，须参考其中 holdings 的 trend 与 hint：trend 为 uptrend_intact 时，除非 rule_signals 触发 STOP_LOSS/POSITION_CAP，否则优先 hold，不建议因单日小跌 panic switch；trend 为 downtrend_intact 时，不建议追涨或 switch 换入同主题基金。
 14. trend_observation 仅为阶段净值趋势参考，不得当作个股 K 线或日内交易信号；场外基金 T+1 净值，禁止建议频繁换基。
 15. 可在 market_summary 中一句话概括持仓趋势状态（引用 trend_label），与 rule_signals、news_digest 综合判断。
+16. 若 rule_signals 含 TAKE_PROFIT_STEP，须在 actions 中体现分批止盈建议（按档位建议卖出 take_profit_sell_ratio 比例）。
+17. 若 rule_signals 含 TRAILING_STOP，须建议止盈锁定利润（从最高点回撤已超阈值，不贪恋未兑现利润）。
+18. 若 rule_signals 含 VALUATION_STOP，须在 market_summary 中提及市场估值高位，建议谨慎操作。
+19. 分批止盈与动态回撤止盈均为提示级，不强制清仓；结合 trend_observation（上升趋势未破可多持有）、止损线综合判断。
 
 ## 输出格式
 只输出一个 JSON 对象，不要 markdown 代码块，不要其他文字。结构如下：

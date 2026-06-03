@@ -31,7 +31,22 @@ allocation:
 signals:
   rebalance_threshold: 0.05     # 再平衡偏离 5%（目前 mainly 给 AI，规则里未单独触发）
   stop_loss_ratio: -0.15        # 单只浮亏 ≤ -15% 触发 STOP_LOSS，建议减仓（不是补仓）
-  take_profit_ratio: 0.40       # 单只浮盈 ≥ +40% 触发 TAKE_PROFIT，提示可考虑止盈
+  take_profit_ratio: 0.20       # 单只浮盈 ≥ +20% 触发 TAKE_PROFIT，提示可考虑止盈
+  take_profit_steps: [0.15, 0.20, 0.30]
+                                # 分批止盈阈值；达到对应档位时提示卖 out_ratio
+  take_profit_sell_ratio: 0.33  # 每批卖出仓位比例（1/3）
+
+# --- 动态回撤止盈（浮盈达标后，最高点回撤触发）---
+trailing_stop:
+  enabled: true
+  trigger_profit_pct: 0.20      # 浮盈 ≥ 20% 后启用回撤监控
+  max_drawdown_pct: 0.10        # 从最高点回撤 ≥ 10% 触发 TRAILING_STOP
+
+# --- 估值止盈（参考基准指数 PE 分位，默认关闭）---
+valuation_take_profit:
+  enabled: false                # 默认关闭，需手动开启；开启后会拉指数估值数据
+  pe_percentile_threshold: 0.80 # PE-TTM 分位 ≥ 80% 触发 VALUATION_STOP
+  index_code: "000300.SH"       # 参考指数（默认沪深300）
 
 # --- 交易行为约束 ---
 trading:
