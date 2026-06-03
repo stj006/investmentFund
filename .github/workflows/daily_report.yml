@@ -10,7 +10,7 @@ permissions:
 jobs:
   daily-report:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
 
     steps:
       - name: Checkout
@@ -31,9 +31,10 @@ jobs:
           path: |
             data/nav
             data/index
-          key: market-data-v1-${{ github.run_id }}
+            data/capital_flow
+          key: market-data-v1
           restore-keys: |
-            market-data-v1-
+            market-data-v1
 
       - name: Run daily report
         env:
@@ -48,7 +49,7 @@ jobs:
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
           REPORT_PUBLIC_BASE_URL: https://stj8888.github.io/investmentFund
-        run: python scripts/daily_report.py
+        run: python scripts/daily_report.py --cache
 
       - name: Commit published report and batch state
         if: success()
