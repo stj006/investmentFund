@@ -37,7 +37,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
-          REPORT_PUBLIC_BASE_URL: https://stj001.github.io/investmentFund
+          REPORT_PUBLIC_BASE_URL: https://stj005.github.io/investmentFund
         # 分析必须用实时数据，禁止 --cache
         run: python scripts/daily_report.py
 
