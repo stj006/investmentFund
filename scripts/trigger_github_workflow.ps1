@@ -26,7 +26,7 @@ if (-not $pat) {
 }
 
 $file = if ($Workflow -eq "weekly") { "weekly_recommend.yml" } else { "daily_report.yml" }
-$url = "https://api.github.com/repos/stj005/investmentFund/actions/workflows/$file/dispatches"
+$url = "https://api.github.com/repos/stj006/investmentFund/actions/workflows/$file/dispatches"
 $body = '{"ref":"master"}'
 
 Write-Host "触发: $file"

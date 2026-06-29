@@ -37,7 +37,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           NOTIFY_TO: ${{ secrets.NOTIFY_TO }}
-          REPORT_PUBLIC_BASE_URL: https://stj005.github.io/investmentFund
+          REPORT_PUBLIC_BASE_URL: https://stj006.github.io/investmentFund
         run: python scripts/fund_recommend.py --email --sync-universe
 
       - name: Commit batch state for daily reminders

@@ -9,7 +9,7 @@ GitHub 仓库自带的 `schedule` 在公共仓库上**经常延迟或漏跑**。
 1. 打开：https://github.com/settings/tokens  
 2. **Generate new token** → 选 **Fine-grained token**（推荐）或 Classic  
 3. 权限：
-   - **Repository access**：Only select → `stj005/investmentFund`
+   - **Repository access**：Only select → `stj006/investmentFund`
    - **Permissions → Actions**：Read and write  
    - **Permissions → Contents**：Read（workflow 需要读代码）
 4. 生成后**复制 Token**（只显示一次），保存到密码管理器  
@@ -33,7 +33,7 @@ GITHUB_PAT=github_pat_xxxxxxxx
 | 字段 | 值 |
 |------|-----|
 | Title | investmentFund daily report |
-| URL | `https://api.github.com/repos/stj005/investmentFund/actions/workflows/daily_report.yml/dispatches` |
+| URL | `https://api.github.com/repos/stj006/investmentFund/actions/workflows/daily_report.yml/dispatches` |
 | Schedule | 每天 **20:35** |
 | Timezone | **Asia/Shanghai** |
 
@@ -67,7 +67,7 @@ X-GitHub-Api-Version: 2022-11-28
 | 字段 | 值 |
 |------|-----|
 | Title | investmentFund weekly recommend |
-| URL | `https://api.github.com/repos/stj005/investmentFund/actions/workflows/weekly_recommend.yml/dispatches` |
+| URL | `https://api.github.com/repos/stj006/investmentFund/actions/workflows/weekly_recommend.yml/dispatches` |
 | Schedule | 每周日 **10:00** |
 | Timezone | **Asia/Shanghai** |
 
@@ -78,7 +78,7 @@ Method / Body / Headers 与任务 1 相同。
 ## 三、验证是否成功
 
 1. cron-job.org 点 **Test run** → History 里看到 **204**  
-2. GitHub → [Actions](https://github.com/stj005/investmentFund/actions) → 出现新的 **workflow_dispatch** 运行且绿色 ✓  
+2. GitHub → [Actions](https://github.com/stj006/investmentFund/actions) → 出现新的 **workflow_dispatch** 运行且绿色 ✓  
 3. 邮箱收到 `【持仓】` 或 `【选基】` 邮件  
 
 本地也可用脚本试触发（需 `.env` 里配 `GITHUB_PAT`）：
@@ -110,4 +110,4 @@ powershell -ExecutionPolicy Bypass -File scripts/trigger_github_workflow.ps1 -Wo
 
 ---
 
-*仓库：stj005/investmentFund · 日报 20:35 · 选基 周日 10:00（北京时间）*
+*仓库：stj006/investmentFund · 日报 20:35 · 选基 周日 10:00（北京时间）*

@@ -4,13 +4,13 @@
 
 报告 URL 示例：
 
-- 日报：`https://stj005.github.io/investmentFund/reports/2026-05-21.html`
-- 选基：`https://stj005.github.io/investmentFund/reports/fund-recommend-2026-05-21.html`
+- 日报：`https://stj006.github.io/investmentFund/reports/2026-05-21.html`
+- 选基：`https://stj006.github.io/investmentFund/reports/fund-recommend-2026-05-21.html`
 
 在 `.env` 设置：
 
 ```env
-REPORT_PUBLIC_BASE_URL=https://stj005.github.io/investmentFund
+REPORT_PUBLIC_BASE_URL=https://stj006.github.io/investmentFund
 ```
 
 邮件底部将显示可点击链接；同时附带 HTML 附件作为备用。
