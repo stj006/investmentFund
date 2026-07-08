@@ -1,14 +1,14 @@
 {
   "date": "2026-07-08",
   "data_as_of": "2026-07-08",
-  "generated_at": "2026-07-08T13:03:15",
+  "generated_at": "2026-07-08T14:17:56",
   "portfolio": {
-    "total_market_value": 5939.96,
+    "total_market_value": 5940.43,
     "total_cost_value": 6006.19,
-    "total_unrealized_pnl": -66.23,
-    "total_unrealized_pnl_pct": -1.1,
-    "estimated_daily_pct": -2.02,
-    "vs_benchmark_daily_pct": -1.25,
+    "total_unrealized_pnl": -65.76,
+    "total_unrealized_pnl_pct": -1.09,
+    "estimated_daily_pct": -2.01,
+    "vs_benchmark_daily_pct": -1.24,
     "positions": [
       {
         "fund_code": "012734",
@@ -38,7 +38,7 @@
         "unrealized_pnl": -103.89,
         "unrealized_pnl_pct": -1.85,
         "daily_growth_pct": -2.25,
-        "weight_pct": 92.82
+        "weight_pct": 92.81
       },
       {
         "fund_code": "002900",
@@ -46,14 +46,14 @@
         "channel": "支付宝",
         "shares": 40.77,
         "cost_per_share": 2.4393,
-        "unit_nav": 2.4295,
-        "nav_date": "2026-07-07",
-        "market_value": 99.05,
+        "unit_nav": 2.441,
+        "nav_date": "2026-07-08",
+        "market_value": 99.52,
         "cost_value": 99.45,
-        "unrealized_pnl": -0.4,
-        "unrealized_pnl_pct": -0.4,
-        "daily_growth_pct": -0.28,
-        "weight_pct": 1.67
+        "unrealized_pnl": 0.07,
+        "unrealized_pnl_pct": 0.07,
+        "daily_growth_pct": 0.47,
+        "weight_pct": 1.68
       }
     ]
   },
@@ -71,7 +71,7 @@
       "fund_name": "广发纳斯达克100ETF联接人民币(QDII)A",
       "theme": "指数型-海外股票",
       "risk_tag": "high",
-      "notes": "仅定投",
+      "notes": "仅定投-海外防御",
       "unit_nav": 8.1385,
       "nav_date": "2026-07-07",
       "daily_growth_pct": -1.82
@@ -108,67 +108,80 @@
     }
   ],
   "advice": {
-    "market_summary": "今日沪深300下跌0.77%，账户总市值5939.96，整体亏损1.1%。人工智能板块受政策利好涨超1%，但创新药仓位过重（92.8%）触发风控信号，需减仓至80%以下。趋势上创新药方向不明，暂不建议追涨。",
+    "market_summary": "今日沪深300下跌0.77%，账户总浮亏-1.09%。人工智能、创新药板块受政策与出海消息提振，但创新药基金因A股拖累下跌2.25%。账户仓位严重偏离核心-卫星目标：宽基核心仅1.68%，行业卫星达98.32%，需执行再平衡。",
     "overall_risk_level": "medium",
     "actions": [
       {
         "fund_code": "012737",
         "action": "reduce",
-        "ratio": 0.14,
-        "reason": "仓位92.8%超过上限80%，减仓14%至约79%，降低集中度风险。",
-        "confidence": 0.85,
+        "ratio": 0.33,
+        "reason": "仓位92.8%超过上限40%，触发主题仓位限制，需减仓至合理水平，资金转向宽基核心和海外防御",
+        "confidence": 0.8,
         "rule_hits": [
           "POSITION_CAP",
-          "THEME_CAP"
+          "THEME_CAP",
+          "REBALANCE"
         ],
-        "requires_human_confirm": false
-      },
-      {
-        "fund_code": "012734",
-        "action": "hold",
-        "ratio": 0.0,
-        "reason": "人工智能上升趋势回调中，持有观察，暂不加仓。",
-        "confidence": 0.8,
-        "rule_hits": [],
-        "requires_human_confirm": false
+        "requires_human_confirm": true
       },
       {
         "fund_code": "002900",
-        "action": "hold",
-        "ratio": 0.0,
-        "reason": "刚买入1天，赎回可能产生惩罚性费用，建议持有。",
-        "confidence": 0.95,
+        "action": "add",
+        "ratio": 0.1,
+        "reason": "宽基核心仓位严重不足，建议将减仓资金部分转入，以接近70%目标",
+        "confidence": 0.7,
         "rule_hits": [
-          "REDEMPTION_FEE_7D"
+          "REBALANCE"
+        ],
+        "requires_human_confirm": true
+      },
+      {
+        "fund_code": "270042",
+        "action": "add",
+        "ratio": 0.05,
+        "reason": "海外防御仓位为0，建议小额定投加仓以分散风险，符合仅定投规则",
+        "confidence": 0.6,
+        "rule_hits": [
+          "REBALANCE"
         ],
         "requires_human_confirm": false
       }
     ],
-    "switch_candidates": [
-      {
-        "from_fund_code": "012737",
-        "to_fund_code": "008326",
-        "reason": "减仓创新药，换入推荐池中东财通信A，分散主题，通信为AI相关，近期趋势稳定。"
-      },
-      {
-        "from_fund_code": "012737",
-        "to_fund_code": "016370",
-        "reason": "减仓创新药，换入推荐池中信澳业绩驱动混合A，分散至均衡混合型，降低单行业风险。"
-      }
-    ],
+    "switch_candidates": [],
     "rule_signals": [
       {
         "rule_id": "POSITION_CAP",
         "severity": "warning",
         "fund_code": "012737",
-        "message": "广发创新药产业ETF联接A 仓位 92.8% 超过上限 80%",
+        "message": "广发创新药产业ETF联接A 仓位 92.8% 超过上限 40%",
         "suggested_action": "reduce"
       },
       {
         "rule_id": "THEME_CAP",
         "severity": "warning",
         "fund_code": null,
-        "message": "主题「指数型-股票」合计仓位 92.8% 超过上限 80%",
+        "message": "主题「指数型-股票」合计仓位 92.8% 超过上限 40%",
+        "suggested_action": "reduce"
+      },
+      {
+        "rule_id": "REBALANCE",
+        "severity": "info",
+        "fund_code": null,
+        "message": "宽基核心 实际 1.7% 低于目标 70%（偏离 -68.3%），建议优先加仓该层",
+        "suggested_action": "reduce"
+      },
+      {
+        "rule_id": "REBALANCE",
+        "severity": "info",
+        "fund_code": null,
+        "message": "行业卫星 实际 98.3% 高于目标 20%（偏离 +78.3%），建议减卫星/增宽基或再平衡",
+        "suggested_action": "reduce"
+      },
+      {
+        "rule_id": "REBALANCE",
+        "severity": "info",
+        "fund_code": null,
+        "message": "防御/海外 实际 0.0% 低于目标 10%（偏离 -10.0%），建议优先加仓该层",
         "suggested_action": "reduce"
       },
       {
@@ -181,13 +194,23 @@
     ],
     "news_digest": [
       {
+        "keyword": "消费",
+        "title": "超4.5亿元消费补贴来了！今年暑期文旅消费季多项惠民举措发布",
+        "published_at": "2026-07-08 20:46:00",
+        "source": "消费日报财经",
+        "url": "http://finance.eastmoney.com/a/202607083798663074.html",
+        "content_preview": "暑期文旅消费季期间，各地将围绕消夏避暑、滨海度假、夜间经济、游轮游艇、亲子游乐、研学旅行、非遗美食、博物馆游等热点需求，增加优质文旅产品供给，举办超3万场次文旅消费活动，发放超4.5亿元消费券等消费补贴，助力居民游客欢度暑期时光，畅享美好…",
+        "summary": "暑期文旅消费季将发放超4.5亿元消费券，举办超3万场活动。",
+        "summary_source": "llm"
+      },
+      {
         "keyword": "人工智能",
         "title": "人社部：搭建人工智能应用平台 建设行业高质量数据集和人工智能语料库",
         "published_at": "2026-07-08 15:08:19",
         "source": "财联社",
         "url": "http://finance.eastmoney.com/a/202607083798327273.html",
         "content_preview": "一是搭建人工智能应用平台。构建“1（部级）＋N（国家人工智能应用中试基地）＋32（省级人力资源社会保障部门）”的人社行业领域人工智能协同发展格局，会同国家人工智能应用中试基地统筹建设全国人社人工智能应用平台，打造安全可信的“人工智能＋人社…",
-        "summary": "人社部将搭建人工智能应用平台，建设行业高质量数据集和语料库。",
+        "summary": "人社部将搭建人工智能应用平台，建设行业数据集和语料库。",
         "summary_source": "llm"
       },
       {
@@ -197,7 +220,7 @@
         "source": "上海证券报·中国证券网",
         "url": "http://finance.eastmoney.com/a/202607083798259090.html",
         "content_preview": "各地将围绕消夏避暑、滨海度假、夜间经济、游轮游艇、亲子游乐、研学旅行、非遗美食、博物馆游等热点需求，增加优质文旅产品供给，举办超3万场次文旅消费活动，发放超4.5亿元消费券等消费补贴。",
-        "summary": "各地将发放超4.5亿元消费券，并举办超3万场次文旅消费活动。",
+        "summary": "各地将发放超4.5亿元消费券，举办超3万场文旅消费活动。",
         "summary_source": "llm"
       },
       {
@@ -207,7 +230,7 @@
         "source": "证券时报网",
         "url": "http://finance.eastmoney.com/a/202607083798185495.html",
         "content_preview": "资料显示，基本半导体成立于2016年，总部位于深圳，是一家第三代半导体功率器件行业企业，为国内少数实现从碳化硅芯片设计、晶圆制造到模块封装全链条自主生产的IDM企业，在深圳设有晶圆厂，在无锡拥有封装产线。 基本半导体产品主要应用于新能源汽…",
-        "summary": "基本半导体在港交所上市，是一家第三代半导体IDM企业。",
+        "summary": "基本半导体在港交所上市，为国内碳化硅全链条IDM企业。",
         "summary_source": "llm"
       },
       {
@@ -227,7 +250,7 @@
         "source": "21世纪经济报道",
         "url": "http://finance.eastmoney.com/a/202607083797993491.html",
         "content_preview": "相关ETF方面，截至发稿，港股创新药ETF银华（159567）、港股通创新药ETF工银（159217）、港股通创新药ETF鹏华（159286）均涨超1%。 消息面上，据证券时报，2026年，中国创新药BD（商务拓展）出海交易规模继续高歌猛…",
-        "summary": "创新药半年出海收入近千亿美元，港股创新药ETF涨超1%。",
+        "summary": "创新药半年出海收入近千亿美元，多只港股创新药ETF涨超1%。",
         "summary_source": "llm"
       },
       {
@@ -237,7 +260,7 @@
         "source": "第一财经",
         "url": "http://finance.eastmoney.com/a/202607083797894688.html",
         "content_preview": "金蝶国际涨超10%，上海复旦涨近9%，金山云涨近7%，联想集团、智谱涨超4%。",
-        "summary": "港股人工智能板块持续走高，金蝶国际等个股上涨。",
+        "summary": "港股人工智能板块持续走高，金蝶国际涨超10%。",
         "summary_source": "llm"
       },
       {
@@ -277,17 +300,7 @@
         "source": "南方财经网",
         "url": "http://finance.eastmoney.com/a/202607083797604954.html",
         "content_preview": "南方财经7月8日电，2026年，中国创新药BD（商务拓展）出海交易规模继续高歌猛进。医药魔方统计数据显示，2026年上半年中国创新药BD出海交易金额为997亿美元，约为2024年的2倍，是2025年的73%。",
-        "summary": "2026年上半年中国创新药BD出海交易金额为997亿美元。",
-        "summary_source": "llm"
-      },
-      {
-        "keyword": "消费",
-        "title": "暑期消费升温 共赴亲情时光（新视窗·聚焦暑期消费）",
-        "published_at": "2026-07-08 05:59:12",
-        "source": "人民日报",
-        "url": "http://finance.eastmoney.com/a/202607083797173535.html",
-        "content_preview": "一些暑期亲子团混淆游玩与研学概念，吸引消费者误入“伪研学”消费圈套，部分无资质机构将普通景区观光、户外游玩包装成科普研学、实践成长课程，虚假宣传专业师资、系统化课程、研学成果，实际上没有专业教学师资，项目缺乏科学设置，用研学噱头消耗了消费…",
-        "summary": "暑期亲子游存在“伪研学”消费圈套，部分机构虚假宣传。",
+        "summary": "2026年上半年中国创新药BD出海交易金额达997亿美元。",
         "summary_source": "llm"
       },
       {
@@ -297,7 +310,7 @@
         "source": "上观新闻",
         "url": "http://finance.eastmoney.com/a/202607073796706154.html",
         "content_preview": "从“抢不到、用不了、门槛高”，到如今怎么把消费券“玩”出新花样，申城的消费券正努力让消费者“乐”起来。近日，青浦、虹口等区推出新一轮消费券，主打“用户不用抢、商户易参与、线下聚人气”。",
-        "summary": "上海多区推出新一轮消费券，主打“用户免抢”模式。",
+        "summary": "上海青浦、虹口等区推出新一轮“乐消费”消费券。",
         "summary_source": "llm"
       }
     ],
@@ -306,7 +319,7 @@
       "lookback_days": 90,
       "big_move_pct": 12.0,
       "small_correction_pct": 6.0,
-      "philosophy": "场外基金版趋势心法（仅供 AI 参考）：阶段大涨后若仅为小幅回调，上升未破，以持有为主；\n阶段大跌后若仅为小幅反弹，下降未转强，不宜急于追。知行合一，涨不喜跌不悲，配合止损线。",
+      "philosophy": "核心-卫星 + 止盈不止损：宽基核心长期持有，卫星浮盈达标分批止盈并转回核心；\n阶段大涨小回以持有为主，大跌小弹不急于追；下跌时优先智能定投摊薄，不因波动 panic 割肉。",
       "ai_guidance": {
         "prefer_hold_on_uptrend_intact": true,
         "avoid_chase_on_downtrend_intact": true,
@@ -343,12 +356,12 @@
           "code": "002900",
           "trend": "uptrend_pullback",
           "trend_label": "上升趋势中回调加深",
-          "hint": "近90日仍涨44.3%，但自高点已回落9.8%，回调加深，宜观察是否转弱，暂不建议追涨。",
+          "hint": "近90日仍涨45.0%，但自高点已回落9.4%，回调加深，宜观察是否转弱，暂不建议追涨。",
           "lookback_days": 90,
-          "data_points": 60,
-          "period_return_pct": 44.35,
-          "drawdown_from_peak_pct": -9.79,
-          "bounce_from_trough_pct": 44.35
+          "data_points": 61,
+          "period_return_pct": 45.03,
+          "drawdown_from_peak_pct": -9.36,
+          "bounce_from_trough_pct": 45.03
         }
       ],
       "benchmark": {
@@ -508,38 +521,37 @@
   },
   "market_outlook": {
     "horizon": "1-2周",
-    "overall_bias": "neutral",
-    "capital_flow_view": "主力整体净流出，但半导体（净流入66.62亿元）、AI智能体（54.77亿元）等科技板块获得显著资金流入；南向资金净流入141.94亿元，而北向数据因交易所暂停披露无法参考。持仓主题相关的半导体流入66.62亿元，显示资金向科技方向集中。",
-    "policy_event_view": "人社部发布政策搭建人工智能应用平台并建设数据集，直接利好人工智能主题；各地发放超4.5亿元消费券刺激消费，但暑期消费存在伪研学风险。半导体IPO上市与板块盘中回落并存，政策信号积极但盘面存在分歧。",
+    "overall_bias": "bullish",
+    "capital_flow_view": "今日主力整体净流出，但结构分化明显：半导体（净流入66.62亿）、AI智能体（54.77亿）等主题资金逆势大幅流入，南向资金净流入141.94亿元，显示内外资对科技成长方向保持积极态度；新能源汽车、储能等板块流出较大，需警惕相关风险。",
+    "policy_event_view": "人社部宣布搭建人工智能应用平台，建设行业数据集和语料库，直接利好AI产业；暑期文旅消费季发放超4.5亿元消费券，有望提振消费板块；创新药出海规模近千亿美元，政策与基本面共振。",
     "theme_outlook": [
       {
         "theme": "人工智能",
         "bias": "bullish",
-        "reason": "新增政策利好（人社部平台建设）+ 主力资金大幅流入AI智能体（54.77亿元）及云计算（50.84亿元），港股相关个股表现强势。"
+        "reason": "AI智能体、云计算、网络安全等概念主力净流入居前，叠加人社部AI平台政策利好，短期有望延续强势。"
       },
       {
         "theme": "宽基",
         "bias": "neutral",
-        "reason": "沪深300下跌0.77%且主力整体净流出，但结构性机会明显，宽基指数受权重板块拖累为主。"
+        "reason": "沪深300今日下跌0.77%，整体资金净流出，但南向资金大幅流入港股提供支撑，指数或维持震荡。"
       },
       {
         "theme": "指数型-海外股票",
-        "bias": "neutral",
-        "reason": "南向资金净流入141.94亿元，港股科技板块走高，但海外市场关联数据不足，维持中性。"
+        "bias": "bullish",
+        "reason": "南向资金大额净流入港股，且港股人工智能板块持续走高，海外科技ETF有望受益。"
       },
       {
         "theme": "指数型-股票",
         "bias": "neutral",
-        "reason": "整体资金面偏空，但科技主题ETF有催化剂，指数型股票基金表现分化。"
+        "reason": "宽基指数承压但主题ETF资金活跃，整体中性偏积极。"
       }
     ],
     "key_risks": [
-      "主力整体净流出341.4亿元（融资融券概念），沪深300下跌0.77%",
-      "半导体板块日内震荡回落，沪硅产业跌超10%",
-      "新能源汽车、储能等概念大幅净流出超百亿，市场风格切换风险"
+      "融资融券概念净流出341.4亿元，杠杆资金情绪谨慎",
+      "半导体板块盘中震荡回落，短期波动加大"
     ],
-    "confidence": 0.6,
-    "disclaimer": "以上研判基于公开资金流与政策事件数据，仅供参考，不构成投资建议。",
+    "confidence": 0.7,
+    "disclaimer": "本研判基于公开数据与模型分析，仅供参考，不构成投资建议，投资有风险，入市需谨慎。",
     "skipped": false,
     "skip_reason": null,
     "model": "deepseek-v4-flash"
@@ -596,48 +608,6 @@
     "sentiment_summary": "今日主力主力偏空（净流出）；情绪指数 38.0（偏谨慎）。北向日度净买额已暂停披露，请看行业/概念主力流向。阶段吸金板块：半导体(66.62亿)、AI智能体(54.77亿)、云计算(50.84亿)。",
     "fund_picks": [
       {
-        "fund_code": "012734",
-        "fund_name": "易方达中证人工智能主题ETF联接A",
-        "action": "hold",
-        "theme": "人工智能",
-        "score": 275.53,
-        "reasons": [
-          {
-            "type": "flow",
-            "label": "板块资金流入",
-            "detail": "半导体 净流入 +66.62 亿，涨 -0.66%"
-          },
-          {
-            "type": "flow",
-            "label": "板块资金流入",
-            "detail": "AI智能体 净流入 +54.77 亿，涨 0.7%"
-          },
-          {
-            "type": "sentiment",
-            "label": "市场情绪",
-            "detail": "偏谨慎（38.0），北向净买额已暂停披露；主力近5日方向均值 -1.00"
-          },
-          {
-            "type": "news",
-            "label": "相关要闻",
-            "detail": "人社部将搭建人工智能应用平台，建设行业高质量数据集和语料库。"
-          },
-          {
-            "type": "news",
-            "label": "相关要闻",
-            "detail": "基本半导体在港交所上市，是一家第三代半导体IDM企业。"
-          },
-          {
-            "type": "theme",
-            "label": "已有持仓",
-            "detail": "当前持仓主题「人工智能」，资金面向好可考虑持有或小幅加仓"
-          }
-        ],
-        "source": "daily",
-        "daily_growth_pct": null,
-        "return_1y": null
-      },
-      {
         "fund_code": "002900",
         "fund_name": "南方中证500信息技术联接A",
         "action": "hold",
@@ -663,6 +633,48 @@
             "type": "theme",
             "label": "已有持仓",
             "detail": "当前持仓主题「宽基」，资金面向好可考虑持有或小幅加仓"
+          }
+        ],
+        "source": "daily",
+        "daily_growth_pct": null,
+        "return_1y": null
+      },
+      {
+        "fund_code": "012734",
+        "fund_name": "易方达中证人工智能主题ETF联接A",
+        "action": "hold",
+        "theme": "人工智能",
+        "score": 275.53,
+        "reasons": [
+          {
+            "type": "flow",
+            "label": "板块资金流入",
+            "detail": "半导体 净流入 +66.62 亿，涨 -0.66%"
+          },
+          {
+            "type": "flow",
+            "label": "板块资金流入",
+            "detail": "AI智能体 净流入 +54.77 亿，涨 0.7%"
+          },
+          {
+            "type": "sentiment",
+            "label": "市场情绪",
+            "detail": "偏谨慎（38.0），北向净买额已暂停披露；主力近5日方向均值 -1.00"
+          },
+          {
+            "type": "news",
+            "label": "相关要闻",
+            "detail": "人社部将搭建人工智能应用平台，建设行业数据集和语料库。"
+          },
+          {
+            "type": "news",
+            "label": "相关要闻",
+            "detail": "基本半导体在港交所上市，为国内碳化硅全链条IDM企业。"
+          },
+          {
+            "type": "theme",
+            "label": "已有持仓",
+            "detail": "当前持仓主题「人工智能」，资金面向好可考虑持有或小幅加仓"
           }
         ],
         "source": "daily",
@@ -1466,6 +1478,10 @@
         {
           "date": "2026-07-07",
           "value": 144.35
+        },
+        {
+          "date": "2026-07-08",
+          "value": 145.03
         }
       ],
       "270042": [
@@ -2688,7 +2704,7 @@
       },
       {
         "date": "2026-07-08",
-        "value": 96.63
+        "value": 98.28
       }
     ],
     "portfolio_market_value": [
@@ -2934,7 +2950,7 @@
       },
       {
         "date": "2026-07-08",
-        "value": 5840.91
+        "value": 5940.43
       }
     ],
     "benchmark_return_indexed": [
@@ -3532,9 +3548,44 @@
     ],
     "updated_at": "2026-05-21T22:13:36.689767"
   },
+  "core_satellite": {
+    "core_target_pct": 70.0,
+    "satellite_target_pct": 20.0,
+    "hedge_target_pct": 10.0,
+    "core_actual_pct": 1.68,
+    "satellite_actual_pct": 98.32,
+    "hedge_actual_pct": 0.0,
+    "unclassified_pct": 0.0,
+    "rebalance_threshold_pct": 5.0,
+    "needs_rebalance": true,
+    "hints": [
+      "宽基核心 实际 1.7% 低于目标 70%（偏离 -68.3%），建议优先加仓该层",
+      "行业卫星 实际 98.3% 高于目标 20%（偏离 +78.3%），建议减卫星/增宽基或再平衡",
+      "防御/海外 实际 0.0% 低于目标 10%（偏离 -10.0%），建议优先加仓该层"
+    ]
+  },
+  "smart_dca": {
+    "index_code": "000300.SH",
+    "index_name": "沪深300",
+    "pe_ttm": null,
+    "pe_percentile": null,
+    "base_daily_cny": 10.0,
+    "suggested_daily_cny": 10.0,
+    "multiplier": 1.0,
+    "action": "normal",
+    "hint": "指数估值暂不可用，维持基础定投金额"
+  },
   "strategy_summary": {
-    "stop_loss_ratio": -0.15,
+    "framework": "core_satellite",
+    "core_target_ratio": 0.7,
+    "satellite_target_ratio": 0.2,
+    "stop_loss_enabled": false,
     "take_profit_ratio": 0.2,
+    "take_profit_steps": [
+      0.15,
+      0.2,
+      0.3
+    ],
     "relax_caps_below": 5000,
     "benchmark_index": "000300.SH"
   },
