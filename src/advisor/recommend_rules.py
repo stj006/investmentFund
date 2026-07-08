@@ -17,10 +17,11 @@ def enrich_candidate_pool(
     portfolio = strategy.get("portfolio_plan") or {}
     cs_cfg = strategy.get("core_satellite") or {}
     core_codes = plan.get("core_fund") or portfolio.get("core_fund") or ""
+    split = plan.get("primary_core_split") or cs_cfg.get("primary_core_split") or {}
     core_list = (
-        plan.get("core_fund_codes")
-        or portfolio.get("core_funds")
-        or cs_cfg.get("core_fund_codes")
+        list(portfolio.get("primary_core_funds") or [])
+        or list(cs_cfg.get("core_fund_codes") or [])
+        or list(split.keys())
         or ([core_codes] if core_codes else [])
     )
     core = str(core_list[0] if core_list else "").zfill(6)
@@ -90,36 +91,69 @@ def enforce_allocation_plan(
     recs = list(recommendations)
 
     if plan.get("require_core_add") and core:
-        core_recs = [r for r in recs if r["fund_code"] == core]
-        core_amount = sum(r["amount_cny"] for r in core_recs)
-        if core_amount < min_core:
-            if core in code_map:
-                c = code_map[core]
-                if core_recs:
-                    for r in recs:
-                        if r["fund_code"] == core:
-                            r["amount_cny"] = round(min_core, 2)
-                            r["action"] = "add"
-                            r["reason"] = f"[规则补全] 主仓 {c.fund_name} 至少加仓 {min_core:.0f} 元"
+        split = plan.get("primary_core_split") or strategy.get("core_satellite", {}).get(
+            "primary_core_split"
+        )
+        if split and min_core > 0:
+            for code, ratio in split.items():
+                ccode = str(code).zfill(6)
+                part = round(min_core * float(ratio), 2)
+                if part <= 0 or ccode not in code_map:
+                    continue
+                c = code_map[ccode]
+                existing = next((r for r in recs if r["fund_code"] == ccode), None)
+                if existing:
+                    if existing["amount_cny"] < part:
+                        existing["amount_cny"] = part
+                        existing["reason"] = f"[规则补全] 真宽基 {c.fund_name} 分配 {part:.0f} 元"
                 else:
                     recs.append(
                         {
-                            "fund_code": core,
+                            "fund_code": ccode,
                             "fund_name": c.fund_name,
-                            "action": "add",
-                            "amount_cny": round(min_core, 2),
-                            "weight_pct": round(min_core / budget, 4),
-                            "reason": f"[规则补全] 已有主仓，建议加仓 {min_core:.0f} 元",
-                            "risk_tag": "high",
+                            "action": "buy",
+                            "amount_cny": part,
+                            "weight_pct": round(part / budget, 4),
+                            "reason": f"[规则补全] 真宽基 {c.fund_name} 分配 {part:.0f} 元",
+                            "risk_tag": "medium",
                             "confidence": 0.85,
                             "return_1y": c.return_1y,
                             "fund_type": c.fund_type,
-                            "is_broad_index": is_broad_index(c.fund_name, broad_kw),
+                            "is_broad_index": True,
                         }
                     )
-                warnings.append(f"已补全主仓 {core} 加仓 ≥{min_core:.0f} 元")
-            else:
-                warnings.append(f"主仓 {core} 不在候选池，无法自动补全加仓")
+            warnings.append(f"已按 primary_core_split 补全真宽基 ≥{min_core:.0f} 元")
+        else:
+            core_recs = [r for r in recs if r["fund_code"] == core]
+            core_amount = sum(r["amount_cny"] for r in core_recs)
+            if core_amount < min_core:
+                if core in code_map:
+                    c = code_map[core]
+                    if core_recs:
+                        for r in recs:
+                            if r["fund_code"] == core:
+                                r["amount_cny"] = round(min_core, 2)
+                                r["action"] = "add"
+                                r["reason"] = f"[规则补全] 主仓 {c.fund_name} 至少加仓 {min_core:.0f} 元"
+                    else:
+                        recs.append(
+                            {
+                                "fund_code": core,
+                                "fund_name": c.fund_name,
+                                "action": "add",
+                                "amount_cny": round(min_core, 2),
+                                "weight_pct": round(min_core / budget, 4),
+                                "reason": f"[规则补全] 已有主仓，建议加仓 {min_core:.0f} 元",
+                                "risk_tag": "medium",
+                                "confidence": 0.85,
+                                "return_1y": c.return_1y,
+                                "fund_type": c.fund_type,
+                                "is_broad_index": is_broad_index(c.fund_name, broad_kw),
+                            }
+                        )
+                    warnings.append(f"已补全主仓 {core} 加仓 ≥{min_core:.0f} 元")
+                else:
+                    warnings.append(f"主仓 {core} 不在候选池，无法自动补全加仓")
 
     broad_total = sum(
         r["amount_cny"]

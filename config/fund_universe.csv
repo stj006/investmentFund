@@ -1,7 +1,8 @@
 fund_code,fund_name,theme,risk_tag,role,notes
 270042,广发纳斯达克100ETF联接人民币(QDII)A,纳斯达克,high,hedge,仅定投-海外防御
-002900,南方中证500信息技术联接A,宽基,medium,core,宽基核心
-110020,易方达沪深300ETF联接A,宽基,medium,core,备选宽基核心
+110020,易方达沪深300ETF联接A,沪深300,medium,core,真宽基-压舱石
+022430,华夏中证A500ETF联接A,中证A500,medium,core,真宽基-均衡成长
+002900,南方中证500信息技术联接A,500信息技术,medium,core_growth,成长增强-非主宽基
 012737,广发创新药ETF联接A,创新药,medium,satellite,行业卫星
 012734,易方达中证人工智能主题ETF联接A,人工智能,high,satellite,行业卫星
 008326,东财通信A,通信,medium,pool,AI推荐-2026-05-21

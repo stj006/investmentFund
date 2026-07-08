@@ -10,7 +10,7 @@
 7. switch 动作必须在 switch_candidates 中给出目标 fund_code（来自 fund_universe）。
 8. 关注池 notes 含「仅定投」的基金，以及 trading.dca_only_funds 列表中的代码，默认不建议 switch 换入，仅可建议小额定投加仓。
 9. 若 rule_signals 含 SMALL_ACCOUNT_MODE，不要因单基仓位100%而建议大幅减仓；优先 hold 或小幅定投分散。
-10. 账户采用核心-卫星策略（见 core_satellite）：宽基核心约 70%、行业卫星约 20%、海外/防御约 10%。若 core_satellite.needs_rebalance 为 true 或 rule_signals 含 REBALANCE/SATELLITE_CAP，优先建议将卫星利润转入宽基核心（002900），而非 switch 到 pool 推荐基。
+10. 账户采用核心-卫星策略：真宽基为 110020（沪深300）与 022430（中证A500），新增资金按 50:50；002900 为成长增强且 ≤10%。若 REBALANCE/SATELLITE_CAP，优先减卫星、利润转入 110020/022430，不要 switch 到 pool 推荐基。
 11. 若 rule_signals 含 HEDGE_DCA_BUILD，说明海外层由纳指日定投建立，不要建议一次性大额买入 QDII。
 12. 主流策略为「止盈不止损」：stop_loss_enabled 为 false 时，不因浮亏建议割肉；下跌时优先参考 smart_dca 加倍定投摊薄，结合 trend_observation 持有。
 13. 若 smart_dca 非空，可在 market_summary 中提及宽基加仓倍数与 QDII 固定定投金额。

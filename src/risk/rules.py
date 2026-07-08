@@ -102,10 +102,16 @@ def evaluate_rules(
         if cs_cfg.get("enabled"):
             sat_target = float(cs_cfg.get("satellite_target_ratio", 0.20)) * 100
             sat_threshold = float(cs_cfg.get("rebalance_threshold", 0.05)) * 100
+            growth_max = float(cs_cfg.get("core_growth_max_ratio", 0.10)) * 100
             sat_weight = sum(
                 p.weight_pct
                 for p in portfolio.positions
                 if role_by_code.get(p.fund_code) == "satellite"
+            )
+            growth_weight = sum(
+                p.weight_pct
+                for p in portfolio.positions
+                if role_by_code.get(p.fund_code) == "core_growth"
             )
             if sat_weight > sat_target + sat_threshold:
                 signals.append(
@@ -114,8 +120,21 @@ def evaluate_rules(
                         severity="warning",
                         fund_code=None,
                         message=(
-                            f"行业卫星合计 {sat_weight:.1f}% 超过目标 {sat_target:.0f}%"
-                            f"（+{sat_threshold:.0f}% 容忍），建议减卫星、增宽基"
+                            f"行业卫星合计 {sat_weight:.1f}% 超过目标 {sat_target:.0f}%，"
+                            f"建议减卫星，利润转入 110020/022430 真宽基"
+                        ),
+                        suggested_action="reduce",
+                    )
+                )
+            if growth_weight > growth_max + sat_threshold:
+                signals.append(
+                    RuleSignal(
+                        rule_id="CORE_GROWTH_CAP",
+                        severity="info",
+                        fund_code="002900",
+                        message=(
+                            f"成长增强（500信息）仓位 {growth_weight:.1f}% 超过上限 {growth_max:.0f}%，"
+                            f"建议减至上限内，新增资金优先沪深300/A500"
                         ),
                         suggested_action="reduce",
                     )

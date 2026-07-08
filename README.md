@@ -146,17 +146,16 @@ python scripts/fund_recommend.py --budget 5000 --sync-universe
 ```
 
 **5000 入局规则**（`strategy.yaml` → `recommendation.allocation_plan`）：
-- 必须包含主仓 **012734 加仓**（默认 ≥1000 元）
-- **宽基指数合计 ≥50%**（沪深300/中证500 等）
-- **270042 继续日定投 10 元**，不计入 5000
-- 报告含 **3 批买入计划**（每批间隔 7 天）
-- `--sync-universe` 将新推荐基金写入 `fund_universe.csv`
+- 真宽基 **110020 沪深300 + 022430 中证A500**（新增资金 50:50，合计 ≥70%）
+- **002900 500信息** 为成长增强，上限 10%；卫星 ≤20%
+- **270042 纳指日定投 10 元**，不计入 5000
+- 详见 [docs/宽基与核心配置.md](docs/宽基与核心配置.md)
 
 配置见 `config/strategy.yaml` 的 `recommendation` 段。报告输出：`reports/fund-recommend-YYYY-MM-DD.md`
 
 ## 策略说明
 
-`config/strategy.yaml` 已按当前持仓校准：市值 < 1 万元时不触发单基/主题仓位告警；`270042` 为仅定投。市值上万后自动启用 80% 上限检查。
+`config/strategy.yaml`：核心-卫星 70/20/10；真宽基 110020+022430；市值 < 5000 元小账户模式。
 
 ## 建议实施顺序
 

@@ -28,17 +28,20 @@ core_satellite:
   hedge_target_ratio: 0.10        # 防御/海外 10%
   rebalance_threshold: 0.05       # 偏离 ±5% 触发再平衡提示
   rebalance_interval_days: 180    # 建议每半年检查一次
-  core_fund_codes: ["002900", "110020"]  # 宽基核心；110020 为备选沪深300
-  satellite_fund_codes: ["012737", "012734"]  # 创新药、人工智能
-  hedge_fund_codes: ["270042"]    # 纳斯达克 QDII 定投
+  core_fund_codes: ["110020", "022430"]
+  core_growth_fund_codes: ["002900"]
+  core_growth_max_ratio: 0.10
+  satellite_fund_codes: ["012737", "012734"]
+  hedge_fund_codes: ["270042"]
+  primary_core_split:
+    "110020": 0.50
+    "022430": 0.50
   broad_index_keywords:
     - 沪深300
-    - 中证500
+    - 中证A500
     - A500
     - 上证50
     - 红利
-    - 500信息
-    - 500信息技术
 
 # --- 止盈止损与再平衡 ---
 signals:
@@ -86,8 +89,10 @@ trading:
 # --- 持仓计划 ---
 portfolio_plan:
   strategy: core_satellite
-  core_fund: "002900"             # 宽基核心（与 core_satellite 一致）
-  core_funds: ["002900", "110020"]
+  core_fund: "110020"             # 主宽基：沪深300
+  core_funds: ["110020", "022430", "002900"]
+  primary_core_funds: ["110020", "022430"]
+  core_growth_funds: ["002900"]
   satellite_funds: ["012737", "012734"]
   hedge_fund: "270042"
   dca_fund: "270042"
@@ -191,18 +196,20 @@ recommendation:
 
   allocation_plan:
     require_core_add: true
-    core_fund: "002900"           # 宽基核心优先加仓
-    min_core_add_cny: 1500        # 主仓宽基至少 1500 元
-    broad_index_min_ratio: 0.70     # 宽基合计 ≥70%
-    satellite_max_ratio: 0.20       # 主题卫星 ≤20%
+    core_fund: "110020"           # 默认优先沪深300
+    min_core_add_cny: 1500
+    broad_index_min_ratio: 0.70
+    satellite_max_ratio: 0.20
+    primary_core_split:
+      "110020": 0.50
+      "022430": 0.50
+    core_growth_max_ratio: 0.10
     broad_index_keywords:
       - 沪深300
-      - 中证500
+      - 中证A500
       - A500
       - 上证50
       - 红利
-      - 500信息
-      - 500信息技术
     reserve_cash_ratio: 0.05
 
   batch_plan:

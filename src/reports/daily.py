@@ -92,7 +92,9 @@ def _render_strategy_sections(portfolio: PortfolioSummary) -> list[str]:
             [
                 "| 层级 | 目标 | 实际 |",
                 "|------|------|------|",
-                f"| 宽基核心 | {cs.core_target_pct:.0f}% | {cs.core_actual_pct:.1f}% |",
+                f"| 宽基核心（合计） | {cs.core_target_pct:.0f}% | {cs.core_actual_pct:.1f}% |",
+                f"| 　↳ 真宽基（300/A500） | — | {getattr(cs, 'core_broad_actual_pct', cs.core_actual_pct):.1f}% |",
+                f"| 　↳ 成长增强（500信息） | ≤10% | {getattr(cs, 'core_growth_actual_pct', 0):.1f}% |",
                 f"| 行业卫星 | {cs.satellite_target_pct:.0f}% | {cs.satellite_actual_pct:.1f}% |",
                 f"| 防御/海外 | {cs.hedge_target_pct:.0f}% | {cs.hedge_actual_pct:.1f}% |",
                 "",
