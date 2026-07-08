@@ -5,10 +5,12 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from datetime import date, datetime
 
-from src.analytics.portfolio import PortfolioSummary, PositionMetrics
-from src.analytics.core_satellite import evaluate_core_satellite
+from src.analytics.core_satellite import build_role_map, evaluate_core_satellite
 from src.analytics.trailing_stop import check_trailing_stop
 from src.analytics.valuation import check_valuation_take_profit
+from src.analytics.portfolio import PortfolioSummary
+from src.risk.rebalance_state import mark_rebalance_signaled, should_signal_rebalance
+from src.risk.take_profit_state import mark_step_signaled, next_step_to_signal
 
 
 @dataclass
@@ -36,11 +38,14 @@ def evaluate_rules(
     strategy: dict,
     positions_cfg: list[dict[str, str]],
     theme_by_code: dict[str, str],
+    fund_universe: list[dict[str, str]] | None = None,
 ) -> list[RuleSignal]:
     signals: list[RuleSignal] = []
     alloc = strategy.get("allocation", {})
     sig = strategy.get("signals", {})
     trading = strategy.get("trading", {})
+    cs_cfg = strategy.get("core_satellite") or {}
+    role_by_code = build_role_map(fund_universe or [])
 
     max_single = float(alloc.get("max_single_fund_ratio", 0.2)) * 100
     max_theme = float(alloc.get("max_theme_ratio", 0.4)) * 100
@@ -65,7 +70,6 @@ def evaluate_rules(
             )
         )
 
-    # 单基仓位上限（小资金阶段可放宽）
     if not caps_relaxed:
         for p in portfolio.positions:
             if p.weight_pct > max_single:
@@ -79,7 +83,6 @@ def evaluate_rules(
                     )
                 )
 
-        # 主题集中度
         theme_weight: dict[str, float] = {}
         for p in portfolio.positions:
             theme = theme_by_code.get(p.fund_code, "未分类")
@@ -96,9 +99,32 @@ def evaluate_rules(
                     )
                 )
 
-    # 止损 / 止盈
+        if cs_cfg.get("enabled"):
+            sat_target = float(cs_cfg.get("satellite_target_ratio", 0.20)) * 100
+            sat_threshold = float(cs_cfg.get("rebalance_threshold", 0.05)) * 100
+            sat_weight = sum(
+                p.weight_pct
+                for p in portfolio.positions
+                if role_by_code.get(p.fund_code) == "satellite"
+            )
+            if sat_weight > sat_target + sat_threshold:
+                signals.append(
+                    RuleSignal(
+                        rule_id="SATELLITE_CAP",
+                        severity="warning",
+                        fund_code=None,
+                        message=(
+                            f"行业卫星合计 {sat_weight:.1f}% 超过目标 {sat_target:.0f}%"
+                            f"（+{sat_threshold:.0f}% 容忍），建议减卫星、增宽基"
+                        ),
+                        suggested_action="reduce",
+                    )
+                )
+
     steps = sig.get("take_profit_steps", [])
     sell_ratio = float(sig.get("take_profit_sell_ratio", 0.33))
+    sorted_steps = sorted(float(s) for s in steps) if steps else []
+
     for p in portfolio.positions:
         if stop_loss_enabled and p.unrealized_pnl_pct <= stop_loss:
             signals.append(
@@ -121,28 +147,25 @@ def evaluate_rules(
                 )
             )
 
-        # 分批止盈
-        if steps and p.unrealized_pnl_pct > 0:
+        if sorted_steps and p.unrealized_pnl_pct > 0:
             pnl_ratio = p.unrealized_pnl_pct / 100.0
-            for i, step in enumerate(sorted(steps)):
-                step_pct = float(step) * 100
-                if pnl_ratio >= step:
-                    already = sum(1 for s in signals if s.rule_id == "TAKE_PROFIT_STEP" and s.fund_code == p.fund_code)
-                    if already == i:
-                        signals.append(
-                            RuleSignal(
-                                rule_id="TAKE_PROFIT_STEP",
-                                severity="info",
-                                fund_code=p.fund_code,
-                                message=(
-                                    f"{p.fund_name} 浮盈 {p.unrealized_pnl_pct:.2f}% 达到分批止盈第 {i+1} 档（{step_pct:.0f}%），"
-                                    f"建议卖出 {sell_ratio*100:.0f}% 仓位"
-                                ),
-                                suggested_action="reduce",
-                            )
-                        )
+            step_i = next_step_to_signal(p.fund_code, pnl_ratio, sorted_steps)
+            if step_i is not None:
+                step_pct = sorted_steps[step_i] * 100
+                signals.append(
+                    RuleSignal(
+                        rule_id="TAKE_PROFIT_STEP",
+                        severity="info",
+                        fund_code=p.fund_code,
+                        message=(
+                            f"{p.fund_name} 浮盈 {p.unrealized_pnl_pct:.2f}% 首次达到分批止盈第 {step_i + 1} 档"
+                            f"（{step_pct:.0f}%），建议卖出 {sell_ratio*100:.0f}% 仓位"
+                        ),
+                        suggested_action="reduce",
+                    )
+                )
+                mark_step_signaled(p.fund_code, step_i)
 
-    # 动态回撤止盈
     for p in portfolio.positions:
         ts = check_trailing_stop(
             p.fund_code, p.fund_name, p.unit_nav, p.unrealized_pnl_pct, strategy
@@ -162,7 +185,6 @@ def evaluate_rules(
                 )
             )
 
-    # 估值止盈
     val_sig = check_valuation_take_profit(strategy)
     if val_sig and val_sig.triggered:
         severity = "warning"
@@ -178,21 +200,32 @@ def evaluate_rules(
             )
         )
 
-    # 核心-卫星再平衡
-    cs = evaluate_core_satellite(portfolio, strategy)
-    if cs and cs.needs_rebalance:
+    cs = evaluate_core_satellite(portfolio, strategy, role_by_code=role_by_code)
+    interval_days = int(cs_cfg.get("rebalance_interval_days", 180))
+    if cs and cs.needs_rebalance and should_signal_rebalance(interval_days):
         for hint in cs.hints:
-            signals.append(
-                RuleSignal(
-                    rule_id="REBALANCE",
-                    severity="info",
-                    fund_code=None,
-                    message=hint,
-                    suggested_action="reduce",
+            if "暂不计为偏离" in hint:
+                signals.append(
+                    RuleSignal(
+                        rule_id="HEDGE_DCA_BUILD",
+                        severity="info",
+                        fund_code=None,
+                        message=hint,
+                        suggested_action="hold",
+                    )
                 )
-            )
+            else:
+                signals.append(
+                    RuleSignal(
+                        rule_id="REBALANCE",
+                        severity="info",
+                        fund_code=None,
+                        message=hint,
+                        suggested_action="reduce",
+                    )
+                )
+        mark_rebalance_signaled()
 
-    # 短期赎回预警（持有不足 7 天）— 按首次建仓日，加仓不重置
     for pos in positions_cfg:
         buy_date = pos.get("first_buy_date") or pos.get("last_buy_date", "")
         days = _days_since(buy_date)
@@ -207,7 +240,6 @@ def evaluate_rules(
                 )
             )
 
-    # 换基冷却 — 按最近一次买入日
     for pos in positions_cfg:
         days = _days_since(pos.get("last_buy_date", ""))
         if days is not None and days < min_switch_days:
@@ -228,31 +260,53 @@ def enforce_critical_rules(
     advice: dict,
     rule_signals: list[RuleSignal],
     whitelist: set[str],
+    strategy: dict | None = None,
+    portfolio: PortfolioSummary | None = None,
 ) -> dict:
-    """止损等 critical 规则若 AI 未给出减仓，注入保底建议。"""
+    """critical 规则若 AI 未给出减仓，注入保底建议。"""
     actions = list(advice.get("actions") or [])
     existing = {(a.get("fund_code"), a.get("action")) for a in actions}
+    strategy = strategy or {}
+    held = {p.fund_code for p in portfolio.positions} if portfolio else set()
+    satellite_codes = {
+        str(c).zfill(6)
+        for c in (strategy.get("core_satellite", {}).get("satellite_fund_codes") or [])
+    }
 
     for sig in rule_signals:
-        if sig.severity != "critical" or not sig.fund_code:
+        if sig.severity != "critical":
             continue
-        key = (sig.fund_code, "reduce")
-        if key in existing:
-            continue
-        if sig.fund_code not in whitelist:
-            continue
-        actions.append(
-            {
-                "fund_code": sig.fund_code,
-                "action": "reduce",
-                "ratio": 0.1,
-                "reason": f"[规则保底] {sig.message}",
-                "confidence": 1.0,
-                "rule_hits": [sig.rule_id],
-                "requires_human_confirm": True,
-            }
-        )
-        existing.add(key)
+
+        targets: list[tuple[str, float, str]] = []
+        if sig.fund_code:
+            targets.append((sig.fund_code, 0.1, sig.message))
+        elif sig.rule_id == "VALUATION_STOP" and satellite_codes:
+            for code in satellite_codes:
+                if code in whitelist and code in held:
+                    targets.append(
+                        (
+                            code,
+                            0.25,
+                            f"[规则保底] 市场估值极高，建议卫星 {code} 减仓约 25%，利润转入宽基",
+                        )
+                    )
+
+        for fund_code, ratio, reason in targets:
+            key = (fund_code, "reduce")
+            if key in existing or fund_code not in whitelist:
+                continue
+            actions.append(
+                {
+                    "fund_code": fund_code,
+                    "action": "reduce",
+                    "ratio": ratio,
+                    "reason": reason,
+                    "confidence": 1.0,
+                    "rule_hits": [sig.rule_id],
+                    "requires_human_confirm": True,
+                }
+            )
+            existing.add(key)
 
     advice["actions"] = actions
     return advice

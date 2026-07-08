@@ -83,7 +83,7 @@ def generate_advice(
             themes[pos["fund_code"]] = "未分类"
 
     rule_signals = evaluate_rules(
-        portfolio, strategy, positions_cfg, themes
+        portfolio, strategy, positions_cfg, themes, fund_universe
     )
     whitelist = _whitelist(fund_universe, positions_cfg)
 
@@ -138,7 +138,9 @@ def generate_advice(
 
     parsed, _raw = chat_json(system, user)
     validated = validate_advice(parsed, whitelist)
-    validated = enforce_critical_rules(validated, rule_signals, whitelist)
+    validated = enforce_critical_rules(
+        validated, rule_signals, whitelist, strategy=strategy, portfolio=portfolio
+    )
 
     return AdviceResult(
         market_summary=validated["market_summary"],

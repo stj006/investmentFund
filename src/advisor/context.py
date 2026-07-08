@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict
 
-from src.analytics.core_satellite import evaluate_core_satellite
+from src.analytics.core_satellite import build_role_map, evaluate_core_satellite
 from src.analytics.smart_dca import evaluate_smart_dca
 from src.analytics.portfolio import PortfolioSummary, WatchlistItem
 from src.risk.rules import RuleSignal
@@ -37,7 +37,9 @@ def build_advisor_context(
             "daily_change_pct": b.daily_change_pct,
         }
 
-    cs = evaluate_core_satellite(portfolio, strategy)
+    cs = evaluate_core_satellite(
+        portfolio, strategy, role_by_code=build_role_map(fund_universe)
+    )
     smart = evaluate_smart_dca(strategy)
 
     return {

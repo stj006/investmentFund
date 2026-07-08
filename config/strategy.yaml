@@ -28,7 +28,7 @@ core_satellite:
   hedge_target_ratio: 0.10        # 防御/海外 10%
   rebalance_threshold: 0.05       # 偏离 ±5% 触发再平衡提示
   rebalance_interval_days: 180    # 建议每半年检查一次
-  core_fund_codes: ["002900"]     # 宽基核心（中证500信息技术）
+  core_fund_codes: ["002900", "110020"]  # 宽基核心；110020 为备选沪深300
   satellite_fund_codes: ["012737", "012734"]  # 创新药、人工智能
   hedge_fund_codes: ["270042"]    # 纳斯达克 QDII 定投
   broad_index_keywords:
@@ -42,12 +42,11 @@ core_satellite:
 
 # --- 止盈止损与再平衡 ---
 signals:
-  rebalance_threshold: 0.05
   stop_loss_enabled: false        # 主流策略：止盈不止损；下跌优先定投不加割肉
   stop_loss_ratio: -0.25          # 若手动开启 stop_loss_enabled，极端浮亏线
   take_profit_ratio: 0.20
   take_profit_steps: [0.15, 0.20, 0.30]
-  take_profit_sell_ratio: 0.33    # 每档卖 1/3；20% 时卖 50% 由 AI 综合判断
+  take_profit_sell_ratio: 0.33    # 每档卖 1/3
 
 # --- 动态回撤止盈 ---
 trailing_stop:
@@ -67,9 +66,11 @@ smart_dca:
   enabled: true
   index_code: "000300.SH"
   base_daily_cny: 10              # 基础日定投（270042 纳指）
-  low_percentile: 0.30            # ≤30% 加倍
+  hedge_fund_codes: ["270042"]
+  hedge_fixed_amount: true        # QDII 固定日定投，不随 A 股 PE 分位调整
+  low_percentile: 0.30            # ≤30% 加倍（仅宽基加仓参考）
   high_percentile: 0.70           # ≥70% 减半
-  very_high_percentile: 0.90      # ≥90% 暂停
+  very_high_percentile: 0.90      # ≥90% 暂停宽基加仓
   low_multiplier: 2.0
   high_multiplier: 0.5
   very_high_multiplier: 0.0
@@ -86,7 +87,7 @@ trading:
 portfolio_plan:
   strategy: core_satellite
   core_fund: "002900"             # 宽基核心（与 core_satellite 一致）
-  core_funds: ["002900"]
+  core_funds: ["002900", "110020"]
   satellite_funds: ["012737", "012734"]
   hedge_fund: "270042"
   dca_fund: "270042"

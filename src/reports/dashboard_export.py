@@ -9,8 +9,9 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.analytics.core_satellite import evaluate_core_satellite
+from src.analytics.core_satellite import build_role_map, evaluate_core_satellite
 from src.analytics.smart_dca import evaluate_smart_dca
+from src.advisor.advisor import AdviceResult
 from src.advisor.market_outlook import MarketOutlook
 from src.analytics.portfolio import PortfolioSummary, WatchlistItem
 from src.analytics.recommendation_board import RecommendationBoard
@@ -21,7 +22,7 @@ from src.collectors.index_benchmark import (
     refresh_index_history,
 )
 from src.collectors.nav import CACHE_DIR as NAV_CACHE_DIR, _load_cache as _load_nav_cache
-from src.config_loader import ROOT
+from src.config_loader import ROOT, load_fund_universe
 from src.notify.batch_state import load_batch_state
 
 DOCS_DATA = ROOT / "docs" / "data"
@@ -210,7 +211,9 @@ def build_dashboard_payload(
     if b and b.daily_change_pct is not None and portfolio_daily_pct is not None:
         bench_diff = round(portfolio_daily_pct - b.daily_change_pct, 2)
 
-    cs = evaluate_core_satellite(portfolio, strategy)
+    cs = evaluate_core_satellite(
+        portfolio, strategy, role_by_code=build_role_map(load_fund_universe())
+    )
     smart = evaluate_smart_dca(strategy)
 
     return {

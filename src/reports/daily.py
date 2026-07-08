@@ -6,10 +6,10 @@ from datetime import date
 from pathlib import Path
 
 from src.advisor.advisor import AdviceResult
-from src.analytics.core_satellite import evaluate_core_satellite
+from src.analytics.core_satellite import build_role_map, evaluate_core_satellite
 from src.analytics.portfolio import PortfolioSummary, WatchlistItem
 from src.analytics.smart_dca import evaluate_smart_dca
-from src.config_loader import ROOT, load_strategy
+from src.config_loader import ROOT, load_fund_universe, load_strategy
 
 ACTION_LABELS = {
     "hold": "持有",
@@ -78,7 +78,10 @@ def _render_news_section(advice: AdviceResult | None) -> list[str]:
 
 def _render_strategy_sections(portfolio: PortfolioSummary) -> list[str]:
     strategy = load_strategy()
-    cs = evaluate_core_satellite(portfolio, strategy)
+    universe = load_fund_universe()
+    cs = evaluate_core_satellite(
+        portfolio, strategy, role_by_code=build_role_map(universe)
+    )
     smart = evaluate_smart_dca(strategy)
     if not cs and not smart:
         return []
@@ -100,16 +103,21 @@ def _render_strategy_sections(portfolio: PortfolioSummary) -> list[str]:
         lines.append("")
 
     if smart:
-        lines.extend(
-            [
-                "## 智能定投",
-                "",
-                f"- 参考指数：{smart.index_name}（PE 分位 {smart.pe_percentile or '—'}%）",
-                f"- 基础金额：**{smart.base_daily_cny:.0f} 元/天** → 建议 **{smart.suggested_daily_cny:.0f} 元/天**（×{smart.multiplier}）",
-                f"- {smart.hint}",
-                "",
-            ]
-        )
+        lines.extend(["## 智能定投", ""])
+        core = smart.core_guidance
+        if core:
+            lines.extend(
+                [
+                    f"- **宽基加仓参考**：{core.index_name} PE 分位 {core.pe_percentile or '—'}%",
+                    f"- 建议倍数 ×{core.multiplier}（{core.hint}）",
+                    "",
+                ]
+            )
+        for fund in smart.dca_funds:
+            lines.append(
+                f"- **{fund.fund_code}**：{fund.suggested_daily_cny:.0f} 元/天 — {fund.hint}"
+            )
+        lines.append("")
     return lines
 
 
@@ -154,7 +162,7 @@ def _render_trend_section(advice: AdviceResult | None) -> list[str]:
             lines.append("")
 
     stop_signals = [s for s in advice.rule_signals if s.rule_id in (
-        "TAKE_PROFIT_STEP", "TRAILING_STOP", "VALUATION_STOP", "REBALANCE",
+        "TAKE_PROFIT_STEP", "TRAILING_STOP", "VALUATION_STOP", "REBALANCE", "SATELLITE_CAP",
     )]
     if stop_signals:
         lines.extend(
@@ -178,6 +186,8 @@ def _render_trend_section(advice: AdviceResult | None) -> list[str]:
                 lines.append(f"| 估值止盈 | {fund} | {s.message} | 谨慎 |")
             elif s.rule_id == "REBALANCE":
                 lines.append(f"| 再平衡 | {fund} | {s.message} | 调仓 |")
+            elif s.rule_id == "SATELLITE_CAP":
+                lines.append(f"| 卫星上限 | {fund} | {s.message} | 减卫星 |")
         lines.append("")
     return lines
 

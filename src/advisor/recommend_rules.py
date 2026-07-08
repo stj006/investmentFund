@@ -15,7 +15,15 @@ def enrich_candidate_pool(
     """确保主仓、宽基指数类基金进入 AI 候选池。"""
     plan = rec_cfg.get("allocation_plan") or {}
     portfolio = strategy.get("portfolio_plan") or {}
-    core = str(plan.get("core_fund") or portfolio.get("core_fund") or "").zfill(6)
+    cs_cfg = strategy.get("core_satellite") or {}
+    core_codes = plan.get("core_fund") or portfolio.get("core_fund") or ""
+    core_list = (
+        plan.get("core_fund_codes")
+        or portfolio.get("core_funds")
+        or cs_cfg.get("core_fund_codes")
+        or ([core_codes] if core_codes else [])
+    )
+    core = str(core_list[0] if core_list else "").zfill(6)
     broad_kw = plan.get("broad_index_keywords") or ["沪深300", "中证500"]
     max_n = int(rec_cfg.get("max_candidates", 60))
 
@@ -27,6 +35,15 @@ def enrich_candidate_pool(
             extra = screen_funds(hit, rec_cfg)
             if extra:
                 by_code[core] = extra[0]
+
+    for alt_core in core_list[1:]:
+        alt = str(alt_core).zfill(6)
+        if alt and alt not in by_code and not df.empty:
+            hit = df[df["基金代码"].astype(str).str.zfill(6) == alt]
+            if not hit.empty:
+                extra = screen_funds(hit, rec_cfg)
+                if extra:
+                    by_code[alt] = extra[0]
 
     if not df.empty:
         broad_rows = df[
