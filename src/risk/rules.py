@@ -6,6 +6,7 @@ from dataclasses import asdict, dataclass
 from datetime import date, datetime
 
 from src.analytics.portfolio import PortfolioSummary, PositionMetrics
+from src.analytics.core_satellite import evaluate_core_satellite
 from src.analytics.trailing_stop import check_trailing_stop
 from src.analytics.valuation import check_valuation_take_profit
 
@@ -45,6 +46,7 @@ def evaluate_rules(
     max_theme = float(alloc.get("max_theme_ratio", 0.4)) * 100
     relax_below = float(alloc.get("relax_caps_when_value_below", 0))
     stop_loss = float(sig.get("stop_loss_ratio", -0.15)) * 100
+    stop_loss_enabled = bool(sig.get("stop_loss_enabled", True))
     take_profit = float(sig.get("take_profit_ratio", 0.30)) * 100
     min_switch_days = int(trading.get("min_days_between_switch", 30))
 
@@ -98,7 +100,7 @@ def evaluate_rules(
     steps = sig.get("take_profit_steps", [])
     sell_ratio = float(sig.get("take_profit_sell_ratio", 0.33))
     for p in portfolio.positions:
-        if p.unrealized_pnl_pct <= stop_loss:
+        if stop_loss_enabled and p.unrealized_pnl_pct <= stop_loss:
             signals.append(
                 RuleSignal(
                     rule_id="STOP_LOSS",
@@ -153,7 +155,7 @@ def evaluate_rules(
                     fund_code=p.fund_code,
                     message=(
                         f"{p.fund_name} 浮盈 {ts.profit_pct:.2f}%，"
-                        f"自最高净值 {ts.peak_nav:.4f} 回撤 {abs(ts.drawdown_pct):.1f}%（阈值 10%），"
+                        f"自最高净值 {ts.peak_nav:.4f} 回撤 {abs(ts.drawdown_pct):.1f}%，"
                         f"建议止盈锁定利润"
                     ),
                     suggested_action="reduce",
@@ -163,15 +165,32 @@ def evaluate_rules(
     # 估值止盈
     val_sig = check_valuation_take_profit(strategy)
     if val_sig and val_sig.triggered:
+        severity = "warning"
+        if "极高" in val_sig.hint:
+            severity = "critical"
         signals.append(
             RuleSignal(
                 rule_id="VALUATION_STOP",
-                severity="warning",
+                severity=severity,
                 fund_code=None,
                 message=val_sig.hint,
                 suggested_action="reduce",
             )
         )
+
+    # 核心-卫星再平衡
+    cs = evaluate_core_satellite(portfolio, strategy)
+    if cs and cs.needs_rebalance:
+        for hint in cs.hints:
+            signals.append(
+                RuleSignal(
+                    rule_id="REBALANCE",
+                    severity="info",
+                    fund_code=None,
+                    message=hint,
+                    suggested_action="reduce",
+                )
+            )
 
     # 短期赎回预警（持有不足 7 天）— 按首次建仓日，加仓不重置
     for pos in positions_cfg:
@@ -201,43 +220,6 @@ def evaluate_rules(
                     suggested_action="hold",
                 )
             )
-
-    # 动态回撤止盈
-    for p in portfolio.positions:
-        ts = check_trailing_stop(
-            p.fund_code,
-            p.fund_name,
-            p.unit_nav,
-            p.unrealized_pnl_pct,
-            strategy,
-        )
-        if ts and ts.triggered:
-            signals.append(
-                RuleSignal(
-                    rule_id="TRAILING_STOP",
-                    severity="warning",
-                    fund_code=p.fund_code,
-                    message=(
-                        f"{p.fund_name} 浮盈 {ts.profit_pct:.2f}%，"
-                        f"自最高净值 {ts.peak_nav:.4f} 回撤 {abs(ts.drawdown_pct):.2f}%，"
-                        f"触及动态回撤止盈线，建议止盈"
-                    ),
-                    suggested_action="reduce",
-                )
-            )
-
-    # 估值止盈
-    val = check_valuation_take_profit(strategy)
-    if val and val.triggered:
-        signals.append(
-            RuleSignal(
-                rule_id="VALUATION_STOP",
-                severity="info",
-                fund_code=None,
-                message=val.hint,
-                suggested_action="reduce",
-            )
-        )
 
     return signals
 

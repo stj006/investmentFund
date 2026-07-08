@@ -2,15 +2,8 @@
 
 from __future__ import annotations
 
+from src.analytics.fund_roles import is_broad_index
 from src.analytics.screener import ScreenedFund, screen_funds
-
-
-def _code(row) -> str:
-    return str(row["基金代码"]).zfill(6)
-
-
-def is_broad_index(name: str, keywords: list[str]) -> bool:
-    return any(kw in name for kw in keywords)
 
 
 def enrich_candidate_pool(
@@ -57,9 +50,11 @@ def enforce_allocation_plan(
     screened: list[ScreenedFund],
     rec_cfg: dict,
     budget: float,
+    strategy: dict | None = None,
 ) -> tuple[list[dict], list[str]]:
-    """校验并补全：主仓加仓 + 宽基占比。"""
+    """校验并补全：主仓加仓 + 宽基占比 + 卫星上限。"""
     plan = rec_cfg.get("allocation_plan") or {}
+    strategy = strategy or {}
     warnings: list[str] = []
     code_map = {c.fund_code: c for c in screened}
     reserve = float(plan.get("reserve_cash_ratio", 0.05))
@@ -68,7 +63,12 @@ def enforce_allocation_plan(
     core = str(plan.get("core_fund", "")).zfill(6)
     min_core = float(plan.get("min_core_add_cny", 1000))
     broad_ratio = float(plan.get("broad_index_min_ratio", 0.5))
+    satellite_max = float(plan.get("satellite_max_ratio", 1.0))
     broad_kw = plan.get("broad_index_keywords") or ["沪深300", "中证500"]
+    hedge_codes = {
+        str(c).zfill(6)
+        for c in (strategy.get("core_satellite", {}).get("hedge_fund_codes") or [])
+    }
 
     recs = list(recommendations)
 
@@ -97,7 +97,7 @@ def enforce_allocation_plan(
                             "confidence": 0.85,
                             "return_1y": c.return_1y,
                             "fund_type": c.fund_type,
-                            "is_broad_index": False,
+                            "is_broad_index": is_broad_index(c.fund_name, broad_kw),
                         }
                     )
                 warnings.append(f"已补全主仓 {core} 加仓 ≥{min_core:.0f} 元")
@@ -142,6 +142,22 @@ def enforce_allocation_plan(
                     }
                 )
             warnings.append(f"已补全宽基至合计 ≥{broad_ratio*100:.0f}%")
+
+    def _is_satellite(r: dict) -> bool:
+        code = str(r.get("fund_code", "")).zfill(6)
+        if code in hedge_codes or r.get("action") == "dca":
+            return False
+        return not is_broad_index(r.get("fund_name", ""), broad_kw)
+
+    if satellite_max < 1.0:
+        satellite_total = sum(r["amount_cny"] for r in recs if _is_satellite(r))
+        satellite_cap = deployable * satellite_max
+        if satellite_total > satellite_cap and satellite_total > 0:
+            scale = satellite_cap / satellite_total
+            for r in recs:
+                if _is_satellite(r):
+                    r["amount_cny"] = round(r["amount_cny"] * scale, 2)
+            warnings.append(f"主题卫星已限至合计 ≤{satellite_max*100:.0f}%")
 
     total = sum(r["amount_cny"] for r in recs)
     if total > deployable:

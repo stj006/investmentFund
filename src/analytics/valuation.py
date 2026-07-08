@@ -18,6 +18,14 @@ PE_CACHE_MAX_DAYS = 7  # PE 数据 7 天内可用
 
 
 @dataclass
+class PeSnapshot:
+    index_code: str
+    index_name: str
+    pe_ttm: float | None
+    pe_percentile: float | None  # 0-1
+
+
+@dataclass
 class ValuationSignal:
     index_code: str
     index_name: str
@@ -81,6 +89,37 @@ def _save_pe_cache(index_code: str, df: pd.DataFrame) -> None:
     df.to_csv(path, index=False, encoding="utf-8-sig")
 
 
+def fetch_index_pe_snapshot(index_code: str) -> PeSnapshot:
+    """拉取指数 PE 与历史分位（0-1），供估值止盈与智能定投共用。"""
+    index_name = "沪深300" if "000300" in index_code else index_code
+    df = _fetch_index_pe(index_code)
+    if df is None or df.empty:
+        return PeSnapshot(index_code=index_code, index_name=index_name, pe_ttm=None, pe_percentile=None)
+
+    pe_ttm: float | None = None
+    pe_pct: float | None = None
+    if "PE" in df.columns and "分位" in df.columns:
+        latest = df.dropna(subset=["PE", "分位"]).iloc[-1]
+        pe_ttm = float(latest["PE"])
+        raw = float(latest["分位"])
+        pe_pct = raw / 100.0 if raw > 1 else raw
+    elif "PE" in df.columns:
+        pe_series = df["PE"].dropna()
+        if len(pe_series) >= 10:
+            pe_ttm = float(pe_series.iloc[-1])
+            pe_pct = float((pe_series > pe_ttm).mean())
+
+    if df is not None and not df.empty:
+        _save_pe_cache(index_code, df)
+
+    return PeSnapshot(
+        index_code=index_code,
+        index_name=index_name,
+        pe_ttm=round(pe_ttm, 1) if pe_ttm is not None else None,
+        pe_percentile=pe_pct,
+    )
+
+
 def check_valuation_take_profit(
     strategy: dict,
 ) -> ValuationSignal | None:
@@ -89,43 +128,41 @@ def check_valuation_take_profit(
         return None
     index_code = str(cfg.get("index_code", "000300.SH"))
     threshold = float(cfg.get("pe_percentile_threshold", 0.80))
-    index_name = "沪深300" if "000300" in index_code else index_code
-    df = _fetch_index_pe(index_code)
-    if df is None or df.empty:
+    very_high = float(cfg.get("pe_percentile_full_exit", 0.90))
+    snap = fetch_index_pe_snapshot(index_code)
+    if snap.pe_percentile is None:
         return ValuationSignal(
             index_code=index_code,
-            index_name=index_name,
+            index_name=snap.index_name,
             pe_ttm=None,
             pe_percentile=None,
             threshold_pct=threshold * 100,
             triggered=False,
             hint="指数估值数据暂不可用，估值止盈跳过",
         )
-    if "PE" in df.columns and "分位" in df.columns:
-        latest = df.dropna(subset=["PE", "分位"]).iloc[-1]
-        pe_ttm = float(latest["PE"])
-        pe_pct = float(latest["分位"]) / 100.0 if latest["分位"] > 1 else float(latest["分位"])
-    elif "PE" in df.columns:
-        pe_series = df["PE"].dropna()
-        if len(pe_series) < 10:
-            return None
-        pe_ttm = float(pe_series.iloc[-1])
-        pe_pct = (pe_series > pe_ttm).mean()
-    else:
-        return None
-    _save_pe_cache(index_code, df)
+
+    pe_ttm = snap.pe_ttm
+    pe_pct = snap.pe_percentile
     triggered = pe_pct >= threshold
-    hint = (
-        f"{index_name} PE-TTM {pe_ttm:.1f}，分位 {pe_pct*100:.0f}% ≥ {threshold*100:.0f}%，"
-        f"市场估值进入高位，建议分批止盈。"
-        if triggered
-        else f"{index_name} PE-TTM {pe_ttm:.1f}，分位 {pe_pct*100:.0f}% < {threshold*100:.0f}%，"
-        f"估值未达高位，暂不止盈。"
-    )
+    if pe_pct >= very_high:
+        hint = (
+            f"{snap.index_name} PE-TTM {pe_ttm:.1f}，分位 {pe_pct*100:.0f}% ≥ {very_high*100:.0f}%，"
+            f"估值极高，建议卫星仓位大幅止盈，利润转入宽基核心。"
+        )
+    elif triggered:
+        hint = (
+            f"{snap.index_name} PE-TTM {pe_ttm:.1f}，分位 {pe_pct*100:.0f}% ≥ {threshold*100:.0f}%，"
+            f"市场估值进入高位，建议分批止盈。"
+        )
+    else:
+        hint = (
+            f"{snap.index_name} PE-TTM {pe_ttm:.1f}，分位 {pe_pct*100:.0f}% < {threshold*100:.0f}%，"
+            f"估值未达高位，暂不止盈。"
+        )
     return ValuationSignal(
         index_code=index_code,
-        index_name=index_name,
-        pe_ttm=round(pe_ttm, 1),
+        index_name=snap.index_name,
+        pe_ttm=pe_ttm,
         pe_percentile=round(pe_pct * 100, 1),
         threshold_pct=threshold * 100,
         triggered=triggered,

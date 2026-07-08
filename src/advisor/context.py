@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from dataclasses import asdict
 
+from src.analytics.core_satellite import evaluate_core_satellite
+from src.analytics.smart_dca import evaluate_smart_dca
 from src.analytics.portfolio import PortfolioSummary, WatchlistItem
 from src.risk.rules import RuleSignal
 
@@ -35,6 +37,9 @@ def build_advisor_context(
             "daily_change_pct": b.daily_change_pct,
         }
 
+    cs = evaluate_core_satellite(portfolio, strategy)
+    smart = evaluate_smart_dca(strategy)
+
     return {
         "date": report_date,
         "data_as_of": data_as_of,
@@ -42,6 +47,9 @@ def build_advisor_context(
         "investor": strategy.get("investor", {}),
         "allocation_limits": strategy.get("allocation", {}),
         "signal_thresholds": strategy.get("signals", {}),
+        "core_satellite": cs.to_dict() if cs else None,
+        "smart_dca": smart.to_dict() if smart else None,
+        "portfolio_plan": strategy.get("portfolio_plan", {}),
         "portfolio": {
             "total_market_value": portfolio.total_market_value,
             "total_cost_value": portfolio.total_cost_value,

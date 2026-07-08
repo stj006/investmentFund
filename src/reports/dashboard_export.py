@@ -9,7 +9,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.advisor.advisor import AdviceResult
+from src.analytics.core_satellite import evaluate_core_satellite
+from src.analytics.smart_dca import evaluate_smart_dca
 from src.advisor.market_outlook import MarketOutlook
 from src.analytics.portfolio import PortfolioSummary, WatchlistItem
 from src.analytics.recommendation_board import RecommendationBoard
@@ -209,6 +210,9 @@ def build_dashboard_payload(
     if b and b.daily_change_pct is not None and portfolio_daily_pct is not None:
         bench_diff = round(portfolio_daily_pct - b.daily_change_pct, 2)
 
+    cs = evaluate_core_satellite(portfolio, strategy)
+    smart = evaluate_smart_dca(strategy)
+
     return {
         "date": report_date,
         "data_as_of": data_as_of,
@@ -246,9 +250,15 @@ def build_dashboard_payload(
             "benchmark_raw": index_raw,
         },
         "batch_state": batch,
+        "core_satellite": cs.to_dict() if cs else None,
+        "smart_dca": smart.to_dict() if smart else None,
         "strategy_summary": {
-            "stop_loss_ratio": strategy.get("signals", {}).get("stop_loss_ratio"),
+            "framework": "core_satellite",
+            "core_target_ratio": strategy.get("core_satellite", {}).get("core_target_ratio"),
+            "satellite_target_ratio": strategy.get("core_satellite", {}).get("satellite_target_ratio"),
+            "stop_loss_enabled": strategy.get("signals", {}).get("stop_loss_enabled"),
             "take_profit_ratio": strategy.get("signals", {}).get("take_profit_ratio"),
+            "take_profit_steps": strategy.get("signals", {}).get("take_profit_steps"),
             "relax_caps_below": strategy.get("allocation", {}).get(
                 "relax_caps_when_value_below"
             ),

@@ -6,7 +6,9 @@ from datetime import date
 from pathlib import Path
 
 from src.advisor.advisor import AdviceResult
+from src.analytics.core_satellite import evaluate_core_satellite
 from src.analytics.portfolio import PortfolioSummary, WatchlistItem
+from src.analytics.smart_dca import evaluate_smart_dca
 from src.config_loader import ROOT, load_strategy
 
 ACTION_LABELS = {
@@ -74,6 +76,43 @@ def _render_news_section(advice: AdviceResult | None) -> list[str]:
     return lines
 
 
+def _render_strategy_sections(portfolio: PortfolioSummary) -> list[str]:
+    strategy = load_strategy()
+    cs = evaluate_core_satellite(portfolio, strategy)
+    smart = evaluate_smart_dca(strategy)
+    if not cs and not smart:
+        return []
+
+    lines = ["", "## 资产配置（核心-卫星）", ""]
+    if cs:
+        lines.extend(
+            [
+                "| 层级 | 目标 | 实际 |",
+                "|------|------|------|",
+                f"| 宽基核心 | {cs.core_target_pct:.0f}% | {cs.core_actual_pct:.1f}% |",
+                f"| 行业卫星 | {cs.satellite_target_pct:.0f}% | {cs.satellite_actual_pct:.1f}% |",
+                f"| 防御/海外 | {cs.hedge_target_pct:.0f}% | {cs.hedge_actual_pct:.1f}% |",
+                "",
+            ]
+        )
+        for hint in cs.hints:
+            lines.append(f"- {hint}")
+        lines.append("")
+
+    if smart:
+        lines.extend(
+            [
+                "## 智能定投",
+                "",
+                f"- 参考指数：{smart.index_name}（PE 分位 {smart.pe_percentile or '—'}%）",
+                f"- 基础金额：**{smart.base_daily_cny:.0f} 元/天** → 建议 **{smart.suggested_daily_cny:.0f} 元/天**（×{smart.multiplier}）",
+                f"- {smart.hint}",
+                "",
+            ]
+        )
+    return lines
+
+
 def _render_trend_section(advice: AdviceResult | None) -> list[str]:
     if not advice:
         return []
@@ -114,14 +153,16 @@ def _render_trend_section(advice: AdviceResult | None) -> list[str]:
         else:
             lines.append("")
 
-    stop_signals = [s for s in advice.rule_signals if s.rule_id in ("TAKE_PROFIT_STEP", "TRAILING_STOP", "VALUATION_STOP")]
+    stop_signals = [s for s in advice.rule_signals if s.rule_id in (
+        "TAKE_PROFIT_STEP", "TRAILING_STOP", "VALUATION_STOP", "REBALANCE",
+    )]
     if stop_signals:
         lines.extend(
             [
                 "",
-                "## 止盈策略",
+                "## 止盈与再平衡",
                 "",
-                "> 分批止盈 + 动态回撤止盈 + 估值止盈，三层触发，提示级不强制清仓。",
+                "> 分批止盈 + 动态回撤 + 估值止盈 + 核心-卫星再平衡；提示级不强制清仓。",
                 "",
                 "| 规则 | 基金 | 说明 | 建议 |",
                 "|------|------|------|------|",
@@ -135,6 +176,8 @@ def _render_trend_section(advice: AdviceResult | None) -> list[str]:
                 lines.append(f"| 动态回撤 | {fund} | {s.message} | 止盈 |")
             elif s.rule_id == "VALUATION_STOP":
                 lines.append(f"| 估值止盈 | {fund} | {s.message} | 谨慎 |")
+            elif s.rule_id == "REBALANCE":
+                lines.append(f"| 再平衡 | {fund} | {s.message} | 调仓 |")
         lines.append("")
     return lines
 
@@ -267,6 +310,7 @@ def render_daily_report(
             f"{_fmt_pct(p.unrealized_pnl_pct)} | {p.weight_pct:.2f}% |"
         )
 
+    lines.extend(_render_strategy_sections(portfolio))
     lines.extend(_render_rule_signals(advice))
     lines.extend(_render_trend_section(advice))
     lines.extend(_render_news_section(advice))

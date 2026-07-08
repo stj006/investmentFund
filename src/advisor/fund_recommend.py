@@ -198,7 +198,7 @@ def generate_fund_recommendations(
         parsed, screened, budget, max_n, held_codes=held
     )
     recs, rule_warnings = enforce_allocation_plan(
-        validated["recommendations"], screened, rec_cfg, budget
+        validated["recommendations"], screened, rec_cfg, budget, strategy
     )
     batch_schedule = build_batch_schedule(
         recs, rec_cfg.get("batch_plan") or {}, budget
