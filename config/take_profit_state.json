@@ -1,4 +1,9 @@
 {
-  "funds": {},
-  "updated_at": null
+  "funds": {
+    "012734": {
+      "last_step_index": 0,
+      "last_signaled_at": "2026-07-10"
+    }
+  },
+  "updated_at": "2026-07-10T13:01:45.800216"
 }
