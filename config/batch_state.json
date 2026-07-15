@@ -75,6 +75,9 @@
       ]
     }
   ],
-  "sent_offsets": [0],
+  "sent_offsets": [
+    0,
+    7
+  ],
   "updated_at": "2026-07-08T23:05:00"
 }
