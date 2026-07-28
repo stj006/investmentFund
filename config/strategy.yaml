@@ -23,8 +23,8 @@ allocation:
 # --- 核心-卫星资产配置（2026 主流框架）---
 core_satellite:
   enabled: true
-  core_target_ratio: 0.70         # 宽基核心 70%
-  satellite_target_ratio: 0.20    # 行业卫星 20%
+  core_target_ratio: 0.50         # 宽基核心 70%
+  satellite_target_ratio: 0.40    # 行业卫星 20%
   hedge_target_ratio: 0.10        # 防御/海外 10%
   rebalance_threshold: 0.05       # 偏离 ±5% 触发再平衡提示
   rebalance_interval_days: 180    # 建议每半年检查一次
