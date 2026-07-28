@@ -95,11 +95,32 @@ def _render_strategy_sections(portfolio: PortfolioSummary) -> list[str]:
                 f"| 宽基核心（合计） | {cs.core_target_pct:.0f}% | {cs.core_actual_pct:.1f}% |",
                 f"| 　↳ 真宽基（300/A500） | — | {getattr(cs, 'core_broad_actual_pct', cs.core_actual_pct):.1f}% |",
                 f"| 　↳ 成长增强（500信息） | ≤10% | {getattr(cs, 'core_growth_actual_pct', 0):.1f}% |",
-                f"| 行业卫星 | {cs.satellite_target_pct:.0f}% | {cs.satellite_actual_pct:.1f}% |",
-                f"| 防御/海外 | {cs.hedge_target_pct:.0f}% | {cs.hedge_actual_pct:.1f}% |",
-                "",
+                f"| 行业卫星（合计） | {cs.satellite_target_pct:.0f}% | {cs.satellite_actual_pct:.1f}% |",
             ]
         )
+        sleeve = getattr(cs, "satellite_sleeve", None) or {}
+        if sleeve.get("mode") == "dual":
+            primary = sleeve.get("primary") or {}
+            secondary = sleeve.get("secondary") or {}
+            p_code = primary.get("fund_code") or "—"
+            s_code = secondary.get("fund_code") or "—"
+            lines.extend(
+                [
+                    f"| 　↳ 主卫星 | {sleeve.get('primary_target_pct', 25):.0f}% | "
+                    f"{sleeve.get('primary_actual_pct', 0):.1f}%（{p_code}） |",
+                    f"| 　↳ 次席 | {sleeve.get('secondary_target_pct', 15):.0f}% | "
+                    f"{sleeve.get('secondary_actual_pct', 0):.1f}%（{s_code}） |",
+                ]
+            )
+        lines.append("")
+        if getattr(cs, "exclude_hedge_from_allocation", False):
+            excluded = getattr(cs, "excluded_market_value", 0) or 0
+            managed = getattr(cs, "managed_market_value", 0) or 0
+            lines.append(
+                f"> 占比相对「管理仓」约 {managed:.0f} 元计算；"
+                f"定投旁路（纳指等）约 {excluded:.0f} 元不参与再平衡。"
+            )
+            lines.append("")
         for hint in cs.hints:
             lines.append(f"- {hint}")
         lines.append("")
@@ -164,15 +185,18 @@ def _render_trend_section(advice: AdviceResult | None) -> list[str]:
             lines.append("")
 
     stop_signals = [s for s in advice.rule_signals if s.rule_id in (
-        "TAKE_PROFIT_STEP", "TRAILING_STOP", "VALUATION_STOP", "REBALANCE", "SATELLITE_CAP",
+        "TAKE_PROFIT_STEP", "TRAILING_STOP", "VALUATION_STOP", "REBALANCE",
+        "SATELLITE_CAP", "SATELLITE_PRIMARY_CAP", "SATELLITE_SECONDARY_GAP",
+        "SATELLITE_SECONDARY_CAP", "DIP_BUY_CORE", "SATELLITE_LOGIC_EXIT",
+        "DIP_BUY_SATELLITE",
     )]
     if stop_signals:
         lines.extend(
             [
                 "",
-                "## 止盈与再平衡",
+                "## 止盈、补仓与再平衡",
                 "",
-                "> 分批止盈 + 动态回撤 + 估值止盈 + 核心-卫星再平衡；提示级不强制清仓。",
+                "> 分批止盈 + 宽基/卫星阶梯补仓 + 卫星逻辑退出 + 再平衡；提示级，默认不清仓到 0。",
                 "",
                 "| 规则 | 基金 | 说明 | 建议 |",
                 "|------|------|------|------|",
@@ -190,6 +214,21 @@ def _render_trend_section(advice: AdviceResult | None) -> list[str]:
                 lines.append(f"| 再平衡 | {fund} | {s.message} | 调仓 |")
             elif s.rule_id == "SATELLITE_CAP":
                 lines.append(f"| 卫星上限 | {fund} | {s.message} | 减卫星 |")
+            elif s.rule_id == "SATELLITE_PRIMARY_CAP":
+                lines.append(f"| 主卫星超标 | {fund} | {s.message} | 减主仓 |")
+            elif s.rule_id == "SATELLITE_SECONDARY_GAP":
+                lines.append(f"| 缺次席 | {fund} | {s.message} | 建次席/等趋势 |")
+            elif s.rule_id == "SATELLITE_SECONDARY_CAP":
+                lines.append(f"| 次席超标 | {fund} | {s.message} | 减次席 |")
+            elif s.rule_id == "DIP_BUY_CORE":
+                tip = "补宽基" if s.suggested_action == "add" else "观望"
+                lines.append(f"| 宽基阶梯补仓 | {fund} | {s.message} | {tip} |")
+            elif s.rule_id == "DIP_BUY_SATELLITE":
+                tip = "补卫星" if s.suggested_action == "add" else "不补/持有"
+                lines.append(f"| 卫星补仓 | {fund} | {s.message} | {tip} |")
+            elif s.rule_id == "SATELLITE_LOGIC_EXIT":
+                tip = "复盘" if s.suggested_action == "hold" else "减仓回宽基"
+                lines.append(f"| 卫星逻辑退出 | {fund} | {s.message} | {tip} |")
         lines.append("")
     return lines
 

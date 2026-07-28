@@ -1,8 +1,8 @@
 # =============================================================================
 # 投资策略配置（strategy.yaml）
 # -----------------------------------------------------------------------------
-# 框架：核心-卫星（70% 宽基 + 20% 主题 + 10% 海外/防御）
-#       + 智能定投（估值分位动态调额）+ 止盈不止损 + 分批/回撤/估值止盈
+# 框架：核心-卫星（管理仓 60% 宽基 + 40% 行业双卫星）
+#       定投旁路仅纳指 270042；止盈不止损 + 分批/回撤/估值止盈
 # =============================================================================
 
 # --- 投资者画像 ---
@@ -11,28 +11,30 @@ investor:
   horizon_years: 3
   max_drawdown_tolerance: 0.15
   monthly_invest_ratio: 0.25   # 建议月结余的 25% 用于基金（主流 20%-30%）
-  notes: "核心-卫星策略：宽基打底，主题卫星博超额，纳指日定投作海外分散"
+  notes: "管理仓 60% 宽基 + 40% 行业（主25%创新药 + 次15%黄金）；仅纳指定投旁路不计再平衡"
 
-# --- 仓位上限 ---
+# --- 仓位上限（相对全账户；行业层目标 40%）---
 allocation:
-  max_single_fund_ratio: 0.40   # 单基上限 40%（防止卫星过重）
+  max_single_fund_ratio: 0.50   # 单基上限 50%（小账户；行业主仓约 25% 另由 satellite_sleeve 约束）
   max_theme_ratio: 0.40         # 同主题合计上限 40%
   cash_buffer_ratio: 0.10       # 建议留 10% 现金
   relax_caps_when_value_below: 5000
 
-# --- 核心-卫星资产配置（2026 主流框架）---
+# --- 核心-卫星（仅「管理仓」：宽基+行业；定投旁路排除）---
 core_satellite:
   enabled: true
-  core_target_ratio: 0.50         # 宽基核心 70%
-  satellite_target_ratio: 0.40    # 行业卫星 20%
-  hedge_target_ratio: 0.10        # 防御/海外 10%
+  core_target_ratio: 0.60         # 宽基核心 60%（相对管理仓）
+  satellite_target_ratio: 0.40    # 行业卫星 40%（相对管理仓）
+  hedge_target_ratio: 0.0         # 定投旁路不设目标占比
+  exclude_hedge_from_allocation: true
   rebalance_threshold: 0.05       # 偏离 ±5% 触发再平衡提示
   rebalance_interval_days: 180    # 建议每半年检查一次
   core_fund_codes: ["110020", "022430"]
   core_growth_fund_codes: ["002900"]
-  core_growth_max_ratio: 0.10
-  satellite_fund_codes: ["012737", "012734"]
-  hedge_fund_codes: ["270042"]
+  core_growth_max_ratio: 0.10     # 成长增强占管理仓 ≤10%
+  satellite_fund_codes: ["012737", "004253"]
+  hedge_fund_codes: ["270042"]            # 仅纳指：旁路定投
+  exclude_from_allocation_codes: ["270042"]
   primary_core_split:
     "110020": 0.50
     "022430": 0.50
@@ -42,6 +44,22 @@ core_satellite:
     - A500
     - 上证50
     - 红利
+
+# --- 行业卫星层（方案 B：双卫星）---
+# 相对「管理仓」：主卫星 25% + 次席 15% = 合计 40%
+satellite_sleeve:
+  enabled: true
+  mode: dual                      # dual=主+次；single=单赛道
+  total_ratio: 0.40
+  primary_ratio: 0.25
+  secondary_ratio: 0.15
+  max_single_satellite_ratio: 0.28  # 仅 1 只时的软上限（促建次席）
+  primary_preferred: "012737"       # 主卫星：创新药
+  secondary_preferred: "004253"     # 次席：黄金（已持仓）
+  candidate_codes: ["004253", "012734", "012737"]
+  max_rotations_per_month: 1
+  min_hold_days: 30
+  exit_via_core: true               # 换行业时先回宽基再进新主题
 
 # --- 止盈止损与再平衡 ---
 signals:
@@ -64,6 +82,59 @@ valuation_take_profit:
   pe_percentile_full_exit: 0.90   # ≥90% 卫星大幅止盈，利润转宽基
   index_code: "000300.SH"
 
+# --- 宽基阶梯补仓（DIP_BUY_CORE）---
+# 指数自近端高点回撤达档位 + 估值不过高 → 提示用备用金补 110020/022430
+dip_buy_core:
+  enabled: true
+  index_code: "000300.SH"
+  lookback_days: 120
+  max_pe_percentile: 0.70       # PE 分位 ≥70% 即使大跌也不补
+  low_pe_boost: 0.30            # PE ≤30% 时该档补仓额上浮 25%
+  reserve_budget_cny: 2000      # 阶梯补仓备用金总额（提示用）
+  target_funds: ["110020", "022430"]
+  steps:
+    - drawdown_pct: 0.10
+      reserve_ratio: 0.20
+    - drawdown_pct: 0.20
+      reserve_ratio: 0.30
+    - drawdown_pct: 0.30
+      reserve_ratio: 0.50
+
+# --- 卫星逻辑退出（SATELLITE_LOGIC_EXIT）---
+# 价格仅作复盘触发；默认减仓回宽基，不清仓到 0；黄金次席不做价格止损
+satellite_logic_exit:
+  enabled: true
+  review_loss_pct: -0.20        # 触及 → 复盘（持有/确认逻辑）
+  exit_loss_pct: -0.40          # 触及 → 建议减约 33% 回宽基
+  full_exit_loss_pct: -0.50     # 触及 → 建议减约 50%，仍须人工确认逻辑
+  reduce_ratio: 0.33
+  deep_reduce_ratio: 0.50
+  exit_via_core: true
+  exclude_themes: ["黄金"]      # 次席黄金按仓位目标管，不做浮亏止损
+  exclude_codes: []
+
+# --- 卫星补仓（DIP_BUY_SATELLITE）---
+# 主卫星：逻辑未坏且未超 25% 帽时，按回撤/浮亏分档小额补；次席黄金仅结构性补缺
+dip_buy_satellite:
+  enabled: true
+  primary_fund: "012737"
+  secondary_fund: "004253"
+  primary_max_managed_ratio: 0.25   # 达到/接近则禁止补
+  secondary_target_ratio: 0.15
+  secondary_gap_threshold: 0.05     # 次席低于目标 5pct 才提示结构补
+  secondary_structure_topup: true
+  secondary_max_topup_cny: 1500
+  lookback_days: 90
+  reserve_budget_cny: 1000          # 主卫星阶梯补仓备用金
+  block_when_logic_exit_reduce: true
+  steps:
+    - drawdown_pct: 0.12
+      reserve_ratio: 0.20
+    - drawdown_pct: 0.20
+      reserve_ratio: 0.30
+    - drawdown_pct: 0.28
+      reserve_ratio: 0.40
+
 # --- 智能定投（估值分位动态调额）---
 smart_dca:
   enabled: true
@@ -83,7 +154,7 @@ trading:
   mode: semi_auto
   min_days_between_switch: 30
   max_daily_buy_amount: 500
-  dca_only_funds:
+  dca_only_funds:                 # 仅定投旁路，不参与 60/40，AI 不建议大额买卖
     - "270042"
 
 # --- 持仓计划 ---
@@ -93,7 +164,8 @@ portfolio_plan:
   core_funds: ["110020", "022430", "002900"]
   primary_core_funds: ["110020", "022430"]
   core_growth_funds: ["002900"]
-  satellite_funds: ["012737", "012734"]
+  satellite_funds: ["012737", "004253"]
+  satellite_secondary: "004253"   # 次席：黄金
   hedge_fund: "270042"
   dca_fund: "270042"
   dca_daily_cny: 10
@@ -198,8 +270,8 @@ recommendation:
     require_core_add: true
     core_fund: "110020"           # 默认优先沪深300
     min_core_add_cny: 1500
-    broad_index_min_ratio: 0.70
-    satellite_max_ratio: 0.20
+    broad_index_min_ratio: 0.60
+    satellite_max_ratio: 0.40
     primary_core_split:
       "110020": 0.50
       "022430": 0.50
@@ -218,4 +290,4 @@ recommendation:
     days_between: 7
     dca_daily_cny: 10
     dca_fund: "270042"
-    note: "270042 纳指智能定投（基础10元/天，按估值分位动态调整），不计入本次5000"
+    note: "270042 纳指定投旁路不计入本次5000与 60/40；004253 黄金为次席卫星计入管理仓"

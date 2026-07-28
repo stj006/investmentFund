@@ -6,6 +6,9 @@ from dataclasses import asdict, dataclass
 from datetime import date, datetime
 
 from src.analytics.core_satellite import build_role_map, evaluate_core_satellite
+from src.analytics.dip_buy import evaluate_dip_buy_core
+from src.analytics.dip_buy_satellite import evaluate_dip_buy_satellite
+from src.analytics.satellite_logic_exit import evaluate_satellite_logic_exits
 from src.analytics.trailing_stop import check_trailing_stop
 from src.analytics.valuation import check_valuation_take_profit
 from src.analytics.portfolio import PortfolioSummary
@@ -100,45 +103,91 @@ def evaluate_rules(
                 )
 
         if cs_cfg.get("enabled"):
-            sat_target = float(cs_cfg.get("satellite_target_ratio", 0.20)) * 100
-            sat_threshold = float(cs_cfg.get("rebalance_threshold", 0.05)) * 100
-            growth_max = float(cs_cfg.get("core_growth_max_ratio", 0.10)) * 100
-            sat_weight = sum(
-                p.weight_pct
-                for p in portfolio.positions
-                if role_by_code.get(p.fund_code) == "satellite"
-            )
-            growth_weight = sum(
-                p.weight_pct
-                for p in portfolio.positions
-                if role_by_code.get(p.fund_code) == "core_growth"
-            )
-            if sat_weight > sat_target + sat_threshold:
-                signals.append(
-                    RuleSignal(
-                        rule_id="SATELLITE_CAP",
-                        severity="warning",
-                        fund_code=None,
-                        message=(
-                            f"行业卫星合计 {sat_weight:.1f}% 超过目标 {sat_target:.0f}%，"
-                            f"建议减卫星，利润转入 110020/022430 真宽基"
-                        ),
-                        suggested_action="reduce",
+            cs = evaluate_core_satellite(portfolio, strategy, role_by_code=role_by_code)
+            if cs:
+                sat_threshold = float(cs_cfg.get("rebalance_threshold", 0.05)) * 100
+                if cs.satellite_actual_pct > cs.satellite_target_pct + sat_threshold:
+                    signals.append(
+                        RuleSignal(
+                            rule_id="SATELLITE_CAP",
+                            severity="warning",
+                            fund_code=None,
+                            message=(
+                                f"行业卫星占管理仓 {cs.satellite_actual_pct:.1f}% "
+                                f"超过目标 {cs.satellite_target_pct:.0f}%，"
+                                f"建议减卫星，利润转入 110020/022430 真宽基"
+                            ),
+                            suggested_action="reduce",
+                        )
                     )
-                )
-            if growth_weight > growth_max + sat_threshold:
-                signals.append(
-                    RuleSignal(
-                        rule_id="CORE_GROWTH_CAP",
-                        severity="info",
-                        fund_code="002900",
-                        message=(
-                            f"成长增强（500信息）仓位 {growth_weight:.1f}% 超过上限 {growth_max:.0f}%，"
-                            f"建议减至上限内，新增资金优先沪深300/A500"
-                        ),
-                        suggested_action="reduce",
+                growth_max = float(cs_cfg.get("core_growth_max_ratio", 0.10)) * 100
+                if cs.core_growth_actual_pct > growth_max + sat_threshold:
+                    signals.append(
+                        RuleSignal(
+                            rule_id="CORE_GROWTH_CAP",
+                            severity="info",
+                            fund_code="002900",
+                            message=(
+                                f"成长增强（500信息）占管理仓 {cs.core_growth_actual_pct:.1f}% "
+                                f"超过上限 {growth_max:.0f}%，"
+                                f"建议减至上限内，新增资金优先沪深300/A500"
+                            ),
+                            suggested_action="reduce",
+                        )
                     )
-                )
+                sleeve = cs.satellite_sleeve or {}
+                sleeve_cfg = strategy.get("satellite_sleeve") or {}
+                if sleeve and sleeve_cfg.get("enabled", True) and sleeve.get("mode") == "dual":
+                    primary_target = float(sleeve.get("primary_target_pct", 25))
+                    secondary_target = float(sleeve.get("secondary_target_pct", 15))
+                    primary = sleeve.get("primary") or {}
+                    secondary = sleeve.get("secondary")
+                    primary_pct = float(sleeve.get("primary_actual_pct", 0) or 0)
+                    secondary_pct = float(sleeve.get("secondary_actual_pct", 0) or 0)
+                    if primary and primary_pct > primary_target + sat_threshold:
+                        signals.append(
+                            RuleSignal(
+                                rule_id="SATELLITE_PRIMARY_CAP",
+                                severity="warning",
+                                fund_code=primary.get("fund_code"),
+                                message=(
+                                    f"主卫星 {primary.get('fund_code')} 占管理仓 "
+                                    f"{primary_pct:.1f}% 高于目标 {primary_target:.0f}%，"
+                                    f"建议减至约 {primary_target:.0f}%（腾给次席或回宽基）"
+                                ),
+                                suggested_action="reduce",
+                            )
+                        )
+                    if not secondary:
+                        candidates = sleeve.get("candidate_codes") or []
+                        cand = "、".join(candidates[:3]) or "004253"
+                        signals.append(
+                            RuleSignal(
+                                rule_id="SATELLITE_SECONDARY_GAP",
+                                severity="info",
+                                fund_code=None,
+                                message=(
+                                    f"双卫星缺次席：目标约 {secondary_target:.0f}% 第二行业"
+                                    f"（候选 {cand}），或暂放宽基等趋势"
+                                ),
+                                suggested_action="buy",
+                            )
+                        )
+                    elif abs(secondary_pct - secondary_target) > sat_threshold:
+                        code = (secondary or {}).get("fund_code")
+                        if secondary_pct > secondary_target + sat_threshold:
+                            signals.append(
+                                RuleSignal(
+                                    rule_id="SATELLITE_SECONDARY_CAP",
+                                    severity="info",
+                                    fund_code=code,
+                                    message=(
+                                        f"次席 {code} 占管理仓 {secondary_pct:.1f}% "
+                                        f"高于目标 {secondary_target:.0f}%，可减仓再平衡"
+                                    ),
+                                    suggested_action="reduce",
+                                )
+                            )
 
     steps = sig.get("take_profit_steps", [])
     sell_ratio = float(sig.get("take_profit_sell_ratio", 0.33))
@@ -219,11 +268,88 @@ def evaluate_rules(
             )
         )
 
+    dip = evaluate_dip_buy_core(strategy)
+    if dip:
+        if dip.triggered and dip.action == "add":
+            signals.append(
+                RuleSignal(
+                    rule_id="DIP_BUY_CORE",
+                    severity="info",
+                    fund_code=dip.target_funds[0] if dip.target_funds else None,
+                    message=dip.hint,
+                    suggested_action="add",
+                )
+            )
+        elif dip.action == "skip" and dip.drawdown_from_peak_pct is not None and abs(
+            dip.drawdown_from_peak_pct or 0
+        ) >= 10:
+            signals.append(
+                RuleSignal(
+                    rule_id="DIP_BUY_CORE",
+                    severity="info",
+                    fund_code=None,
+                    message=dip.hint,
+                    suggested_action="hold",
+                )
+            )
+
+    for exit_hint in evaluate_satellite_logic_exits(
+        portfolio,
+        strategy,
+        role_by_code=role_by_code,
+        theme_by_code=theme_by_code,
+    ):
+        if exit_hint.level == "review":
+            severity, action = "info", "hold"
+        elif exit_hint.level == "reduce":
+            severity, action = "warning", "reduce"
+        else:
+            severity, action = "warning", "reduce"
+        signals.append(
+            RuleSignal(
+                rule_id="SATELLITE_LOGIC_EXIT",
+                severity=severity,
+                fund_code=exit_hint.fund_code,
+                message=exit_hint.message,
+                suggested_action=action,
+            )
+        )
+
+    for sat_dip in evaluate_dip_buy_satellite(
+        portfolio,
+        strategy,
+        role_by_code=role_by_code,
+        theme_by_code=theme_by_code,
+    ):
+        if sat_dip.triggered and sat_dip.action == "add":
+            signals.append(
+                RuleSignal(
+                    rule_id="DIP_BUY_SATELLITE",
+                    severity="info",
+                    fund_code=sat_dip.fund_code,
+                    message=sat_dip.hint,
+                    suggested_action="add",
+                )
+            )
+        elif sat_dip.action == "skip" and sat_dip.rule_kind == "primary_dip":
+            # 超限/逻辑减仓档禁止补：给出明确提示，避免 AI 仍建议加卫星
+            if sat_dip.managed_pct is not None and sat_dip.cap_pct is not None:
+                if sat_dip.managed_pct >= (sat_dip.cap_pct - 0.5) or "逻辑退出" in sat_dip.hint:
+                    signals.append(
+                        RuleSignal(
+                            rule_id="DIP_BUY_SATELLITE",
+                            severity="info",
+                            fund_code=sat_dip.fund_code,
+                            message=sat_dip.hint,
+                            suggested_action="hold",
+                        )
+                    )
+
     cs = evaluate_core_satellite(portfolio, strategy, role_by_code=role_by_code)
     interval_days = int(cs_cfg.get("rebalance_interval_days", 180))
     if cs and cs.needs_rebalance and should_signal_rebalance(interval_days):
         for hint in cs.hints:
-            if "暂不计为偏离" in hint:
+            if ("不计入" in hint) or ("定投旁路" in hint) or ("暂不计为偏离" in hint):
                 signals.append(
                     RuleSignal(
                         rule_id="HEDGE_DCA_BUILD",
