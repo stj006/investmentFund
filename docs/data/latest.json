@@ -1,7 +1,7 @@
 {
   "date": "2026-07-28",
   "data_as_of": "2026-07-28",
-  "generated_at": "2026-07-28T14:43:03",
+  "generated_at": "2026-07-28T16:35:49",
   "portfolio": {
     "total_market_value": 13011.03,
     "total_cost_value": 13010.86,
@@ -76,9 +76,9 @@
     "index_code": "000300.SH",
     "name": "沪深300",
     "trade_date": "2026-07-28",
-    "close": 4569.524,
-    "daily_change_pct": -2.8262639696479996,
-    "data_source": "stock_zh_index_daily"
+    "close": 4569.52,
+    "daily_change_pct": -2.826411025788791,
+    "data_source": "index_zh_a_hist"
   },
   "watchlist": [
     {
@@ -86,7 +86,7 @@
       "fund_name": "广发纳斯达克100ETF联接人民币(QDII)A",
       "theme": "纳斯达克",
       "risk_tag": "high",
-      "notes": "仅定投-海外防御",
+      "notes": "仅定投-旁路不计60/40",
       "unit_nav": 7.7876,
       "nav_date": "2026-07-27",
       "daily_growth_pct": -0.39
@@ -106,7 +106,7 @@
       "fund_name": "易方达中证人工智能主题ETF联接A",
       "theme": "人工智能",
       "risk_tag": "high",
-      "notes": "行业卫星",
+      "notes": "轮动候选-非当前次席",
       "unit_nav": 2.0454,
       "nav_date": "2026-07-28",
       "daily_growth_pct": -6.73
@@ -143,78 +143,63 @@
     }
   ],
   "advice": {
-    "market_summary": "今日A股普遍下跌，沪深300跌2.83%，费城半导体大跌拖累科技情绪；消费板块反弹，创新药受政策提振。账户总市值微盈，核心-卫星偏离明显：卫星仓位51.5%超目标40%，需再平衡减仓并转入真宽基。",
+    "market_summary": "今日沪深300下跌2.83%，账户主要持仓均回调，创新药日跌2.21%但行业长期结构性机会持续；黄金下跌1.19%，趋势偏弱仅作结构性持有。账户超配卫星（51.5%）低配核心（48.5%），需执行再平衡。",
     "overall_risk_level": "medium",
     "actions": [
       {
         "fund_code": "012737",
         "action": "reduce",
-        "ratio": 0.262,
-        "reason": "单基仓位43.8%超上限40%，且主题超限，按再平衡要求减卫星至目标40%以下",
+        "ratio": 0.3,
+        "reason": "主卫星仓位43.8%远超目标25%，按SATELLITE_PRIMARY_CAP建议减至约25%,利润转入核心宽基",
+        "confidence": 0.9,
+        "rule_hits": [
+          "THEME_CAP",
+          "SATELLITE_CAP",
+          "SATELLITE_PRIMARY_CAP"
+        ],
+        "requires_human_confirm": false
+      },
+      {
+        "fund_code": "004253",
+        "action": "add",
+        "ratio": 0.08,
+        "reason": "次席黄金仓位7.7%低于目标15%，按DIP_BUY_SATELLITE结构性补仓约956元，不因下跌加倍",
         "confidence": 0.8,
         "rule_hits": [
-          "POSITION_CAP",
-          "THEME_CAP"
+          "DIP_BUY_SATELLITE"
         ],
-        "requires_human_confirm": true
+        "requires_human_confirm": false
       },
       {
         "fund_code": "110020",
-        "action": "reduce",
-        "ratio": 0.165,
-        "reason": "单基仓位47.9%超上限40%，但作为核心长期持有，小幅减仓至40%以内，配合再平衡内部调整",
-        "confidence": 0.7,
-        "rule_hits": [
-          "POSITION_CAP"
-        ],
+        "action": "add",
+        "ratio": 0.1,
+        "reason": "核心宽基占比47.9%低于目标60%，利用卫星减仓资金和新增资金优先补仓，恢复核心仓位",
+        "confidence": 0.9,
+        "rule_hits": [],
         "requires_human_confirm": true
       },
       {
         "fund_code": "022430",
         "action": "add",
-        "ratio": 0.194,
-        "reason": "将减仓所得资金均衡转入中证A500，完善核心配置，符合核心-卫星策略",
-        "confidence": 0.7,
-        "rule_hits": [
-          "REBALANCE"
-        ],
+        "ratio": 0.1,
+        "reason": "核心宽基之一，与110020按50:50补仓，提升核心总体比例至目标",
+        "confidence": 0.8,
+        "rule_hits": [],
         "requires_human_confirm": true
       },
       {
         "fund_code": "002900",
         "action": "hold",
-        "ratio": 0.0,
-        "reason": "仓位极小，趋势中性，维持现状",
-        "confidence": 0.6,
+        "ratio": 1.0,
+        "reason": "成长增强仓位仅0.62%且已浮亏18.6%，保持持有等待反弹",
+        "confidence": 0.7,
         "rule_hits": [],
-        "requires_human_confirm": false
-      },
-      {
-        "fund_code": "004253",
-        "action": "hold",
-        "ratio": 0.0,
-        "reason": "下降趋势，但作为防御资产，暂不操作",
-        "confidence": 0.6,
-        "rule_hits": [],
-        "requires_human_confirm": false
+        "requires_human_confirm": true
       }
     ],
     "switch_candidates": [],
     "rule_signals": [
-      {
-        "rule_id": "POSITION_CAP",
-        "severity": "warning",
-        "fund_code": "012737",
-        "message": "广发创新药产业ETF联接A 仓位 43.8% 超过上限 40%",
-        "suggested_action": "reduce"
-      },
-      {
-        "rule_id": "POSITION_CAP",
-        "severity": "warning",
-        "fund_code": "110020",
-        "message": "易方达沪深300ETF联接A 仓位 47.9% 超过上限 40%",
-        "suggested_action": "reduce"
-      },
       {
         "rule_id": "THEME_CAP",
         "severity": "warning",
@@ -228,6 +213,34 @@
         "fund_code": null,
         "message": "主题「沪深300」合计仓位 47.9% 超过上限 40%",
         "suggested_action": "reduce"
+      },
+      {
+        "rule_id": "SATELLITE_CAP",
+        "severity": "warning",
+        "fund_code": null,
+        "message": "行业卫星占管理仓 51.5% 超过目标 40%，建议减卫星，利润转入 110020/022430 真宽基",
+        "suggested_action": "reduce"
+      },
+      {
+        "rule_id": "SATELLITE_PRIMARY_CAP",
+        "severity": "warning",
+        "fund_code": "012737",
+        "message": "主卫星 012737 占管理仓 43.8% 高于目标 25%，建议减至约 25%（腾给次席或回宽基）",
+        "suggested_action": "reduce"
+      },
+      {
+        "rule_id": "DIP_BUY_SATELLITE",
+        "severity": "info",
+        "fund_code": "004253",
+        "message": "次席 004253 占管理仓 7.7% 低于目标 15%：建议结构性补约 956 元（按仓位目标，非下跌加倍）",
+        "suggested_action": "add"
+      },
+      {
+        "rule_id": "DIP_BUY_SATELLITE",
+        "severity": "info",
+        "fund_code": "012737",
+        "message": "主卫星 012737 已占管理仓 43.8% 接近/达到上限 25%，禁止下跌补仓；应减仓或持有",
+        "suggested_action": "hold"
       },
       {
         "rule_id": "SWITCH_COOLDOWN",
@@ -254,6 +267,16 @@
     "news_digest": [
       {
         "keyword": "半导体",
+        "title": "美股半导体、存储板块 继续重挫",
+        "published_at": "2026-07-28 22:56:00",
+        "source": "中国证券报",
+        "url": "http://finance.eastmoney.com/a/202607283823865582.html",
+        "content_preview": "美股半导体、存储板块受重挫，光通信板块震荡调整。截至北京时间22:30，康宁股价大跌逾19%，公司在最新季报中发布的业绩指引不及市场预期。 商品市场方面，国际金价、油价均走低。",
+        "summary": "美股半导体存储板块重挫，康宁股价大跌逾19%因业绩指引不及预期。",
+        "summary_source": "llm"
+      },
+      {
+        "keyword": "半导体",
         "title": "费城半导体指数跌超5%",
         "published_at": "2026-07-28 21:47:00",
         "source": "证券时报网",
@@ -273,23 +296,13 @@
         "summary_source": "llm"
       },
       {
-        "keyword": "半导体",
-        "title": "费城半导体指数开盘下跌3.5%",
-        "published_at": "2026-07-28 21:32:50",
-        "source": "界面新闻",
-        "url": "http://finance.eastmoney.com/a/202607283823840515.html",
-        "content_preview": "费城半导体指数开盘下跌3.5%。成分股方面，英伟达股价下跌1.17%，台积电股价下跌2.87%，博通股价下跌1.23%，美光科技股价下跌6.39%，超威半导体股价下跌4.89%，阿斯麦股价下跌4.31%。",
-        "summary": "费城半导体指数开盘下跌3.5%，多只成分股下跌。",
-        "summary_source": "llm"
-      },
-      {
         "keyword": "人工智能",
         "title": "美国与阿联酋将成立首个双边军事人工智能特遣队",
         "published_at": "2026-07-28 21:30:35",
         "source": "央视新闻",
         "url": "http://finance.eastmoney.com/a/202607283823779422.html",
         "content_preview": "据了解，这个驻扎在阿布扎比的团队将由约20名在人工智能、数据和网络安全领域拥有专业知识的美国和阿联酋人员组成。",
-        "summary": "美国与阿联酋将成立首个双边军事人工智能特遣队，驻扎阿布扎比。",
+        "summary": "美国与阿联酋将成立首个双边军事人工智能特遣队，约20人组成。",
         "summary_source": "llm"
       },
       {
@@ -299,7 +312,7 @@
         "source": "21世纪经济报道",
         "url": "http://finance.eastmoney.com/a/202607283823769089.html",
         "content_preview": "李超表示，人工智能已被视为新一轮科技革命的重要驱动力，但在太空中，人工智能仍缺乏广泛应用，而太空也是人类重要活动疆域。因此，将人工智能送入太空，是三体计算星座建设的第一性原理。 李超介绍，随着人工智能快速发展，算力需求持续增长，未来太空将…",
-        "summary": "人工智能缺乏太空广泛应用，三体计算星座将AI送入太空。",
+        "summary": "人工智能送入太空被视为计算星座建设的第一性原理，算力需求持续增长。",
         "summary_source": "llm"
       },
       {
@@ -309,7 +322,7 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202607283823381031.html",
         "content_preview": "消费相关产品 消费ETF易方达（159798）：聚焦A股核心消费龙头，覆盖食品饮料、家电等内需核心资产，一只产品打包A股消费白马。",
-        "summary": "消费板块7月持续反弹，易方达消费ETF受关注。",
+        "summary": "消费板块7月持续反弹，易方达消费ETF矩阵受关注。",
         "summary_source": "llm"
       },
       {
@@ -319,7 +332,7 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202607283823387697.html",
         "content_preview": "（来源：《CXO：板块 BETA 稳中向好个股订单加速兑现》，时间：2026年07月24日） 港股创新药ETF景顺(513780)紧密跟踪中证港股通创新药指数(931250)，中证港股通创新药指数从港股通范围内选取50只业务涉及创新药研发…",
-        "summary": "港股创新药ETF景顺聚焦港股创新药龙头，跟踪中证港股通创新药指数。",
+        "summary": "国内创新药行业长期结构性机会持续，港股创新药ETF景顺提供布局工具。",
         "summary_source": "llm"
       },
       {
@@ -329,7 +342,7 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202607283823387895.html",
         "content_preview": "场外投资者还可以通过消费ETF联接基金（009180）布局消费复苏行情。",
-        "summary": "大众品全年复苏明确，消费ETF嘉实布局消费复苏行情。",
+        "summary": "大众品全年复苏态势明确，消费ETF嘉实布局消费复苏行情。",
         "summary_source": "llm"
       },
       {
@@ -339,7 +352,7 @@
         "source": "21世纪经济报道",
         "url": "http://finance.eastmoney.com/a/202607283823207455.html",
         "content_preview": "结构层面，对比港股、A股代表性消费指数的成分构成，A股消费仍以白酒、白电、养殖等传统必需消费为主体，港股“新消费”以服务消费与情绪消费为核心支柱，港股通消费指数涵盖的细分领域更为均衡，非必需消费权重占比较大。",
-        "summary": "港股消费板块反弹，新消费三姐妹全线飘红。",
+        "summary": "港股消费板块反弹，新消费三姐妹全线飘红，港股消费指数涵盖均衡。",
         "summary_source": "llm"
       },
       {
@@ -359,7 +372,7 @@
         "source": "财联社",
         "url": "http://finance.eastmoney.com/a/202607273822176288.html",
         "content_preview": "英伟达宣布与多个创始成员共同成立开放安全人工智能联盟，推动人工智能安全与保障。",
-        "summary": "英伟达宣布成立开放安全人工智能联盟，推动AI安全与保障。",
+        "summary": "英伟达宣布与多个创始成员共同成立开放安全人工智能联盟。",
         "summary_source": "llm"
       },
       {
@@ -369,7 +382,7 @@
         "source": "界面新闻",
         "url": "http://finance.eastmoney.com/a/202607273822137553.html",
         "content_preview": "跟踪中证港股通创新药指数（931250.CSI），从港股通范围精选50只创新药研发、生产及服务标的，聚焦港股创新药核心资产，强调创新属性与可投资性，适合作为参与该细分赛道的指数化工具。 Q4：与其他创新药指数有哪些差异？",
-        "summary": "政策与研发共振，港股创新药ETF景顺聚焦创新药产业链核心环节。",
+        "summary": "政策与研发共振，创新药持续升温，港股创新药ETF景顺聚焦产业链核心。",
         "summary_source": "llm"
       }
     ],
@@ -643,47 +656,67 @@
   "market_outlook": {
     "horizon": "1-2周",
     "overall_bias": "bearish",
-    "capital_flow_view": "7月28日主力资金整体净流出，沪深300大跌2.83%。板块层面，银行（净流入55.96亿）、高股息精选（净流入90.23亿）等防御性板块获资金青睐，而芯片概念（净流出-750.03亿）、半导体（净流出-249.76亿）、通信设备（净流出-126.54亿）等科技板块大幅失血，拖累大市。南向资金净流出24.94亿，北向数据暂停披露。",
-    "policy_event_view": "费城半导体指数跌超5%，对国内半导体、芯片板块情绪形成压制，与资金大幅流出吻合。消费板块7月持续反弹，大众品复苏明确，港股消费反弹，消费类ETF受关注，消费主题获结构性支撑。创新药方面，公募扎堆举牌港股创新药，政策与研发共振，创新药ETF获资金流入，表明该方向仍有积极预期。",
+    "capital_flow_view": "今日主力资金整体净流出，沪深300跌2.83%，南向资金净流出24.94亿元。银行+55.96亿、高股息精选+90.23亿、白酒概念+19.91亿等防御板块获逆势流入；而芯片概念净流出750亿、半导体行业净流出250亿、通信设备净流出127亿，科技板块承压明显。",
+    "policy_event_view": "美股半导体板块重挫，费城半导体指数跌超5%，康宁业绩指引不及预期，利空A股半导体及芯片相关板块。消费板块7月持续反弹，创新药获政策与研发共振，公募扎堆举牌港股创新药，消费与医药存在结构性机会。人工智能方面，英伟达成立安全联盟、美阿成立军事AI特遣队，长期偏正面但短期提振有限。",
     "theme_outlook": [
       {
         "theme": "500信息技术",
         "bias": "bearish",
-        "reason": "半导体及芯片资金大幅流出，费城半导体指数大跌，短期承压。"
+        "reason": "半导体、芯片概念资金大幅流出，叠加美股科技重挫，短期承压。"
+      },
+      {
+        "theme": "中证A500",
+        "bias": "neutral",
+        "reason": "宽基受整体市场拖累，但银行、白酒等权重板块流入提供支撑，中性。"
       },
       {
         "theme": "人工智能",
         "bias": "neutral",
-        "reason": "虽有美阿军事AI特遣队和英伟达AI安全联盟等利好，但芯片端利空压制，整体中性。"
+        "reason": "新闻偏正面但资金面未见明显流入，且受科技板块整体情绪影响，震荡。"
       },
       {
         "theme": "创新药",
         "bias": "bullish",
-        "reason": "公募持续举牌，ETF吸金超3000万，政策与研发共振，结构性机会明确。"
+        "reason": "政策与研发共振，公募举牌港股创新药ETF，资金关注度提升，结构性机会。"
+      },
+      {
+        "theme": "均衡混合",
+        "bias": "neutral",
+        "reason": "组合中宽基占比高，市场系统性风险下中性偏谨慎。"
+      },
+      {
+        "theme": "沪深300",
+        "bias": "bearish",
+        "reason": "沪深300当日跌2.83%，主力资金净流出，短期弱势。"
       },
       {
         "theme": "消费",
         "bias": "bullish",
-        "reason": "消费板块7月持续反弹，大众品复苏明确，白酒概念净流入19.91亿，资金青睐。"
+        "reason": "消费板块7月持续反弹，白酒概念资金净流入，大众品复苏明确。"
       },
       {
         "theme": "纳斯达克",
         "bias": "bearish",
-        "reason": "费城半导体指数跌超5%，科技股承压，短期不利美股科技方向。"
+        "reason": "美股半导体重挫，费城半导体指数跌超5%，纳指短期承压。"
       },
       {
         "theme": "通信",
         "bias": "bearish",
-        "reason": "通信设备行业净流出126.54亿，资金出逃明显，短期偏空。"
+        "reason": "通信设备行业净流出126亿，行业指数跌3.79%，资金撤离。"
+      },
+      {
+        "theme": "黄金",
+        "bias": "neutral",
+        "reason": "国际金价走低（新闻提及），但黄金作为避险资产在波动中中性。"
       }
     ],
     "key_risks": [
-      "半导体/芯片持续杀跌拖累科技成长板块",
-      "大盘指数破位下行引发恐慌性抛售",
-      "北向资金数据缺失，外部资金态度不明"
+      "美股半导体持续下跌可能拖累A股科技板块",
+      "北向资金数据缺失，外部资金动向不明",
+      "市场整体主力资金大幅净流出，情绪偏弱"
     ],
-    "confidence": 0.65,
-    "disclaimer": "以上分析基于公开市场数据，仅供参考，不构成投资建议。",
+    "confidence": 0.75,
+    "disclaimer": "以上研判基于今日资金流与新闻摘要，仅供参考，不构成投资建议。",
     "skipped": false,
     "skip_reason": null,
     "model": "deepseek-v4-flash"
@@ -739,6 +772,38 @@
     "sentiment_label": "偏谨慎",
     "sentiment_summary": "今日主力主力偏空（净流出）；情绪指数 38.0（偏谨慎）。北向日度净买额已暂停披露，请看行业/概念主力流向。阶段吸金板块：高股息精选(90.23亿)、银行(55.96亿)、跨境支付(CIPS)(52.89亿)。",
     "fund_picks": [
+      {
+        "fund_code": "004253",
+        "fund_name": "国泰黄金ETF联接C",
+        "action": "hold",
+        "theme": "黄金",
+        "score": 259.39,
+        "reasons": [
+          {
+            "type": "flow",
+            "label": "板块资金流入",
+            "detail": "高股息精选 净流入 +90.23 亿，涨 0.46%"
+          },
+          {
+            "type": "flow",
+            "label": "板块资金流入",
+            "detail": "银行 净流入 +55.96 亿，涨 1.04%"
+          },
+          {
+            "type": "sentiment",
+            "label": "市场情绪",
+            "detail": "偏谨慎（38.0），北向净买额已暂停披露；主力近5日方向均值 -1.00"
+          },
+          {
+            "type": "theme",
+            "label": "已有持仓",
+            "detail": "当前持仓主题「黄金」，资金面向好可考虑持有或小幅加仓"
+          }
+        ],
+        "source": "daily",
+        "daily_growth_pct": null,
+        "return_1y": null
+      },
       {
         "fund_code": "110020",
         "fund_name": "易方达沪深300ETF联接A",
@@ -828,7 +893,7 @@
           {
             "type": "news",
             "label": "相关要闻",
-            "detail": "港股创新药ETF景顺聚焦港股创新药龙头，跟踪中证港股通创新药指数。"
+            "detail": "国内创新药行业长期结构性机会持续，港股创新药ETF景顺提供布局工具。"
           },
           {
             "type": "news",
@@ -875,7 +940,7 @@
           {
             "type": "news",
             "label": "相关要闻",
-            "detail": "美国与阿联酋将成立首个双边军事人工智能特遣队，驻扎阿布扎比。"
+            "detail": "美国与阿联酋将成立首个双边军事人工智能特遣队，约20人组成。"
           },
           {
             "type": "theme",
@@ -890,43 +955,6 @@
         ],
         "source": "daily",
         "daily_growth_pct": -0.39,
-        "return_1y": null
-      },
-      {
-        "fund_code": "022430",
-        "fund_name": "华夏中证A500ETF联接A",
-        "action": "watch",
-        "theme": "中证A500",
-        "score": 240.33,
-        "reasons": [
-          {
-            "type": "flow",
-            "label": "板块资金流入",
-            "detail": "高股息精选 净流入 +90.23 亿，涨 0.46%"
-          },
-          {
-            "type": "flow",
-            "label": "板块资金流入",
-            "detail": "银行 净流入 +55.96 亿，涨 1.04%"
-          },
-          {
-            "type": "sentiment",
-            "label": "市场情绪",
-            "detail": "偏谨慎（38.0），北向净买额已暂停披露；主力近5日方向均值 -1.00"
-          },
-          {
-            "type": "theme",
-            "label": "主题匹配",
-            "detail": "关注主题「中证A500」与今日主力流入板块一致"
-          },
-          {
-            "type": "performance",
-            "label": "净值表现",
-            "detail": "最新日涨跌 -3.02%"
-          }
-        ],
-        "source": "daily",
-        "daily_growth_pct": -3.02,
         "return_1y": null
       }
     ],
@@ -1072,6 +1100,252 @@
   "charts": {
     "lookback_days": 90,
     "fund_return_indexed": {
+      "012737": [
+        {
+          "date": "2026-04-29",
+          "value": 100.0
+        },
+        {
+          "date": "2026-04-30",
+          "value": 99.8
+        },
+        {
+          "date": "2026-05-06",
+          "value": 99.85
+        },
+        {
+          "date": "2026-05-07",
+          "value": 100.42
+        },
+        {
+          "date": "2026-05-08",
+          "value": 98.74
+        },
+        {
+          "date": "2026-05-11",
+          "value": 100.89
+        },
+        {
+          "date": "2026-05-12",
+          "value": 100.4
+        },
+        {
+          "date": "2026-05-13",
+          "value": 99.23
+        },
+        {
+          "date": "2026-05-14",
+          "value": 96.43
+        },
+        {
+          "date": "2026-05-15",
+          "value": 95.66
+        },
+        {
+          "date": "2026-05-18",
+          "value": 93.82
+        },
+        {
+          "date": "2026-05-19",
+          "value": 94.19
+        },
+        {
+          "date": "2026-05-20",
+          "value": 94.13
+        },
+        {
+          "date": "2026-05-21",
+          "value": 94.88
+        },
+        {
+          "date": "2026-05-22",
+          "value": 93.57
+        },
+        {
+          "date": "2026-05-25",
+          "value": 92.56
+        },
+        {
+          "date": "2026-05-26",
+          "value": 92.31
+        },
+        {
+          "date": "2026-05-27",
+          "value": 91.97
+        },
+        {
+          "date": "2026-05-28",
+          "value": 90.04
+        },
+        {
+          "date": "2026-05-29",
+          "value": 91.9
+        },
+        {
+          "date": "2026-06-01",
+          "value": 90.94
+        },
+        {
+          "date": "2026-06-02",
+          "value": 89.61
+        },
+        {
+          "date": "2026-06-03",
+          "value": 88.12
+        },
+        {
+          "date": "2026-06-04",
+          "value": 87.22
+        },
+        {
+          "date": "2026-06-05",
+          "value": 87.24
+        },
+        {
+          "date": "2026-06-08",
+          "value": 85.27
+        },
+        {
+          "date": "2026-06-09",
+          "value": 85.52
+        },
+        {
+          "date": "2026-06-10",
+          "value": 86.99
+        },
+        {
+          "date": "2026-06-11",
+          "value": 86.6
+        },
+        {
+          "date": "2026-06-12",
+          "value": 88.45
+        },
+        {
+          "date": "2026-06-15",
+          "value": 87.98
+        },
+        {
+          "date": "2026-06-16",
+          "value": 86.74
+        },
+        {
+          "date": "2026-06-17",
+          "value": 86.21
+        },
+        {
+          "date": "2026-06-18",
+          "value": 88.37
+        },
+        {
+          "date": "2026-06-22",
+          "value": 89.06
+        },
+        {
+          "date": "2026-06-23",
+          "value": 90.25
+        },
+        {
+          "date": "2026-06-24",
+          "value": 92.41
+        },
+        {
+          "date": "2026-06-25",
+          "value": 93.27
+        },
+        {
+          "date": "2026-06-26",
+          "value": 90.62
+        },
+        {
+          "date": "2026-06-29",
+          "value": 97.61
+        },
+        {
+          "date": "2026-06-30",
+          "value": 96.26
+        },
+        {
+          "date": "2026-07-01",
+          "value": 100.44
+        },
+        {
+          "date": "2026-07-02",
+          "value": 100.44
+        },
+        {
+          "date": "2026-07-03",
+          "value": 103.0
+        },
+        {
+          "date": "2026-07-06",
+          "value": 103.94
+        },
+        {
+          "date": "2026-07-07",
+          "value": 99.61
+        },
+        {
+          "date": "2026-07-08",
+          "value": 97.37
+        },
+        {
+          "date": "2026-07-09",
+          "value": 99.11
+        },
+        {
+          "date": "2026-07-10",
+          "value": 102.09
+        },
+        {
+          "date": "2026-07-13",
+          "value": 101.4
+        },
+        {
+          "date": "2026-07-14",
+          "value": 104.6
+        },
+        {
+          "date": "2026-07-15",
+          "value": 108.55
+        },
+        {
+          "date": "2026-07-16",
+          "value": 108.26
+        },
+        {
+          "date": "2026-07-17",
+          "value": 100.91
+        },
+        {
+          "date": "2026-07-20",
+          "value": 104.16
+        },
+        {
+          "date": "2026-07-21",
+          "value": 105.05
+        },
+        {
+          "date": "2026-07-22",
+          "value": 105.27
+        },
+        {
+          "date": "2026-07-23",
+          "value": 104.78
+        },
+        {
+          "date": "2026-07-24",
+          "value": 100.69
+        },
+        {
+          "date": "2026-07-27",
+          "value": 102.96
+        },
+        {
+          "date": "2026-07-28",
+          "value": 100.69
+        }
+      ],
       "002900": [
         {
           "date": "2026-04-29",
@@ -1808,252 +2082,6 @@
         {
           "date": "2026-07-28",
           "value": 87.21
-        }
-      ],
-      "012737": [
-        {
-          "date": "2026-04-29",
-          "value": 100.0
-        },
-        {
-          "date": "2026-04-30",
-          "value": 99.8
-        },
-        {
-          "date": "2026-05-06",
-          "value": 99.85
-        },
-        {
-          "date": "2026-05-07",
-          "value": 100.42
-        },
-        {
-          "date": "2026-05-08",
-          "value": 98.74
-        },
-        {
-          "date": "2026-05-11",
-          "value": 100.89
-        },
-        {
-          "date": "2026-05-12",
-          "value": 100.4
-        },
-        {
-          "date": "2026-05-13",
-          "value": 99.23
-        },
-        {
-          "date": "2026-05-14",
-          "value": 96.43
-        },
-        {
-          "date": "2026-05-15",
-          "value": 95.66
-        },
-        {
-          "date": "2026-05-18",
-          "value": 93.82
-        },
-        {
-          "date": "2026-05-19",
-          "value": 94.19
-        },
-        {
-          "date": "2026-05-20",
-          "value": 94.13
-        },
-        {
-          "date": "2026-05-21",
-          "value": 94.88
-        },
-        {
-          "date": "2026-05-22",
-          "value": 93.57
-        },
-        {
-          "date": "2026-05-25",
-          "value": 92.56
-        },
-        {
-          "date": "2026-05-26",
-          "value": 92.31
-        },
-        {
-          "date": "2026-05-27",
-          "value": 91.97
-        },
-        {
-          "date": "2026-05-28",
-          "value": 90.04
-        },
-        {
-          "date": "2026-05-29",
-          "value": 91.9
-        },
-        {
-          "date": "2026-06-01",
-          "value": 90.94
-        },
-        {
-          "date": "2026-06-02",
-          "value": 89.61
-        },
-        {
-          "date": "2026-06-03",
-          "value": 88.12
-        },
-        {
-          "date": "2026-06-04",
-          "value": 87.22
-        },
-        {
-          "date": "2026-06-05",
-          "value": 87.24
-        },
-        {
-          "date": "2026-06-08",
-          "value": 85.27
-        },
-        {
-          "date": "2026-06-09",
-          "value": 85.52
-        },
-        {
-          "date": "2026-06-10",
-          "value": 86.99
-        },
-        {
-          "date": "2026-06-11",
-          "value": 86.6
-        },
-        {
-          "date": "2026-06-12",
-          "value": 88.45
-        },
-        {
-          "date": "2026-06-15",
-          "value": 87.98
-        },
-        {
-          "date": "2026-06-16",
-          "value": 86.74
-        },
-        {
-          "date": "2026-06-17",
-          "value": 86.21
-        },
-        {
-          "date": "2026-06-18",
-          "value": 88.37
-        },
-        {
-          "date": "2026-06-22",
-          "value": 89.06
-        },
-        {
-          "date": "2026-06-23",
-          "value": 90.25
-        },
-        {
-          "date": "2026-06-24",
-          "value": 92.41
-        },
-        {
-          "date": "2026-06-25",
-          "value": 93.27
-        },
-        {
-          "date": "2026-06-26",
-          "value": 90.62
-        },
-        {
-          "date": "2026-06-29",
-          "value": 97.61
-        },
-        {
-          "date": "2026-06-30",
-          "value": 96.26
-        },
-        {
-          "date": "2026-07-01",
-          "value": 100.44
-        },
-        {
-          "date": "2026-07-02",
-          "value": 100.44
-        },
-        {
-          "date": "2026-07-03",
-          "value": 103.0
-        },
-        {
-          "date": "2026-07-06",
-          "value": 103.94
-        },
-        {
-          "date": "2026-07-07",
-          "value": 99.61
-        },
-        {
-          "date": "2026-07-08",
-          "value": 97.37
-        },
-        {
-          "date": "2026-07-09",
-          "value": 99.11
-        },
-        {
-          "date": "2026-07-10",
-          "value": 102.09
-        },
-        {
-          "date": "2026-07-13",
-          "value": 101.4
-        },
-        {
-          "date": "2026-07-14",
-          "value": 104.6
-        },
-        {
-          "date": "2026-07-15",
-          "value": 108.55
-        },
-        {
-          "date": "2026-07-16",
-          "value": 108.26
-        },
-        {
-          "date": "2026-07-17",
-          "value": 100.91
-        },
-        {
-          "date": "2026-07-20",
-          "value": 104.16
-        },
-        {
-          "date": "2026-07-21",
-          "value": 105.05
-        },
-        {
-          "date": "2026-07-22",
-          "value": 105.27
-        },
-        {
-          "date": "2026-07-23",
-          "value": 104.78
-        },
-        {
-          "date": "2026-07-24",
-          "value": 100.69
-        },
-        {
-          "date": "2026-07-27",
-          "value": 102.96
-        },
-        {
-          "date": "2026-07-28",
-          "value": 100.69
         }
       ],
       "270042": [
@@ -4362,7 +4390,7 @@
       },
       {
         "date": "2026-06-04",
-        "close": 4904.74
+        "close": 4904.75
       },
       {
         "date": "2026-06-05",
@@ -4599,21 +4627,71 @@
     "updated_at": "2026-07-08T23:05:00"
   },
   "core_satellite": {
-    "core_target_pct": 50.0,
+    "core_target_pct": 60.0,
     "satellite_target_pct": 40.0,
-    "hedge_target_pct": 10.0,
-    "core_actual_pct": 48.52,
+    "hedge_target_pct": 0.0,
+    "core_actual_pct": 48.53,
     "core_broad_actual_pct": 47.9,
     "core_growth_actual_pct": 0.62,
     "satellite_actual_pct": 51.47,
     "hedge_actual_pct": 0.0,
     "unclassified_pct": 0.0,
+    "managed_market_value": 13011.03,
+    "excluded_market_value": 0.0,
+    "exclude_hedge_from_allocation": true,
     "rebalance_threshold_pct": 5.0,
     "needs_rebalance": true,
     "hints": [
-      "行业卫星 实际 51.5% 高于目标 40%（偏离 +11.5%），建议减卫星、利润转入真宽基（110020/022430）",
-      "防御/海外 目标 10%，当前通过纳指 QDII 日定投逐步建立（未计入持仓市值），暂不计为偏离"
-    ]
+      "定投/旁路仓（如 270042）不计入 60/40 再平衡",
+      "宽基核心（含真宽基+成长增强） 实际 48.5% 低于目标 60%（偏离 -11.5%），建议优先买入 110020 沪深300 与 022430 中证A500",
+      "行业卫星合计 实际 51.5% 高于目标 40%（偏离 +11.5%），建议减卫星、利润转入真宽基（110020/022430）",
+      "卫星层方案 B（双卫星）：目标主仓 25% + 次席 15% = 合计 40%（相对管理仓）",
+      "卫星合计 51.5% 高于 40%，建议减仓，利润优先转入真宽基 110020/022430",
+      "主卫星 012737 广发创新药产业ETF联接A 占管理仓 43.8% 高于目标 25%，建议减至约 25%，腾出份额给次席或回宽基",
+      "次席 004253 占 7.7% 低于目标 15%，趋势仍在可小幅补到目标",
+      "轮动纪律：每月最多换行业 1 次；持有满 30 天再换；换出时先回宽基再进新行业。"
+    ],
+    "satellite_sleeve": {
+      "mode": "dual",
+      "total_target_pct": 40.0,
+      "primary_target_pct": 25.0,
+      "secondary_target_pct": 15.0,
+      "total_actual_pct": 51.47,
+      "primary_actual_pct": 43.82,
+      "secondary_actual_pct": 7.65,
+      "overflow_pct": 0,
+      "primary": {
+        "fund_code": "012737",
+        "fund_name": "广发创新药产业ETF联接A",
+        "market_value": 5701.32,
+        "managed_pct": 43.82,
+        "slot": "primary"
+      },
+      "secondary": {
+        "fund_code": "004253",
+        "fund_name": "国泰黄金ETF联接C",
+        "market_value": 995.83,
+        "managed_pct": 7.65,
+        "slot": "secondary"
+      },
+      "others": [],
+      "max_rotations_per_month": 1,
+      "min_hold_days": 30,
+      "exit_via_core": true,
+      "candidate_codes": [
+        "004253",
+        "012734",
+        "012737"
+      ],
+      "needs_adjust": true,
+      "hints": [
+        "卫星层方案 B（双卫星）：目标主仓 25% + 次席 15% = 合计 40%（相对管理仓）",
+        "卫星合计 51.5% 高于 40%，建议减仓，利润优先转入真宽基 110020/022430",
+        "主卫星 012737 广发创新药产业ETF联接A 占管理仓 43.8% 高于目标 25%，建议减至约 25%，腾出份额给次席或回宽基",
+        "次席 004253 占 7.7% 低于目标 15%，趋势仍在可小幅补到目标",
+        "轮动纪律：每月最多换行业 1 次；持有满 30 天再换；换出时先回宽基再进新行业。"
+      ]
+    }
   },
   "smart_dca": {
     "core_guidance": {
@@ -4645,7 +4723,7 @@
   },
   "strategy_summary": {
     "framework": "core_satellite",
-    "core_target_ratio": 0.5,
+    "core_target_ratio": 0.6,
     "satellite_target_ratio": 0.4,
     "stop_loss_enabled": false,
     "take_profit_ratio": 0.2,
