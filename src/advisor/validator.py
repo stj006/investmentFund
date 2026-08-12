@@ -11,11 +11,35 @@ VALID_RISK = frozenset({"low", "medium", "high"})
 
 
 def extract_json(text: str) -> dict[str, Any]:
-    text = text.strip()
+    """从模型输出中提取 JSON 对象；支持 markdown 代码块与前后杂质。"""
+    text = (text or "").strip()
+    if not text:
+        raise ValueError("LLM 输出为空，无法解析 JSON")
+
     if text.startswith("```"):
-        text = re.sub(r"^```(?:json)?\s*", "", text)
+        text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
         text = re.sub(r"\s*```$", "", text)
-    return json.loads(text)
+        text = text.strip()
+
+    try:
+        obj = json.loads(text)
+        if isinstance(obj, dict):
+            return obj
+        raise ValueError(f"JSON 根类型应为 object，实际为 {type(obj).__name__}")
+    except json.JSONDecodeError:
+        pass
+
+    # 截取首个完整 {...}（容忍前后说明文字）
+    start = text.find("{")
+    end = text.rfind("}")
+    if start >= 0 and end > start:
+        chunk = text[start : end + 1]
+        obj = json.loads(chunk)
+        if isinstance(obj, dict):
+            return obj
+        raise ValueError(f"截取 JSON 根类型应为 object，实际为 {type(obj).__name__}")
+
+    raise ValueError("未找到可解析的 JSON 对象")
 
 
 def validate_advice(raw: dict[str, Any], whitelist: set[str]) -> dict[str, Any]:

@@ -136,11 +136,30 @@ def generate_advice(
     load_dotenv(ROOT / ".env")
     model = os.getenv("LLM_MODEL", "deepseek-chat")
 
-    parsed, _raw = chat_json(system, user)
-    validated = validate_advice(parsed, whitelist)
-    validated = enforce_critical_rules(
-        validated, rule_signals, whitelist, strategy=strategy, portfolio=portfolio
-    )
+    try:
+        parsed, _raw = chat_json(system, user)
+        validated = validate_advice(parsed, whitelist)
+        validated = enforce_critical_rules(
+            validated, rule_signals, whitelist, strategy=strategy, portfolio=portfolio
+        )
+    except Exception as e:
+        # CI/定时任务：LLM 偶发空响应时降级为仅规则，避免整份日报失败
+        return AdviceResult(
+            market_summary=(
+                "AI 建议生成失败，已降级为仅规则扫描。"
+                f"原因：{type(e).__name__}: {e}"
+            )[:500],
+            overall_risk_level="medium",
+            actions=[],
+            switch_candidates=[],
+            rule_signals=rule_signals,
+            news_digest=news_digest,
+            news_error=news_error,
+            trend_observation=trend_observation,
+            skipped=True,
+            skip_reason=f"LLM 失败已降级: {e}",
+            model=model,
+        )
 
     return AdviceResult(
         market_summary=validated["market_summary"],
