@@ -1,13 +1,13 @@
 {
-  "date": "2026-11-25",
-  "data_as_of": "2026-11-25",
-  "generated_at": "2026-11-25T14:02:16",
+  "date": "2026-11-26",
+  "data_as_of": "2026-11-26",
+  "generated_at": "2026-11-26T14:02:10",
   "portfolio": {
-    "total_market_value": 15838.28,
+    "total_market_value": 15793.33,
     "total_cost_value": 18444.41,
-    "total_unrealized_pnl": -2606.13,
-    "total_unrealized_pnl_pct": -14.13,
-    "estimated_daily_pct": -1.93,
+    "total_unrealized_pnl": -2651.09,
+    "total_unrealized_pnl_pct": -14.37,
+    "estimated_daily_pct": -0.28,
     "vs_benchmark_daily_pct": null,
     "positions": [
       {
@@ -16,14 +16,14 @@
         "channel": "支付宝",
         "shares": 9530.79,
         "cost_per_share": 0.5894,
-        "unit_nav": 0.5433,
-        "nav_date": "2026-11-25",
-        "market_value": 5178.08,
+        "unit_nav": 0.5403,
+        "nav_date": "2026-11-26",
+        "market_value": 5149.49,
         "cost_value": 5617.45,
-        "unrealized_pnl": -439.37,
-        "unrealized_pnl_pct": -7.82,
-        "daily_growth_pct": -0.69,
-        "weight_pct": 32.69
+        "unrealized_pnl": -467.96,
+        "unrealized_pnl_pct": -8.33,
+        "daily_growth_pct": -0.55,
+        "weight_pct": 32.61
       },
       {
         "fund_code": "002900",
@@ -31,13 +31,13 @@
         "channel": "支付宝",
         "shares": 40.77,
         "cost_per_share": 2.4393,
-        "unit_nav": 1.4365,
-        "nav_date": "2026-11-25",
-        "market_value": 58.57,
+        "unit_nav": 1.4291,
+        "nav_date": "2026-11-26",
+        "market_value": 58.26,
         "cost_value": 99.45,
-        "unrealized_pnl": -40.88,
-        "unrealized_pnl_pct": -41.11,
-        "daily_growth_pct": -6.34,
+        "unrealized_pnl": -41.19,
+        "unrealized_pnl_pct": -41.41,
+        "daily_growth_pct": -0.52,
         "weight_pct": 0.37
       },
       {
@@ -46,14 +46,14 @@
         "channel": "支付宝",
         "shares": 3550.7,
         "cost_per_share": 1.8947,
-        "unit_nav": 1.6191,
-        "nav_date": "2026-11-25",
-        "market_value": 5748.94,
+        "unit_nav": 1.6199,
+        "nav_date": "2026-11-26",
+        "market_value": 5751.78,
         "cost_value": 6727.51,
-        "unrealized_pnl": -978.57,
-        "unrealized_pnl_pct": -14.55,
-        "daily_growth_pct": -1.58,
-        "weight_pct": 36.3
+        "unrealized_pnl": -975.73,
+        "unrealized_pnl_pct": -14.5,
+        "daily_growth_pct": 0.05,
+        "weight_pct": 36.42
       },
       {
         "fund_code": "004253",
@@ -61,14 +61,14 @@
         "channel": "支付宝",
         "shares": 950.45,
         "cost_per_share": 3.1564,
-        "unit_nav": 2.6628,
-        "nav_date": "2026-11-25",
-        "market_value": 2530.86,
+        "unit_nav": 2.691,
+        "nav_date": "2026-11-26",
+        "market_value": 2557.66,
         "cost_value": 3000.0,
-        "unrealized_pnl": -469.14,
-        "unrealized_pnl_pct": -15.64,
-        "daily_growth_pct": -2.62,
-        "weight_pct": 15.98
+        "unrealized_pnl": -442.34,
+        "unrealized_pnl_pct": -14.74,
+        "daily_growth_pct": 1.06,
+        "weight_pct": 16.19
       },
       {
         "fund_code": "020290",
@@ -76,14 +76,14 @@
         "channel": "支付宝",
         "shares": 2186.91,
         "cost_per_share": 1.3718,
-        "unit_nav": 1.0617,
-        "nav_date": "2026-11-25",
-        "market_value": 2321.84,
+        "unit_nav": 1.0408,
+        "nav_date": "2026-11-26",
+        "market_value": 2276.14,
         "cost_value": 3000.0,
-        "unrealized_pnl": -678.16,
-        "unrealized_pnl_pct": -22.61,
-        "daily_growth_pct": -4.69,
-        "weight_pct": 14.66
+        "unrealized_pnl": -723.87,
+        "unrealized_pnl_pct": -24.13,
+        "daily_growth_pct": -1.97,
+        "weight_pct": 14.41
       }
     ]
   },
@@ -95,9 +95,9 @@
       "theme": "纳斯达克",
       "risk_tag": "high",
       "notes": "仅定投-旁路不计60/40",
-      "unit_nav": 7.1522,
-      "nav_date": "2026-11-24",
-      "daily_growth_pct": -2.01
+      "unit_nav": 7.1053,
+      "nav_date": "2026-11-25",
+      "daily_growth_pct": -0.66
     },
     {
       "fund_code": "022430",
@@ -105,9 +105,9 @@
       "theme": "中证A500",
       "risk_tag": "medium",
       "notes": "真宽基-均衡成长",
-      "unit_nav": 1.0063,
-      "nav_date": "2026-11-25",
-      "daily_growth_pct": -2.13
+      "unit_nav": 1.0055,
+      "nav_date": "2026-11-26",
+      "daily_growth_pct": -0.08
     },
     {
       "fund_code": "012734",
@@ -115,9 +115,9 @@
       "theme": "人工智能",
       "risk_tag": "high",
       "notes": "轮动候选-非当前次席",
-      "unit_nav": 1.4977,
-      "nav_date": "2026-11-24",
-      "daily_growth_pct": 0.65
+      "unit_nav": 1.4417,
+      "nav_date": "2026-11-26",
+      "daily_growth_pct": 0.05
     },
     {
       "fund_code": "008326",
@@ -125,9 +125,9 @@
       "theme": "通信",
       "risk_tag": "medium",
       "notes": "AI推荐-2026-05-21",
-      "unit_nav": 2.4932,
-      "nav_date": "2026-11-24",
-      "daily_growth_pct": 0.49
+      "unit_nav": 2.4562,
+      "nav_date": "2026-11-26",
+      "daily_growth_pct": 2.13
     },
     {
       "fund_code": "016370",
@@ -145,13 +145,13 @@
       "theme": "消费",
       "risk_tag": "medium",
       "notes": "",
-      "unit_nav": 0.4472,
-      "nav_date": "2026-11-24",
-      "daily_growth_pct": -0.16
+      "unit_nav": 0.4466,
+      "nav_date": "2026-11-26",
+      "daily_growth_pct": -1.0
     }
   ],
   "advice": {
-    "market_summary": "AI 建议生成失败，已降级为仅规则扫描。原因：RuntimeError: LLM 请求失败（已重试 3 次）: Error code: 402 - Insufficient Balance (request_id: e580cd4f-aa31-449b-bfb6-dabed8d08552)",
+    "market_summary": "AI 建议生成失败，已降级为仅规则扫描。原因：RuntimeError: LLM 请求失败（已重试 3 次）: Error code: 402 - Insufficient Balance (request_id: a57ad17e-a7d1-4b5d-a8e3-9f7be39eb87e)",
     "overall_risk_level": "medium",
     "actions": [],
     "switch_candidates": [],
@@ -160,25 +160,125 @@
         "rule_id": "SATELLITE_CAP",
         "severity": "warning",
         "fund_code": null,
-        "message": "行业卫星占管理仓 63.3% 超过目标 40%，建议减卫星，利润转入 110020/022430 真宽基",
+        "message": "行业卫星占管理仓 63.2% 超过目标 40%，建议减卫星，利润转入 110020/022430 真宽基",
         "suggested_action": "reduce"
       },
       {
         "rule_id": "SATELLITE_PRIMARY_CAP",
         "severity": "warning",
         "fund_code": "012737",
-        "message": "主卫星 012737 占管理仓 32.7% 高于目标 25%，建议减至约 25%（腾给次席或回宽基）",
+        "message": "主卫星 012737 占管理仓 32.6% 高于目标 25%，建议减至约 25%（腾给次席或回宽基）",
         "suggested_action": "reduce"
       },
       {
         "rule_id": "DIP_BUY_SATELLITE",
         "severity": "info",
         "fund_code": "012737",
-        "message": "主卫星 012737 已占管理仓 32.7% 接近/达到上限 25%，禁止下跌补仓；应减仓或持有",
+        "message": "主卫星 012737 已占管理仓 32.6% 接近/达到上限 25%，禁止下跌补仓；应减仓或持有",
         "suggested_action": "hold"
       }
     ],
     "news_digest": [
+      {
+        "keyword": "半导体",
+        "title": "欧股半导体板块个股BESI、ASMI、Soitec、X-FAB和意法半导体上涨4%至6%",
+        "published_at": "2026-11-26 16:06:54",
+        "source": "东方财富Choice数据",
+        "url": "http://finance.eastmoney.com/a/202611263940616566.html",
+        "content_preview": "欧股半导体板块个股BESI、ASMI、Soitec、X-FAB和意法半导体上涨4%至6%。",
+        "summary": "欧股半导体板块个股BESI、ASMI、Soitec、X-FAB和意法半导体上涨4%至6%。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "消费",
+        "title": "冰雪消费热度走高，港股通消费ETF华夏（513230）午盘加速震荡",
+        "published_at": "2026-11-26 14:02:30",
+        "source": "每日经济新闻",
+        "url": "http://finance.eastmoney.com/a/202611263940536855.html",
+        "content_preview": "港股通消费ETF华夏（513230）：跟踪中证港股通消费主题指数，该指数覆盖酒旅、餐饮等传统服务业龙头，更包含潮玩、金饰等高弹性资产，以及运动服饰、白电等高股息标的；成分股近乎囊括港股消费的各个领域，包括泡泡玛特、蜜雪集团、百胜中国、老铺…",
+        "summary": "港股通消费ETF华夏（513230）：跟踪中证港股通消费主题指数，该指数覆盖酒旅、餐饮等传统服务业龙头，更包含潮玩、金饰等高弹性资产，以及运动服饰、白电等高股息标的；成分股近乎囊括港股消费的各个领域，包括泡泡玛特、蜜雪集团、百胜中国、老铺…",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "人工智能",
+        "title": "人工智能，最新利好！八部门发布",
+        "published_at": "2026-11-26 12:58:00",
+        "source": "上海证券报",
+        "url": "http://finance.eastmoney.com/a/202611263940507312.html",
+        "content_preview": "《规划》提出，稳妥有序推动云计算、大模型等人工智能相关服务出海，培育人工智能领域服务贸易新业态。鼓励人工智能企业在防范技术外流前提下整合硬件制造商、算力提供商、IT基础设施运营商等，形成“技术+产品+服务”一体化解决方案，拓展海外市场布局。",
+        "summary": "《规划》提出，稳妥有序推动云计算、大模型等人工智能相关服务出海，培育人工智能领域服务贸易新业态。鼓励人工智能企业在防范技术外流前提下整合硬件制造商、算力提供商、IT基础设施运营商等，形成“技术+产品+服务”一体化解决方案，拓展海外市场布局。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "创新药",
+        "title": "医保双目录正式落地，创新药支付端兑现密集，港股通创新药ETF嘉实(520970)把握港股创新药产业发展机会",
+        "published_at": "2026-11-26 11:43:01",
+        "source": "界面新闻",
+        "url": "http://finance.eastmoney.com/a/202611263940525456.html",
+        "content_preview": "随着医保双目录正式落地，创新药支付端兑现密集，基本医保新增1类创新药数量创新高，商保创新药目录扩容，为创新药产业链带来实质性利好。招商证券认为，出海兑现与门槛并存，多家企业收到大额BD首付款或里程碑付款，验证了国产创新药的全球竞争力。",
+        "summary": "随着医保双目录正式落地，创新药支付端兑现密集，基本医保新增1类创新药数量创新高，商保创新药目录扩容，为创新药产业链带来实质性利好。招商证券认为，出海兑现与门槛并存，多家企业收到大额BD首付款或里程碑付款，验证了国产创新药的全球竞争力。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "半导体",
+        "title": "如何看待半导体后续的修复行情？",
+        "published_at": "2026-11-26 11:32:18",
+        "source": "21世纪经济报道",
+        "url": "http://finance.eastmoney.com/a/202611263940503858.html",
+        "content_preview": "11月26日，半导体产业链波动加大，设备、材料、设计、制造走势分化。截至发稿，寒武纪、中巨芯盘中涨超4%，雅克科技、华峰测控涨超3%，长川科技、中科飞测涨超2%，中微公司、北方华创等下跌飘绿。",
+        "summary": "11月26日，半导体产业链波动加大，设备、材料、设计、制造走势分化。截至发稿，寒武纪、中巨芯盘中涨超4%，雅克科技、华峰测控涨超3%，长川科技、中科飞测涨超2%，中微公司、北方华创等下跌飘绿。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "消费",
+        "title": "必选消费逆势活跃，南方基金旗下消费ETF南方(159689)跟踪标的指数中证主要消费指数(000932.SH) 昨日收涨0.20%",
+        "published_at": "2026-11-26 10:51:04",
+        "source": "财联社",
+        "url": "http://finance.eastmoney.com/a/202611263940462357.html",
+        "content_preview": "直接催化来自政策与公司治理层面：《扩大消费“十五五”规划》提出深入实施提振消费专项行动，目标到2030年社零总额达到60万亿元左右，为消费基础设施和政策传导给出量化锚；部分消费龙头股东增持和中式分红安排也在改善股东回报预期。",
+        "summary": "直接催化来自政策与公司治理层面：《扩大消费“十五五”规划》提出深入实施提振消费专项行动，目标到2030年社零总额达到60万亿元左右，为消费基础设施和政策传导给出量化锚；部分消费龙头股东增持和中式分红安排也在改善股东回报预期。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "创新药",
+        "title": "创新药出海逻辑不断兑现，创新药ETF国泰（517110）标的指数涨2.13%",
+        "published_at": "2026-11-26 10:47:00",
+        "source": "每日经济新闻",
+        "url": "http://finance.eastmoney.com/a/202611263940537283.html",
+        "content_preview": "创新药ETF国泰（517110）紧密跟踪中证沪港深创新药产业指数，为投资者一键布局沪深港三地创新药产业核心资产提供了便捷工具。",
+        "summary": "创新药ETF国泰（517110）紧密跟踪中证沪港深创新药产业指数，为投资者一键布局沪深港三地创新药产业核心资产提供了便捷工具。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "创新药",
+        "title": "创新药概念早盘调整",
+        "published_at": "2026-11-26 09:59:54",
+        "source": "第一财经",
+        "url": "http://finance.eastmoney.com/a/202611263940426777.html",
+        "content_preview": "近岸蛋白跌超10%，万邦医药、石药景峰、桂林三金、莱美药业、一品红跌超5%。",
+        "summary": "近岸蛋白跌超10%，万邦医药、石药景峰、桂林三金、莱美药业、一品红跌超5%。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "半导体",
+        "title": "日韩半导体巨头，直线拉升",
+        "published_at": "2026-11-26 09:05:47",
+        "source": "上海证券报",
+        "url": "http://finance.eastmoney.com/a/202611263940393538.html",
+        "content_preview": "日韩半导体巨头多数大涨，铠侠一度直线飙涨超14%，SK海力士涨超5%，三星电子涨近3%。",
+        "summary": "日韩半导体巨头多数大涨，铠侠一度直线飙涨超14%，SK海力士涨超5%，三星电子涨近3%。",
+        "summary_source": "preview"
+      },
+      {
+        "keyword": "人工智能",
+        "title": "中国深度参与人工智能国标体系建设",
+        "published_at": "2026-11-26 01:39:00",
+        "source": "证券日报",
+        "url": "http://finance.eastmoney.com/a/202611263939938279.html",
+        "content_preview": "同时，参与人工智能国际标准体系建设的过程，也会反向牵引国内产业链迭代，持续巩固我国人工智能产业的长期竞争优势。 朱克力表示，全球在人工智能标准领域的博弈仍在持续。",
+        "summary": "同时，参与人工智能国际标准体系建设的过程，也会反向牵引国内产业链迭代，持续巩固我国人工智能产业的长期竞争优势。 朱克力表示，全球在人工智能标准领域的博弈仍在持续。",
+        "summary_source": "preview"
+      },
       {
         "keyword": "人工智能",
         "title": "人工智能专业考研逆势升温",
@@ -190,16 +290,6 @@
         "summary_source": "preview"
       },
       {
-        "keyword": "半导体",
-        "title": "欧洲半导体板块下挫",
-        "published_at": "2026-11-25 16:05:56",
-        "source": "东方财富Choice数据",
-        "url": "http://finance.eastmoney.com/a/202611253939529034.html",
-        "content_preview": "欧洲半导体板块下挫，Soitec、意法半导体、ASMI、阿斯麦、BE Semiconductor下跌1.7%-4.1%。",
-        "summary": "欧洲半导体板块下挫，Soitec、意法半导体、ASMI、阿斯麦、BE Semiconductor下跌1.7%-4.1%。",
-        "summary_source": "preview"
-      },
-      {
         "keyword": "消费",
         "title": "消费新场景新业态加速涌现，布局消费板块有哪些ETF？恒生消费ETF景顺(513970)标的指数一键覆盖“传统+新兴”消费龙头",
         "published_at": "2026-11-25 14:52:29",
@@ -207,96 +297,6 @@
         "url": "http://finance.eastmoney.com/a/202611253939483550.html",
         "content_preview": "既包含跟我们衣食住行相关的传统消费，又包含泡泡玛特、老铺黄金、名创优品、毛戈平等新兴消费龙头，未来还有可能纳入更契合新一代消费群体需求的企业。",
         "summary": "既包含跟我们衣食住行相关的传统消费，又包含泡泡玛特、老铺黄金、名创优品、毛戈平等新兴消费龙头，未来还有可能纳入更契合新一代消费群体需求的企业。",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "电力",
-        "title": "哥伦比亚电力设施遭袭致多省停电",
-        "published_at": "2026-11-25 14:28:02",
-        "source": "新华社",
-        "url": "http://finance.eastmoney.com/a/202611253939473166.html",
-        "content_preview": "新华财经波哥大11月25日电（记者李子健）哥伦比亚总统府24日发表声明说，该国西南部电力设施当天遭恐怖袭击，造成一座变电站的两条输电线路故障，多省出现大范围停电。 声明说，此次袭击是恐怖组织对哥政府近期安全行动的报复。",
-        "summary": "新华财经波哥大11月25日电（记者李子健）哥伦比亚总统府24日发表声明说，该国西南部电力设施当天遭恐怖袭击，造成一座变电站的两条输电线路故障，多省出现大范围停电。 声明说，此次袭击是恐怖组织对哥政府近期安全行动的报复。",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "人工智能",
-        "title": "我国牵头制定78项人工智能国际标准，AI人工智能ETF平安(512930)交投活跃",
-        "published_at": "2026-11-25 11:05:45",
-        "source": "界面新闻",
-        "url": "http://finance.eastmoney.com/a/202611253939460411.html",
-        "content_preview": "AI人工智能ETF平安(512930)紧密跟踪中证人工智能主题指数，中证人工智能主题指数选取50只业务涉及为人工智能提供基础资源、技术以及应用支持的上市公司证券作为指数样本，以反映人工智能主题上市公司证券的整体表现。",
-        "summary": "AI人工智能ETF平安(512930)紧密跟踪中证人工智能主题指数，中证人工智能主题指数选取50只业务涉及为人工智能提供基础资源、技术以及应用支持的上市公司证券作为指数样本，以反映人工智能主题上市公司证券的整体表现。",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "创新药",
-        "title": "国内创新药产业迎来资本端与研发端强劲共振，港股通创新药ETF嘉实(520970)囊括港股创新药龙头",
-        "published_at": "2026-11-25 11:04:30",
-        "source": "界面新闻",
-        "url": "http://finance.eastmoney.com/a/202611253939460349.html",
-        "content_preview": "港股通创新药ETF嘉实(520970)紧密跟踪中证港股通创新药指数，指数成分股涉及创新药研发以及为制药企业提供药物研究、开发和生产等服务的标的，囊括港股创新药龙头。 没有股票账户的场外投资者可以通过港股通创新药ETF联接基金(024700…",
-        "summary": "港股通创新药ETF嘉实(520970)紧密跟踪中证港股通创新药指数，指数成分股涉及创新药研发以及为制药企业提供药物研究、开发和生产等服务的标的，囊括港股创新药龙头。 没有股票账户的场外投资者可以通过港股通创新药ETF联接基金(024700…",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "半导体",
-        "title": "港股半导体概念集体走弱，半导体基本面未变订单足丨港股异动",
-        "published_at": "2026-11-25 10:47:00",
-        "source": "21世纪经济报道",
-        "url": "http://finance.eastmoney.com/a/202611253939382230.html",
-        "content_preview": "参考研报来源： 中银国际-《半导体行业：市场对海外代工断供的担忧反应过度，建议逢低买入》-2026年11月20日 国元证券-《半导体与半导体生产设备行业：AI产业链预期重估，关注国产制造与长期供货保障－周报》-2026年11月23日",
-        "summary": "参考研报来源： 中银国际-《半导体行业：市场对海外代工断供的担忧反应过度，建议逢低买入》-2026年11月20日 国元证券-《半导体与半导体生产设备行业：AI产业链预期重估，关注国产制造与长期供货保障－周报》-2026年11月23日",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "创新药",
-        "title": "港股通创新药板块高开 港股通创新药ETF易方达涨2.35%",
-        "published_at": "2026-11-25 10:01:09",
-        "source": "东方财富证券",
-        "url": "http://finance.eastmoney.com/a/202611253939375170.html",
-        "content_preview": "另有机构观点指出，港股创新药板块前期调整后估值处于低位，南向资金持续流入创新药龙头，在全球创新药景气上行与港股估值修复背景下，港股创新药公司成长空间与估值弹性居前。 关联产品：港股通创新药ETF易方达（159316）",
-        "summary": "另有机构观点指出，港股创新药板块前期调整后估值处于低位，南向资金持续流入创新药龙头，在全球创新药景气上行与港股估值修复背景下，港股创新药公司成长空间与估值弹性居前。 关联产品：港股通创新药ETF易方达（159316）",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "创新药",
-        "title": "政策持续支持创新药发展，港股通创新药ETF鹏华涨超2%",
-        "published_at": "2026-11-25 09:53:21",
-        "source": "东方财富证券",
-        "url": "http://finance.eastmoney.com/a/202611253939350852.html",
-        "content_preview": "港股通创新药ETF鹏华(159286)紧密跟踪国证港股通创新药指数，国证港股通创新药指数旨在反映港股通范围内创新药领域上市公司的运行特征。",
-        "summary": "港股通创新药ETF鹏华(159286)紧密跟踪国证港股通创新药指数，国证港股通创新药指数旨在反映港股通范围内创新药领域上市公司的运行特征。",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "人工智能",
-        "title": "港股人工智能股持续走弱",
-        "published_at": "2026-11-25 09:41:53",
-        "source": "第一财经",
-        "url": "http://finance.eastmoney.com/a/202611253939345224.html",
-        "content_preview": "壁仞科技跌超14%，MINIMAX跌超7%，智谱跌超6%。",
-        "summary": "壁仞科技跌超14%，MINIMAX跌超7%，智谱跌超6%。",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "消费",
-        "title": "隔夜美股消费板块大涨，A股科技与消费同样呈现跷跷板效应",
-        "published_at": "2026-11-25 09:21:54",
-        "source": "每日经济新闻",
-        "url": "http://finance.eastmoney.com/a/202611253939332781.html",
-        "content_preview": "截至2026年11月25日，隔夜美股大型科技股再度全线重挫，费城半导体指数大跌7.88%；医药与消费板块逆市走强，其中，财报超预期的科尔士百货大涨超19%，美元树大升超11%，耐克上涨近6%，可口可乐上涨约2%，联合健康上涨近2%。",
-        "summary": "截至2026年11月25日，隔夜美股大型科技股再度全线重挫，费城半导体指数大跌7.88%；医药与消费板块逆市走强，其中，财报超预期的科尔士百货大涨超19%，美元树大升超11%，耐克上涨近6%，可口可乐上涨约2%，联合健康上涨近2%。",
-        "summary_source": "preview"
-      },
-      {
-        "keyword": "消费",
-        "title": "政策加码服务消费，必选消费韧性凸显，消费板块迎来结构性机遇",
-        "published_at": "2026-11-24 13:14:35",
-        "source": "界面新闻",
-        "url": "http://finance.eastmoney.com/a/202611243938340494.html",
-        "content_preview": "居民消费由生存型商品消费转向发展型、享受型服务消费，服务性支出占比已接近半数，增速持续跑赢商品零售，文旅康养、养老托育、文娱体验等服务消费仍有巨大增量空间。服务消费的政策支撑正在从“倡导”阶段进入可量化、可追踪的设施落地阶段。",
-        "summary": "居民消费由生存型商品消费转向发展型、享受型服务消费，服务性支出占比已接近半数，增速持续跑赢商品零售，文旅康养、养老托育、文娱体验等服务消费仍有巨大增量空间。服务消费的政策支撑正在从“倡导”阶段进入可量化、可追踪的设施落地阶段。",
         "summary_source": "preview"
       }
     ],
@@ -316,25 +316,25 @@
         {
           "name": "广发创新药产业ETF联接A",
           "code": "012737",
-          "trend": "downtrend_intact",
-          "trend_label": "下降趋势未转强（大跌后小弹）",
-          "hint": "近90日跌约12.7%，自低点仅反弹0.8%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
+          "trend": "neutral",
+          "trend_label": "震荡/方向不明",
+          "hint": "阶段涨跌不大，以规则与止损为主，不宜频繁换基。",
           "lookback_days": 90,
           "data_points": 59,
-          "period_return_pct": -12.68,
-          "drawdown_from_peak_pct": -12.68,
-          "bounce_from_trough_pct": 0.82
+          "period_return_pct": -11.87,
+          "drawdown_from_peak_pct": -12.87,
+          "bounce_from_trough_pct": 0.26
         },
         {
           "name": "南方500信息联接A",
           "code": "002900",
           "trend": "downtrend_intact",
           "trend_label": "下降趋势未转强（大跌后小弹）",
-          "hint": "近90日跌约32.4%，自低点仅反弹0.0%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
+          "hint": "近90日跌约31.5%，自低点仅反弹0.0%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
           "lookback_days": 90,
           "data_points": 59,
-          "period_return_pct": -32.37,
-          "drawdown_from_peak_pct": -33.18,
+          "period_return_pct": -31.53,
+          "drawdown_from_peak_pct": -33.52,
           "bounce_from_trough_pct": 0.0
         },
         {
@@ -342,50 +342,50 @@
           "code": "110020",
           "trend": "downtrend_intact",
           "trend_label": "下降趋势未转强（大跌后小弹）",
-          "hint": "近90日跌约14.6%，自低点仅反弹0.0%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
+          "hint": "近90日跌约14.2%，自低点仅反弹0.0%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
           "lookback_days": 90,
           "data_points": 59,
-          "period_return_pct": -14.57,
-          "drawdown_from_peak_pct": -14.57,
-          "bounce_from_trough_pct": 0.0
+          "period_return_pct": -14.17,
+          "drawdown_from_peak_pct": -14.45,
+          "bounce_from_trough_pct": 0.05
         },
         {
           "name": "国泰黄金ETF联接C",
           "code": "004253",
           "trend": "downtrend_intact",
           "trend_label": "下降趋势未转强（大跌后小弹）",
-          "hint": "近90日跌约23.9%，自低点仅反弹0.0%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
+          "hint": "近90日跌约23.2%，自低点仅反弹1.1%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
           "lookback_days": 90,
           "data_points": 59,
-          "period_return_pct": -23.85,
-          "drawdown_from_peak_pct": -24.02,
-          "bounce_from_trough_pct": 0.0
+          "period_return_pct": -23.22,
+          "drawdown_from_peak_pct": -23.22,
+          "bounce_from_trough_pct": 1.06
         },
         {
           "name": "国泰中证机器人ETF联接C",
           "code": "020290",
           "trend": "downtrend_intact",
           "trend_label": "下降趋势未转强（大跌后小弹）",
-          "hint": "近90日跌约18.7%，自低点仅反弹1.5%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
+          "hint": "近90日跌约19.4%，自低点仅反弹0.0%（小弹），趋势心法：下降未转强，不宜急于抄底或换入同主题，优先风控。",
           "lookback_days": 90,
           "data_points": 59,
-          "period_return_pct": -18.66,
-          "drawdown_from_peak_pct": -19.39,
-          "bounce_from_trough_pct": 1.45
+          "period_return_pct": -19.36,
+          "drawdown_from_peak_pct": -20.98,
+          "bounce_from_trough_pct": 0.0
         }
       ],
       "benchmark": null
     },
     "skipped": true,
-    "skip_reason": "LLM 失败已降级: LLM 请求失败（已重试 3 次）: Error code: 402 - Insufficient Balance (request_id: e580cd4f-aa31-449b-bfb6-dabed8d08552)",
+    "skip_reason": "LLM 失败已降级: LLM 请求失败（已重试 3 次）: Error code: 402 - Insufficient Balance (request_id: a57ad17e-a7d1-4b5d-a8e3-9f7be39eb87e)",
     "model": "deepseek-v4-flash"
   },
   "market_flow": {
-    "trade_date": "2026-11-25",
+    "trade_date": "2026-11-26",
     "overall_direction": "neutral",
     "overall_label": "主力方向中性",
     "northbound": {
-      "trade_date": "2026-11-25",
+      "trade_date": "2026-11-26",
       "sh_net_yi": null,
       "sz_net_yi": null,
       "total_net_yi": null,
@@ -394,10 +394,10 @@
       "note": "北向资金每日「成交净买额」自 2024-08-19 起交易所已暂停披露，第三方接口（含 AkShare/东方财富）返回 0 或空值属正常，不代表当日无交易。可参考下方 A 股行业/概念主力资金与南向资金。"
     },
     "southbound": {
-      "trade_date": "2026-11-25",
-      "sh_net_yi": 40.1,
-      "sz_net_yi": 24.24,
-      "total_net_yi": 64.34
+      "trade_date": "2026-11-26",
+      "sh_net_yi": -105.98,
+      "sz_net_yi": -107.53,
+      "total_net_yi": -213.51
     },
     "top_inflows": [],
     "top_outflows": [],
@@ -409,7 +409,7 @@
     "horizon": "1-2周",
     "overall_bias": "neutral",
     "capital_flow_view": "今日未能获取完整资金流数据。",
-    "policy_event_view": "人工智能专业考研逆势升温；欧洲半导体板块下挫；消费新场景新业态加速涌现，布局消费板块有哪些ETF？恒生消费ETF景顺(513970)标的指数一键覆盖“传统+新兴”消费",
+    "policy_event_view": "欧股半导体板块个股BESI、ASMI、Soitec、X-FAB和意法半导体上涨4%至6%；冰雪消费热度走高，港股通消费ETF华夏（513230）午盘加速震荡；人工智能，最新利好！八部门发布",
     "theme_outlook": [],
     "key_risks": [
       "数据不完整时方向判断可靠性下降"
@@ -417,7 +417,7 @@
     "confidence": 0.35,
     "disclaimer": "以上仅为信息整理与方向研判，不构成投资建议。",
     "skipped": true,
-    "skip_reason": "LLM 方向分析失败: LLM 请求失败（已重试 3 次）: Error code: 402 - Insufficient Balance (request_id: 540aa760-5eea-47f7-a348-1d5cfca44ab9)",
+    "skip_reason": "LLM 方向分析失败: LLM 请求失败（已重试 3 次）: Error code: 402 - Insufficient Balance (request_id: a0a2a0bc-8d7c-49e2-8480-201d058f4f34)",
     "model": null
   },
   "flow_trends": {
@@ -425,7 +425,7 @@
     "snapshot_days": 1,
     "daily_series": [
       {
-        "date": "2026-11-25",
+        "date": "2026-11-26",
         "overall_direction": "neutral",
         "overall_label": "主力方向中性",
         "northbound_net_yi": null,
@@ -460,582 +460,578 @@
   "charts": {
     "lookback_days": 90,
     "fund_return_indexed": {
-      "002900": [
+      "004253": [
         {
-          "date": "2026-08-27",
+          "date": "2026-08-28",
           "value": 100.0
         },
         {
-          "date": "2026-08-28",
-          "value": 98.27
-        },
-        {
           "date": "2026-08-31",
-          "value": 100.17
+          "value": 96.74
         },
         {
           "date": "2026-09-01",
-          "value": 97.73
+          "value": 96.29
         },
         {
           "date": "2026-09-02",
-          "value": 96.18
+          "value": 94.22
         },
         {
           "date": "2026-09-03",
-          "value": 96.05
+          "value": 96.21
         },
         {
           "date": "2026-09-04",
-          "value": 93.42
+          "value": 97.08
         },
         {
           "date": "2026-09-07",
-          "value": 96.79
+          "value": 95.44
         },
         {
           "date": "2026-09-08",
-          "value": 96.1
+          "value": 95.64
         },
         {
           "date": "2026-09-09",
-          "value": 95.53
+          "value": 95.62
         },
         {
           "date": "2026-09-10",
-          "value": 95.38
+          "value": 95.77
         },
         {
           "date": "2026-09-11",
-          "value": 94.06
+          "value": 94.41
         },
         {
           "date": "2026-09-14",
-          "value": 93.71
+          "value": 93.77
         },
         {
           "date": "2026-09-15",
-          "value": 94.54
+          "value": 93.26
         },
         {
           "date": "2026-09-16",
-          "value": 97.58
+          "value": 94.1
         },
         {
           "date": "2026-09-17",
-          "value": 97.4
+          "value": 93.9
         },
         {
           "date": "2026-09-18",
-          "value": 100.74
+          "value": 95.13
         },
         {
           "date": "2026-09-21",
-          "value": 101.21
+          "value": 94.26
         },
         {
           "date": "2026-09-22",
-          "value": 101.15
+          "value": 93.65
         },
         {
           "date": "2026-09-23",
-          "value": 100.95
+          "value": 93.84
         },
         {
           "date": "2026-09-24",
-          "value": 98.46
+          "value": 93.03
         },
         {
           "date": "2026-09-28",
-          "value": 94.52
+          "value": 90.53
         },
         {
           "date": "2026-09-29",
-          "value": 95.29
+          "value": 90.13
         },
         {
           "date": "2026-09-30",
-          "value": 93.52
+          "value": 91.09
         },
         {
           "date": "2026-10-08",
-          "value": 89.38
+          "value": 89.57
         },
         {
           "date": "2026-10-09",
-          "value": 88.55
+          "value": 90.77
         },
         {
           "date": "2026-10-12",
-          "value": 85.89
+          "value": 90.66
         },
         {
           "date": "2026-10-13",
-          "value": 86.33
+          "value": 90.78
         },
         {
           "date": "2026-10-14",
-          "value": 84.82
+          "value": 89.82
         },
         {
           "date": "2026-10-15",
-          "value": 82.28
+          "value": 89.62
         },
         {
           "date": "2026-10-16",
-          "value": 81.57
+          "value": 90.48
         },
         {
           "date": "2026-10-19",
-          "value": 80.73
+          "value": 90.42
         },
         {
           "date": "2026-10-20",
-          "value": 82.17
+          "value": 89.31
         },
         {
           "date": "2026-10-21",
-          "value": 82.77
+          "value": 89.07
         },
         {
           "date": "2026-10-22",
-          "value": 80.09
+          "value": 88.37
         },
         {
           "date": "2026-10-23",
-          "value": 82.4
+          "value": 86.72
         },
         {
           "date": "2026-10-26",
-          "value": 79.49
+          "value": 86.45
         },
         {
           "date": "2026-10-27",
-          "value": 76.03
+          "value": 86.35
         },
         {
           "date": "2026-10-28",
-          "value": 78.73
+          "value": 87.2
         },
         {
           "date": "2026-10-29",
-          "value": 74.92
+          "value": 86.84
         },
         {
           "date": "2026-10-30",
-          "value": 71.24
+          "value": 85.8
         },
         {
           "date": "2026-11-02",
-          "value": 73.63
+          "value": 83.91
         },
         {
           "date": "2026-11-03",
-          "value": 70.36
+          "value": 84.31
         },
         {
           "date": "2026-11-04",
-          "value": 76.85
+          "value": 86.61
         },
         {
           "date": "2026-11-05",
-          "value": 78.2
+          "value": 88.69
         },
         {
           "date": "2026-11-06",
-          "value": 75.56
+          "value": 87.17
         },
         {
           "date": "2026-11-09",
-          "value": 76.02
+          "value": 88.39
         },
         {
           "date": "2026-11-10",
-          "value": 77.73
+          "value": 88.64
         },
         {
           "date": "2026-11-11",
-          "value": 79.84
+          "value": 87.57
         },
         {
           "date": "2026-11-12",
-          "value": 78.72
+          "value": 85.44
         },
         {
           "date": "2026-11-13",
-          "value": 76.45
+          "value": 84.04
         },
         {
           "date": "2026-11-16",
-          "value": 72.45
+          "value": 83.23
         },
         {
           "date": "2026-11-17",
-          "value": 72.66
+          "value": 83.5
         },
         {
           "date": "2026-11-18",
-          "value": 73.7
+          "value": 81.38
         },
         {
           "date": "2026-11-19",
-          "value": 73.6
+          "value": 80.46
         },
         {
           "date": "2026-11-20",
-          "value": 69.8
+          "value": 76.7
         },
         {
           "date": "2026-11-23",
-          "value": 71.39
+          "value": 78.32
         },
         {
           "date": "2026-11-24",
-          "value": 72.21
+          "value": 78.02
         },
         {
           "date": "2026-11-25",
-          "value": 67.63
+          "value": 75.98
+        },
+        {
+          "date": "2026-11-26",
+          "value": 76.78
+        }
+      ],
+      "002900": [
+        {
+          "date": "2026-08-28",
+          "value": 100.0
+        },
+        {
+          "date": "2026-08-31",
+          "value": 101.94
+        },
+        {
+          "date": "2026-09-01",
+          "value": 99.45
+        },
+        {
+          "date": "2026-09-02",
+          "value": 97.87
+        },
+        {
+          "date": "2026-09-03",
+          "value": 97.74
+        },
+        {
+          "date": "2026-09-04",
+          "value": 95.07
+        },
+        {
+          "date": "2026-09-07",
+          "value": 98.5
+        },
+        {
+          "date": "2026-09-08",
+          "value": 97.8
+        },
+        {
+          "date": "2026-09-09",
+          "value": 97.21
+        },
+        {
+          "date": "2026-09-10",
+          "value": 97.06
+        },
+        {
+          "date": "2026-09-11",
+          "value": 95.72
+        },
+        {
+          "date": "2026-09-14",
+          "value": 95.36
+        },
+        {
+          "date": "2026-09-15",
+          "value": 96.21
+        },
+        {
+          "date": "2026-09-16",
+          "value": 99.3
+        },
+        {
+          "date": "2026-09-17",
+          "value": 99.12
+        },
+        {
+          "date": "2026-09-18",
+          "value": 102.52
+        },
+        {
+          "date": "2026-09-21",
+          "value": 102.99
+        },
+        {
+          "date": "2026-09-22",
+          "value": 102.94
+        },
+        {
+          "date": "2026-09-23",
+          "value": 102.73
+        },
+        {
+          "date": "2026-09-24",
+          "value": 100.19
+        },
+        {
+          "date": "2026-09-28",
+          "value": 96.19
+        },
+        {
+          "date": "2026-09-29",
+          "value": 96.97
+        },
+        {
+          "date": "2026-09-30",
+          "value": 95.17
+        },
+        {
+          "date": "2026-10-08",
+          "value": 90.96
+        },
+        {
+          "date": "2026-10-09",
+          "value": 90.11
+        },
+        {
+          "date": "2026-10-12",
+          "value": 87.41
+        },
+        {
+          "date": "2026-10-13",
+          "value": 87.85
+        },
+        {
+          "date": "2026-10-14",
+          "value": 86.31
+        },
+        {
+          "date": "2026-10-15",
+          "value": 83.73
+        },
+        {
+          "date": "2026-10-16",
+          "value": 83.01
+        },
+        {
+          "date": "2026-10-19",
+          "value": 82.15
+        },
+        {
+          "date": "2026-10-20",
+          "value": 83.62
+        },
+        {
+          "date": "2026-10-21",
+          "value": 84.23
+        },
+        {
+          "date": "2026-10-22",
+          "value": 81.5
+        },
+        {
+          "date": "2026-10-23",
+          "value": 83.85
+        },
+        {
+          "date": "2026-10-26",
+          "value": 80.89
+        },
+        {
+          "date": "2026-10-27",
+          "value": 77.37
+        },
+        {
+          "date": "2026-10-28",
+          "value": 80.12
+        },
+        {
+          "date": "2026-10-29",
+          "value": 76.25
+        },
+        {
+          "date": "2026-10-30",
+          "value": 72.49
+        },
+        {
+          "date": "2026-11-02",
+          "value": 74.93
+        },
+        {
+          "date": "2026-11-03",
+          "value": 71.6
+        },
+        {
+          "date": "2026-11-04",
+          "value": 78.2
+        },
+        {
+          "date": "2026-11-05",
+          "value": 79.58
+        },
+        {
+          "date": "2026-11-06",
+          "value": 76.89
+        },
+        {
+          "date": "2026-11-09",
+          "value": 77.36
+        },
+        {
+          "date": "2026-11-10",
+          "value": 79.1
+        },
+        {
+          "date": "2026-11-11",
+          "value": 81.24
+        },
+        {
+          "date": "2026-11-12",
+          "value": 80.11
+        },
+        {
+          "date": "2026-11-13",
+          "value": 77.8
+        },
+        {
+          "date": "2026-11-16",
+          "value": 73.73
+        },
+        {
+          "date": "2026-11-17",
+          "value": 73.95
+        },
+        {
+          "date": "2026-11-18",
+          "value": 75.0
+        },
+        {
+          "date": "2026-11-19",
+          "value": 74.9
+        },
+        {
+          "date": "2026-11-20",
+          "value": 71.03
+        },
+        {
+          "date": "2026-11-23",
+          "value": 72.65
+        },
+        {
+          "date": "2026-11-24",
+          "value": 73.49
+        },
+        {
+          "date": "2026-11-25",
+          "value": 68.82
+        },
+        {
+          "date": "2026-11-26",
+          "value": 68.47
         }
       ],
       "020290": [
         {
-          "date": "2026-08-27",
+          "date": "2026-08-28",
           "value": 100.0
         },
         {
-          "date": "2026-08-28",
-          "value": 98.88
-        },
-        {
           "date": "2026-08-31",
-          "value": 100.9
+          "value": 102.05
         },
         {
           "date": "2026-09-01",
-          "value": 99.81
+          "value": 100.94
         },
         {
           "date": "2026-09-02",
-          "value": 98.1
+          "value": 99.21
         },
         {
           "date": "2026-09-03",
-          "value": 98.85
+          "value": 99.97
         },
         {
           "date": "2026-09-04",
-          "value": 97.18
+          "value": 98.28
         },
         {
           "date": "2026-09-07",
-          "value": 99.08
+          "value": 100.2
         },
         {
           "date": "2026-09-08",
-          "value": 98.39
+          "value": 99.5
         },
         {
           "date": "2026-09-09",
-          "value": 97.59
+          "value": 98.69
         },
         {
           "date": "2026-09-10",
-          "value": 96.1
+          "value": 97.19
         },
         {
           "date": "2026-09-11",
-          "value": 94.68
+          "value": 95.75
         },
         {
           "date": "2026-09-14",
-          "value": 95.0
+          "value": 96.07
         },
         {
           "date": "2026-09-15",
+          "value": 95.27
+        },
+        {
+          "date": "2026-09-16",
+          "value": 95.78
+        },
+        {
+          "date": "2026-09-17",
+          "value": 96.26
+        },
+        {
+          "date": "2026-09-18",
+          "value": 98.06
+        },
+        {
+          "date": "2026-09-21",
+          "value": 98.11
+        },
+        {
+          "date": "2026-09-22",
+          "value": 98.14
+        },
+        {
+          "date": "2026-09-23",
+          "value": 97.49
+        },
+        {
+          "date": "2026-09-24",
+          "value": 96.52
+        },
+        {
+          "date": "2026-09-28",
           "value": 94.2
         },
         {
-          "date": "2026-09-16",
-          "value": 94.71
-        },
-        {
-          "date": "2026-09-17",
-          "value": 95.18
-        },
-        {
-          "date": "2026-09-18",
-          "value": 96.96
-        },
-        {
-          "date": "2026-09-21",
-          "value": 97.01
-        },
-        {
-          "date": "2026-09-22",
-          "value": 97.04
-        },
-        {
-          "date": "2026-09-23",
-          "value": 96.4
-        },
-        {
-          "date": "2026-09-24",
-          "value": 95.44
-        },
-        {
-          "date": "2026-09-28",
-          "value": 93.14
-        },
-        {
           "date": "2026-09-29",
-          "value": 93.57
+          "value": 94.63
         },
         {
           "date": "2026-09-30",
-          "value": 93.17
+          "value": 94.23
         },
         {
           "date": "2026-10-08",
-          "value": 89.78
-        },
-        {
-          "date": "2026-10-09",
-          "value": 89.95
-        },
-        {
-          "date": "2026-10-12",
-          "value": 87.9
-        },
-        {
-          "date": "2026-10-13",
-          "value": 87.5
-        },
-        {
-          "date": "2026-10-14",
-          "value": 85.0
-        },
-        {
-          "date": "2026-10-15",
-          "value": 82.57
-        },
-        {
-          "date": "2026-10-16",
-          "value": 83.17
-        },
-        {
-          "date": "2026-10-19",
-          "value": 85.3
-        },
-        {
-          "date": "2026-10-20",
-          "value": 87.81
-        },
-        {
-          "date": "2026-10-21",
-          "value": 87.48
-        },
-        {
-          "date": "2026-10-22",
-          "value": 86.52
-        },
-        {
-          "date": "2026-10-23",
-          "value": 91.82
-        },
-        {
-          "date": "2026-10-26",
-          "value": 91.3
-        },
-        {
-          "date": "2026-10-27",
-          "value": 89.06
-        },
-        {
-          "date": "2026-10-28",
-          "value": 92.48
-        },
-        {
-          "date": "2026-10-29",
-          "value": 89.69
-        },
-        {
-          "date": "2026-10-30",
-          "value": 86.39
-        },
-        {
-          "date": "2026-11-02",
-          "value": 88.39
-        },
-        {
-          "date": "2026-11-03",
-          "value": 86.79
-        },
-        {
-          "date": "2026-11-04",
-          "value": 90.71
-        },
-        {
-          "date": "2026-11-05",
-          "value": 92.45
-        },
-        {
-          "date": "2026-11-06",
-          "value": 89.75
-        },
-        {
-          "date": "2026-11-09",
-          "value": 91.07
-        },
-        {
-          "date": "2026-11-10",
-          "value": 92.68
-        },
-        {
-          "date": "2026-11-11",
-          "value": 94.06
-        },
-        {
-          "date": "2026-11-12",
-          "value": 90.19
-        },
-        {
-          "date": "2026-11-13",
-          "value": 89.17
-        },
-        {
-          "date": "2026-11-16",
-          "value": 86.42
-        },
-        {
-          "date": "2026-11-17",
-          "value": 84.65
-        },
-        {
-          "date": "2026-11-18",
-          "value": 83.77
-        },
-        {
-          "date": "2026-11-19",
-          "value": 83.25
-        },
-        {
-          "date": "2026-11-20",
-          "value": 80.17
-        },
-        {
-          "date": "2026-11-23",
-          "value": 85.01
-        },
-        {
-          "date": "2026-11-24",
-          "value": 85.34
-        },
-        {
-          "date": "2026-11-25",
-          "value": 81.34
-        }
-      ],
-      "004253": [
-        {
-          "date": "2026-08-27",
-          "value": 100.0
-        },
-        {
-          "date": "2026-08-28",
-          "value": 100.22
-        },
-        {
-          "date": "2026-08-31",
-          "value": 96.95
-        },
-        {
-          "date": "2026-09-01",
-          "value": 96.51
-        },
-        {
-          "date": "2026-09-02",
-          "value": 94.43
-        },
-        {
-          "date": "2026-09-03",
-          "value": 96.42
-        },
-        {
-          "date": "2026-09-04",
-          "value": 97.3
-        },
-        {
-          "date": "2026-09-07",
-          "value": 95.65
-        },
-        {
-          "date": "2026-09-08",
-          "value": 95.85
-        },
-        {
-          "date": "2026-09-09",
-          "value": 95.83
-        },
-        {
-          "date": "2026-09-10",
-          "value": 95.98
-        },
-        {
-          "date": "2026-09-11",
-          "value": 94.62
-        },
-        {
-          "date": "2026-09-14",
-          "value": 93.97
-        },
-        {
-          "date": "2026-09-15",
-          "value": 93.47
-        },
-        {
-          "date": "2026-09-16",
-          "value": 94.3
-        },
-        {
-          "date": "2026-09-17",
-          "value": 94.11
-        },
-        {
-          "date": "2026-09-18",
-          "value": 95.34
-        },
-        {
-          "date": "2026-09-21",
-          "value": 94.47
-        },
-        {
-          "date": "2026-09-22",
-          "value": 93.86
-        },
-        {
-          "date": "2026-09-23",
-          "value": 94.05
-        },
-        {
-          "date": "2026-09-24",
-          "value": 93.23
-        },
-        {
-          "date": "2026-09-28",
-          "value": 90.73
-        },
-        {
-          "date": "2026-09-29",
-          "value": 90.33
-        },
-        {
-          "date": "2026-09-30",
-          "value": 91.29
-        },
-        {
-          "date": "2026-10-08",
-          "value": 89.77
+          "value": 90.8
         },
         {
           "date": "2026-10-09",
@@ -1043,165 +1039,875 @@
         },
         {
           "date": "2026-10-12",
-          "value": 90.86
+          "value": 88.9
         },
         {
           "date": "2026-10-13",
-          "value": 90.98
+          "value": 88.49
         },
         {
           "date": "2026-10-14",
-          "value": 90.01
+          "value": 85.96
         },
         {
           "date": "2026-10-15",
-          "value": 89.82
+          "value": 83.51
         },
         {
           "date": "2026-10-16",
-          "value": 90.67
+          "value": 84.11
         },
         {
           "date": "2026-10-19",
-          "value": 90.61
+          "value": 86.26
         },
         {
           "date": "2026-10-20",
-          "value": 89.51
+          "value": 88.8
         },
         {
           "date": "2026-10-21",
-          "value": 89.27
+          "value": 88.47
         },
         {
           "date": "2026-10-22",
-          "value": 88.56
+          "value": 87.5
         },
         {
           "date": "2026-10-23",
-          "value": 86.91
+          "value": 92.86
         },
         {
           "date": "2026-10-26",
-          "value": 86.64
+          "value": 92.33
         },
         {
           "date": "2026-10-27",
-          "value": 86.54
+          "value": 90.07
         },
         {
           "date": "2026-10-28",
-          "value": 87.39
+          "value": 93.53
         },
         {
           "date": "2026-10-29",
-          "value": 87.03
+          "value": 90.7
         },
         {
           "date": "2026-10-30",
-          "value": 85.99
+          "value": 87.37
         },
         {
           "date": "2026-11-02",
-          "value": 84.09
+          "value": 89.39
         },
         {
           "date": "2026-11-03",
-          "value": 84.5
+          "value": 87.77
         },
         {
           "date": "2026-11-04",
-          "value": 86.8
+          "value": 91.74
         },
         {
           "date": "2026-11-05",
-          "value": 88.89
+          "value": 93.5
         },
         {
           "date": "2026-11-06",
-          "value": 87.36
+          "value": 90.76
         },
         {
           "date": "2026-11-09",
-          "value": 88.59
+          "value": 92.11
         },
         {
           "date": "2026-11-10",
-          "value": 88.83
+          "value": 93.73
         },
         {
           "date": "2026-11-11",
-          "value": 87.76
+          "value": 95.12
         },
         {
           "date": "2026-11-12",
-          "value": 85.62
+          "value": 91.21
         },
         {
           "date": "2026-11-13",
-          "value": 84.22
+          "value": 90.18
         },
         {
           "date": "2026-11-16",
-          "value": 83.41
+          "value": 87.4
         },
         {
           "date": "2026-11-17",
-          "value": 83.69
+          "value": 85.61
         },
         {
           "date": "2026-11-18",
-          "value": 81.56
+          "value": 84.72
         },
         {
           "date": "2026-11-19",
-          "value": 80.64
+          "value": 84.19
         },
         {
           "date": "2026-11-20",
-          "value": 76.87
+          "value": 81.08
         },
         {
           "date": "2026-11-23",
-          "value": 78.5
+          "value": 85.98
         },
         {
           "date": "2026-11-24",
-          "value": 78.2
+          "value": 86.3
         },
         {
           "date": "2026-11-25",
-          "value": 76.15
+          "value": 82.26
+        },
+        {
+          "date": "2026-11-26",
+          "value": 80.64
         }
       ],
       "110020": [
         {
-          "date": "2026-08-27",
+          "date": "2026-08-28",
           "value": 100.0
         },
         {
-          "date": "2026-08-28",
-          "value": 99.59
-        },
-        {
           "date": "2026-08-31",
-          "value": 99.92
+          "value": 100.33
         },
         {
           "date": "2026-09-01",
-          "value": 99.65
+          "value": 100.06
         },
         {
           "date": "2026-09-02",
-          "value": 98.34
+          "value": 98.75
         },
         {
           "date": "2026-09-03",
-          "value": 98.44
+          "value": 98.85
         },
         {
           "date": "2026-09-04",
-          "value": 98.36
+          "value": 98.77
+        },
+        {
+          "date": "2026-09-07",
+          "value": 99.32
+        },
+        {
+          "date": "2026-09-08",
+          "value": 98.98
+        },
+        {
+          "date": "2026-09-09",
+          "value": 99.28
+        },
+        {
+          "date": "2026-09-10",
+          "value": 98.83
+        },
+        {
+          "date": "2026-09-11",
+          "value": 98.06
+        },
+        {
+          "date": "2026-09-14",
+          "value": 97.44
+        },
+        {
+          "date": "2026-09-15",
+          "value": 96.83
+        },
+        {
+          "date": "2026-09-16",
+          "value": 97.48
+        },
+        {
+          "date": "2026-09-17",
+          "value": 97.07
+        },
+        {
+          "date": "2026-09-18",
+          "value": 98.06
+        },
+        {
+          "date": "2026-09-21",
+          "value": 98.73
+        },
+        {
+          "date": "2026-09-22",
+          "value": 98.86
+        },
+        {
+          "date": "2026-09-23",
+          "value": 98.3
+        },
+        {
+          "date": "2026-09-24",
+          "value": 96.72
+        },
+        {
+          "date": "2026-09-28",
+          "value": 94.69
+        },
+        {
+          "date": "2026-09-29",
+          "value": 94.79
+        },
+        {
+          "date": "2026-09-30",
+          "value": 95.07
+        },
+        {
+          "date": "2026-10-08",
+          "value": 94.08
+        },
+        {
+          "date": "2026-10-09",
+          "value": 94.24
+        },
+        {
+          "date": "2026-10-12",
+          "value": 93.64
+        },
+        {
+          "date": "2026-10-13",
+          "value": 93.39
+        },
+        {
+          "date": "2026-10-14",
+          "value": 92.19
+        },
+        {
+          "date": "2026-10-15",
+          "value": 91.11
+        },
+        {
+          "date": "2026-10-16",
+          "value": 91.23
+        },
+        {
+          "date": "2026-10-19",
+          "value": 91.34
+        },
+        {
+          "date": "2026-10-20",
+          "value": 90.86
+        },
+        {
+          "date": "2026-10-21",
+          "value": 90.07
+        },
+        {
+          "date": "2026-10-22",
+          "value": 88.51
+        },
+        {
+          "date": "2026-10-23",
+          "value": 90.0
+        },
+        {
+          "date": "2026-10-26",
+          "value": 89.98
+        },
+        {
+          "date": "2026-10-27",
+          "value": 88.9
+        },
+        {
+          "date": "2026-10-28",
+          "value": 89.59
+        },
+        {
+          "date": "2026-10-29",
+          "value": 88.72
+        },
+        {
+          "date": "2026-10-30",
+          "value": 87.56
+        },
+        {
+          "date": "2026-11-02",
+          "value": 88.22
+        },
+        {
+          "date": "2026-11-03",
+          "value": 88.04
+        },
+        {
+          "date": "2026-11-04",
+          "value": 89.98
+        },
+        {
+          "date": "2026-11-05",
+          "value": 90.23
+        },
+        {
+          "date": "2026-11-06",
+          "value": 89.03
+        },
+        {
+          "date": "2026-11-09",
+          "value": 89.08
+        },
+        {
+          "date": "2026-11-10",
+          "value": 89.14
+        },
+        {
+          "date": "2026-11-11",
+          "value": 89.49
+        },
+        {
+          "date": "2026-11-12",
+          "value": 88.82
+        },
+        {
+          "date": "2026-11-13",
+          "value": 88.23
+        },
+        {
+          "date": "2026-11-16",
+          "value": 87.49
+        },
+        {
+          "date": "2026-11-17",
+          "value": 87.41
+        },
+        {
+          "date": "2026-11-18",
+          "value": 87.56
+        },
+        {
+          "date": "2026-11-19",
+          "value": 87.58
+        },
+        {
+          "date": "2026-11-20",
+          "value": 86.93
+        },
+        {
+          "date": "2026-11-23",
+          "value": 87.05
+        },
+        {
+          "date": "2026-11-24",
+          "value": 87.16
+        },
+        {
+          "date": "2026-11-25",
+          "value": 85.78
+        },
+        {
+          "date": "2026-11-26",
+          "value": 85.83
+        }
+      ],
+      "012737": [
+        {
+          "date": "2026-08-28",
+          "value": 100.0
+        },
+        {
+          "date": "2026-08-31",
+          "value": 98.56
+        },
+        {
+          "date": "2026-09-01",
+          "value": 98.45
+        },
+        {
+          "date": "2026-09-02",
+          "value": 97.88
+        },
+        {
+          "date": "2026-09-03",
+          "value": 98.78
+        },
+        {
+          "date": "2026-09-04",
+          "value": 97.94
+        },
+        {
+          "date": "2026-09-07",
+          "value": 97.65
+        },
+        {
+          "date": "2026-09-08",
+          "value": 98.52
+        },
+        {
+          "date": "2026-09-09",
+          "value": 97.11
+        },
+        {
+          "date": "2026-09-10",
+          "value": 95.6
+        },
+        {
+          "date": "2026-09-11",
+          "value": 93.75
+        },
+        {
+          "date": "2026-09-14",
+          "value": 96.56
+        },
+        {
+          "date": "2026-09-15",
+          "value": 95.65
+        },
+        {
+          "date": "2026-09-16",
+          "value": 96.07
+        },
+        {
+          "date": "2026-09-17",
+          "value": 96.54
+        },
+        {
+          "date": "2026-09-18",
+          "value": 97.1
+        },
+        {
+          "date": "2026-09-21",
+          "value": 100.86
+        },
+        {
+          "date": "2026-09-22",
+          "value": 100.57
+        },
+        {
+          "date": "2026-09-23",
+          "value": 100.98
+        },
+        {
+          "date": "2026-09-24",
+          "value": 97.67
+        },
+        {
+          "date": "2026-09-28",
+          "value": 97.63
+        },
+        {
+          "date": "2026-09-29",
+          "value": 97.88
+        },
+        {
+          "date": "2026-09-30",
+          "value": 101.14
+        },
+        {
+          "date": "2026-10-08",
+          "value": 97.68
+        },
+        {
+          "date": "2026-10-09",
+          "value": 98.06
+        },
+        {
+          "date": "2026-10-12",
+          "value": 96.56
+        },
+        {
+          "date": "2026-10-13",
+          "value": 95.42
+        },
+        {
+          "date": "2026-10-14",
+          "value": 94.34
+        },
+        {
+          "date": "2026-10-15",
+          "value": 94.18
+        },
+        {
+          "date": "2026-10-16",
+          "value": 92.86
+        },
+        {
+          "date": "2026-10-19",
+          "value": 93.74
+        },
+        {
+          "date": "2026-10-20",
+          "value": 94.91
+        },
+        {
+          "date": "2026-10-21",
+          "value": 94.96
+        },
+        {
+          "date": "2026-10-22",
+          "value": 92.19
+        },
+        {
+          "date": "2026-10-23",
+          "value": 94.44
+        },
+        {
+          "date": "2026-10-26",
+          "value": 94.7
+        },
+        {
+          "date": "2026-10-27",
+          "value": 91.08
+        },
+        {
+          "date": "2026-10-28",
+          "value": 92.2
+        },
+        {
+          "date": "2026-10-29",
+          "value": 91.67
+        },
+        {
+          "date": "2026-10-30",
+          "value": 91.57
+        },
+        {
+          "date": "2026-11-02",
+          "value": 92.71
+        },
+        {
+          "date": "2026-11-03",
+          "value": 92.04
+        },
+        {
+          "date": "2026-11-04",
+          "value": 96.62
+        },
+        {
+          "date": "2026-11-05",
+          "value": 99.02
+        },
+        {
+          "date": "2026-11-06",
+          "value": 97.28
+        },
+        {
+          "date": "2026-11-09",
+          "value": 96.66
+        },
+        {
+          "date": "2026-11-10",
+          "value": 96.53
+        },
+        {
+          "date": "2026-11-11",
+          "value": 95.71
+        },
+        {
+          "date": "2026-11-12",
+          "value": 95.56
+        },
+        {
+          "date": "2026-11-13",
+          "value": 94.01
+        },
+        {
+          "date": "2026-11-16",
+          "value": 92.64
+        },
+        {
+          "date": "2026-11-17",
+          "value": 91.84
+        },
+        {
+          "date": "2026-11-18",
+          "value": 90.82
+        },
+        {
+          "date": "2026-11-19",
+          "value": 90.51
+        },
+        {
+          "date": "2026-11-20",
+          "value": 87.9
+        },
+        {
+          "date": "2026-11-23",
+          "value": 90.44
+        },
+        {
+          "date": "2026-11-24",
+          "value": 89.24
+        },
+        {
+          "date": "2026-11-25",
+          "value": 88.62
+        },
+        {
+          "date": "2026-11-26",
+          "value": 88.13
+        }
+      ],
+      "270042": [
+        {
+          "date": "2026-08-28",
+          "value": 100.0
+        },
+        {
+          "date": "2026-08-31",
+          "value": 100.09
+        },
+        {
+          "date": "2026-09-01",
+          "value": 98.77
+        },
+        {
+          "date": "2026-09-02",
+          "value": 99.01
+        },
+        {
+          "date": "2026-09-03",
+          "value": 100.14
+        },
+        {
+          "date": "2026-09-04",
+          "value": 100.31
+        },
+        {
+          "date": "2026-09-07",
+          "value": 100.32
+        },
+        {
+          "date": "2026-09-08",
+          "value": 100.2
+        },
+        {
+          "date": "2026-09-09",
+          "value": 99.86
+        },
+        {
+          "date": "2026-09-10",
+          "value": 98.77
+        },
+        {
+          "date": "2026-09-11",
+          "value": 99.62
+        },
+        {
+          "date": "2026-09-14",
+          "value": 98.72
+        },
+        {
+          "date": "2026-09-15",
+          "value": 98.04
+        },
+        {
+          "date": "2026-09-16",
+          "value": 97.99
+        },
+        {
+          "date": "2026-09-17",
+          "value": 99.62
+        },
+        {
+          "date": "2026-09-18",
+          "value": 100.19
+        },
+        {
+          "date": "2026-09-21",
+          "value": 103.02
+        },
+        {
+          "date": "2026-09-22",
+          "value": 103.82
+        },
+        {
+          "date": "2026-09-23",
+          "value": 102.94
+        },
+        {
+          "date": "2026-09-24",
+          "value": 102.98
+        },
+        {
+          "date": "2026-09-28",
+          "value": 102.15
+        },
+        {
+          "date": "2026-09-29",
+          "value": 102.37
+        },
+        {
+          "date": "2026-09-30",
+          "value": 102.52
+        },
+        {
+          "date": "2026-10-08",
+          "value": 103.57
+        },
+        {
+          "date": "2026-10-09",
+          "value": 104.0
+        },
+        {
+          "date": "2026-10-12",
+          "value": 103.23
+        },
+        {
+          "date": "2026-10-13",
+          "value": 102.87
+        },
+        {
+          "date": "2026-10-14",
+          "value": 100.7
+        },
+        {
+          "date": "2026-10-15",
+          "value": 100.64
+        },
+        {
+          "date": "2026-10-16",
+          "value": 98.07
+        },
+        {
+          "date": "2026-10-19",
+          "value": 99.18
+        },
+        {
+          "date": "2026-10-20",
+          "value": 99.03
+        },
+        {
+          "date": "2026-10-21",
+          "value": 100.13
+        },
+        {
+          "date": "2026-10-22",
+          "value": 97.22
+        },
+        {
+          "date": "2026-10-23",
+          "value": 97.18
+        },
+        {
+          "date": "2026-10-26",
+          "value": 98.21
+        },
+        {
+          "date": "2026-10-27",
+          "value": 99.5
+        },
+        {
+          "date": "2026-10-28",
+          "value": 100.04
+        },
+        {
+          "date": "2026-10-29",
+          "value": 98.61
+        },
+        {
+          "date": "2026-10-30",
+          "value": 95.15
+        },
+        {
+          "date": "2026-11-02",
+          "value": 93.83
+        },
+        {
+          "date": "2026-11-03",
+          "value": 94.47
+        },
+        {
+          "date": "2026-11-04",
+          "value": 95.37
+        },
+        {
+          "date": "2026-11-05",
+          "value": 89.25
+        },
+        {
+          "date": "2026-11-06",
+          "value": 90.46
+        },
+        {
+          "date": "2026-11-09",
+          "value": 93.58
+        },
+        {
+          "date": "2026-11-10",
+          "value": 92.99
+        },
+        {
+          "date": "2026-11-11",
+          "value": 95.18
+        },
+        {
+          "date": "2026-11-12",
+          "value": 94.87
+        },
+        {
+          "date": "2026-11-13",
+          "value": 93.67
+        },
+        {
+          "date": "2026-11-16",
+          "value": 91.12
+        },
+        {
+          "date": "2026-11-17",
+          "value": 90.45
+        },
+        {
+          "date": "2026-11-18",
+          "value": 90.81
+        },
+        {
+          "date": "2026-11-19",
+          "value": 88.83
+        },
+        {
+          "date": "2026-11-20",
+          "value": 83.91
+        },
+        {
+          "date": "2026-11-23",
+          "value": 89.57
+        },
+        {
+          "date": "2026-11-24",
+          "value": 87.77
+        },
+        {
+          "date": "2026-11-25",
+          "value": 87.19
+        }
+      ],
+      "022430": [
+        {
+          "date": "2026-08-28",
+          "value": 100.0
+        },
+        {
+          "date": "2026-08-31",
+          "value": 100.32
+        },
+        {
+          "date": "2026-09-01",
+          "value": 99.8
+        },
+        {
+          "date": "2026-09-02",
+          "value": 98.39
+        },
+        {
+          "date": "2026-09-03",
+          "value": 98.56
+        },
+        {
+          "date": "2026-09-04",
+          "value": 98.1
         },
         {
           "date": "2026-09-07",
@@ -1209,1165 +1915,697 @@
         },
         {
           "date": "2026-09-08",
-          "value": 98.58
+          "value": 98.66
         },
         {
           "date": "2026-09-09",
-          "value": 98.87
-        },
-        {
-          "date": "2026-09-10",
-          "value": 98.42
-        },
-        {
-          "date": "2026-09-11",
-          "value": 97.65
-        },
-        {
-          "date": "2026-09-14",
-          "value": 97.03
-        },
-        {
-          "date": "2026-09-15",
-          "value": 96.43
-        },
-        {
-          "date": "2026-09-16",
-          "value": 97.08
-        },
-        {
-          "date": "2026-09-17",
-          "value": 96.67
-        },
-        {
-          "date": "2026-09-18",
-          "value": 97.66
-        },
-        {
-          "date": "2026-09-21",
-          "value": 98.33
-        },
-        {
-          "date": "2026-09-22",
-          "value": 98.45
-        },
-        {
-          "date": "2026-09-23",
-          "value": 97.89
-        },
-        {
-          "date": "2026-09-24",
-          "value": 96.32
-        },
-        {
-          "date": "2026-09-28",
-          "value": 94.3
-        },
-        {
-          "date": "2026-09-29",
-          "value": 94.4
-        },
-        {
-          "date": "2026-09-30",
-          "value": 94.68
-        },
-        {
-          "date": "2026-10-08",
-          "value": 93.69
-        },
-        {
-          "date": "2026-10-09",
-          "value": 93.85
-        },
-        {
-          "date": "2026-10-12",
-          "value": 93.25
-        },
-        {
-          "date": "2026-10-13",
-          "value": 93.0
-        },
-        {
-          "date": "2026-10-14",
-          "value": 91.81
-        },
-        {
-          "date": "2026-10-15",
-          "value": 90.73
-        },
-        {
-          "date": "2026-10-16",
-          "value": 90.86
-        },
-        {
-          "date": "2026-10-19",
-          "value": 90.97
-        },
-        {
-          "date": "2026-10-20",
-          "value": 90.48
-        },
-        {
-          "date": "2026-10-21",
-          "value": 89.7
-        },
-        {
-          "date": "2026-10-22",
-          "value": 88.14
-        },
-        {
-          "date": "2026-10-23",
-          "value": 89.63
-        },
-        {
-          "date": "2026-10-26",
-          "value": 89.61
-        },
-        {
-          "date": "2026-10-27",
-          "value": 88.53
-        },
-        {
-          "date": "2026-10-28",
-          "value": 89.23
-        },
-        {
-          "date": "2026-10-29",
-          "value": 88.35
-        },
-        {
-          "date": "2026-10-30",
-          "value": 87.2
-        },
-        {
-          "date": "2026-11-02",
-          "value": 87.85
-        },
-        {
-          "date": "2026-11-03",
-          "value": 87.68
-        },
-        {
-          "date": "2026-11-04",
-          "value": 89.61
-        },
-        {
-          "date": "2026-11-05",
-          "value": 89.86
-        },
-        {
-          "date": "2026-11-06",
-          "value": 88.67
-        },
-        {
-          "date": "2026-11-09",
-          "value": 88.71
-        },
-        {
-          "date": "2026-11-10",
-          "value": 88.77
-        },
-        {
-          "date": "2026-11-11",
-          "value": 89.12
-        },
-        {
-          "date": "2026-11-12",
-          "value": 88.46
-        },
-        {
-          "date": "2026-11-13",
-          "value": 87.87
-        },
-        {
-          "date": "2026-11-16",
-          "value": 87.13
-        },
-        {
-          "date": "2026-11-17",
-          "value": 87.05
-        },
-        {
-          "date": "2026-11-18",
-          "value": 87.2
-        },
-        {
-          "date": "2026-11-19",
-          "value": 87.22
-        },
-        {
-          "date": "2026-11-20",
-          "value": 86.58
-        },
-        {
-          "date": "2026-11-23",
-          "value": 86.69
-        },
-        {
-          "date": "2026-11-24",
-          "value": 86.8
-        },
-        {
-          "date": "2026-11-25",
-          "value": 85.43
-        }
-      ],
-      "012737": [
-        {
-          "date": "2026-08-27",
-          "value": 100.0
-        },
-        {
-          "date": "2026-08-28",
-          "value": 98.54
-        },
-        {
-          "date": "2026-08-31",
-          "value": 97.12
-        },
-        {
-          "date": "2026-09-01",
-          "value": 97.01
-        },
-        {
-          "date": "2026-09-02",
-          "value": 96.45
-        },
-        {
-          "date": "2026-09-03",
-          "value": 97.33
-        },
-        {
-          "date": "2026-09-04",
-          "value": 96.51
-        },
-        {
-          "date": "2026-09-07",
-          "value": 96.22
-        },
-        {
-          "date": "2026-09-08",
-          "value": 97.07
-        },
-        {
-          "date": "2026-09-09",
-          "value": 95.69
-        },
-        {
-          "date": "2026-09-10",
-          "value": 94.2
-        },
-        {
-          "date": "2026-09-11",
-          "value": 92.38
-        },
-        {
-          "date": "2026-09-14",
-          "value": 95.15
-        },
-        {
-          "date": "2026-09-15",
-          "value": 94.25
-        },
-        {
-          "date": "2026-09-16",
-          "value": 94.66
-        },
-        {
-          "date": "2026-09-17",
-          "value": 95.13
-        },
-        {
-          "date": "2026-09-18",
-          "value": 95.68
-        },
-        {
-          "date": "2026-09-21",
-          "value": 99.39
-        },
-        {
-          "date": "2026-09-22",
-          "value": 99.1
-        },
-        {
-          "date": "2026-09-23",
-          "value": 99.5
-        },
-        {
-          "date": "2026-09-24",
-          "value": 96.24
-        },
-        {
-          "date": "2026-09-28",
-          "value": 96.21
-        },
-        {
-          "date": "2026-09-29",
-          "value": 96.45
-        },
-        {
-          "date": "2026-09-30",
-          "value": 99.66
-        },
-        {
-          "date": "2026-10-08",
-          "value": 96.26
-        },
-        {
-          "date": "2026-10-09",
-          "value": 96.62
-        },
-        {
-          "date": "2026-10-12",
-          "value": 95.15
-        },
-        {
-          "date": "2026-10-13",
-          "value": 94.02
-        },
-        {
-          "date": "2026-10-14",
-          "value": 92.96
-        },
-        {
-          "date": "2026-10-15",
-          "value": 92.8
-        },
-        {
-          "date": "2026-10-16",
-          "value": 91.5
-        },
-        {
-          "date": "2026-10-19",
-          "value": 92.37
-        },
-        {
-          "date": "2026-10-20",
-          "value": 93.52
-        },
-        {
-          "date": "2026-10-21",
-          "value": 93.57
-        },
-        {
-          "date": "2026-10-22",
-          "value": 90.84
-        },
-        {
-          "date": "2026-10-23",
-          "value": 93.06
-        },
-        {
-          "date": "2026-10-26",
-          "value": 93.31
-        },
-        {
-          "date": "2026-10-27",
-          "value": 89.75
-        },
-        {
-          "date": "2026-10-28",
-          "value": 90.86
-        },
-        {
-          "date": "2026-10-29",
-          "value": 90.32
-        },
-        {
-          "date": "2026-10-30",
-          "value": 90.23
-        },
-        {
-          "date": "2026-11-02",
-          "value": 91.35
-        },
-        {
-          "date": "2026-11-03",
-          "value": 90.69
-        },
-        {
-          "date": "2026-11-04",
-          "value": 95.21
-        },
-        {
-          "date": "2026-11-05",
-          "value": 97.57
-        },
-        {
-          "date": "2026-11-06",
-          "value": 95.85
-        },
-        {
-          "date": "2026-11-09",
-          "value": 95.24
-        },
-        {
-          "date": "2026-11-10",
-          "value": 95.11
-        },
-        {
-          "date": "2026-11-11",
-          "value": 94.31
-        },
-        {
-          "date": "2026-11-12",
-          "value": 94.17
-        },
-        {
-          "date": "2026-11-13",
-          "value": 92.64
-        },
-        {
-          "date": "2026-11-16",
-          "value": 91.29
-        },
-        {
-          "date": "2026-11-17",
-          "value": 90.5
-        },
-        {
-          "date": "2026-11-18",
-          "value": 89.49
-        },
-        {
-          "date": "2026-11-19",
-          "value": 89.18
-        },
-        {
-          "date": "2026-11-20",
-          "value": 86.61
-        },
-        {
-          "date": "2026-11-23",
-          "value": 89.12
-        },
-        {
-          "date": "2026-11-24",
-          "value": 87.93
-        },
-        {
-          "date": "2026-11-25",
-          "value": 87.32
-        }
-      ],
-      "270042": [
-        {
-          "date": "2026-08-27",
-          "value": 100.0
-        },
-        {
-          "date": "2026-08-28",
-          "value": 99.26
-        },
-        {
-          "date": "2026-08-31",
-          "value": 99.35
-        },
-        {
-          "date": "2026-09-01",
-          "value": 98.04
-        },
-        {
-          "date": "2026-09-02",
-          "value": 98.28
-        },
-        {
-          "date": "2026-09-03",
-          "value": 99.4
-        },
-        {
-          "date": "2026-09-04",
-          "value": 99.57
-        },
-        {
-          "date": "2026-09-07",
-          "value": 99.58
-        },
-        {
-          "date": "2026-09-08",
-          "value": 99.46
-        },
-        {
-          "date": "2026-09-09",
-          "value": 99.12
-        },
-        {
-          "date": "2026-09-10",
-          "value": 98.04
-        },
-        {
-          "date": "2026-09-11",
           "value": 98.88
         },
         {
-          "date": "2026-09-14",
-          "value": 97.99
-        },
-        {
-          "date": "2026-09-15",
-          "value": 97.31
-        },
-        {
-          "date": "2026-09-16",
-          "value": 97.27
-        },
-        {
-          "date": "2026-09-17",
-          "value": 98.88
-        },
-        {
-          "date": "2026-09-18",
-          "value": 99.44
-        },
-        {
-          "date": "2026-09-21",
-          "value": 102.26
-        },
-        {
-          "date": "2026-09-22",
-          "value": 103.05
-        },
-        {
-          "date": "2026-09-23",
-          "value": 102.17
-        },
-        {
-          "date": "2026-09-24",
-          "value": 102.22
-        },
-        {
-          "date": "2026-09-28",
-          "value": 101.4
-        },
-        {
-          "date": "2026-09-29",
-          "value": 101.61
-        },
-        {
-          "date": "2026-09-30",
-          "value": 101.77
-        },
-        {
-          "date": "2026-10-08",
-          "value": 102.81
-        },
-        {
-          "date": "2026-10-09",
-          "value": 103.23
-        },
-        {
-          "date": "2026-10-12",
-          "value": 102.47
-        },
-        {
-          "date": "2026-10-13",
-          "value": 102.11
-        },
-        {
-          "date": "2026-10-14",
-          "value": 99.96
-        },
-        {
-          "date": "2026-10-15",
-          "value": 99.9
-        },
-        {
-          "date": "2026-10-16",
-          "value": 97.34
-        },
-        {
-          "date": "2026-10-19",
-          "value": 98.45
-        },
-        {
-          "date": "2026-10-20",
+          "date": "2026-09-10",
           "value": 98.3
         },
         {
-          "date": "2026-10-21",
-          "value": 99.38
-        },
-        {
-          "date": "2026-10-22",
-          "value": 96.5
-        },
-        {
-          "date": "2026-10-23",
-          "value": 96.46
-        },
-        {
-          "date": "2026-10-26",
-          "value": 97.49
-        },
-        {
-          "date": "2026-10-27",
-          "value": 98.76
-        },
-        {
-          "date": "2026-10-28",
-          "value": 99.3
-        },
-        {
-          "date": "2026-10-29",
-          "value": 97.88
-        },
-        {
-          "date": "2026-10-30",
-          "value": 94.45
-        },
-        {
-          "date": "2026-11-02",
-          "value": 93.14
-        },
-        {
-          "date": "2026-11-03",
-          "value": 93.77
-        },
-        {
-          "date": "2026-11-04",
-          "value": 94.66
-        },
-        {
-          "date": "2026-11-05",
-          "value": 88.59
-        },
-        {
-          "date": "2026-11-06",
-          "value": 89.79
-        },
-        {
-          "date": "2026-11-09",
-          "value": 92.89
-        },
-        {
-          "date": "2026-11-10",
-          "value": 92.3
-        },
-        {
-          "date": "2026-11-11",
-          "value": 94.47
-        },
-        {
-          "date": "2026-11-12",
-          "value": 94.17
-        },
-        {
-          "date": "2026-11-13",
-          "value": 92.98
-        },
-        {
-          "date": "2026-11-16",
-          "value": 90.45
-        },
-        {
-          "date": "2026-11-17",
-          "value": 89.78
-        },
-        {
-          "date": "2026-11-18",
-          "value": 90.14
-        },
-        {
-          "date": "2026-11-19",
-          "value": 88.17
-        },
-        {
-          "date": "2026-11-20",
-          "value": 83.29
-        },
-        {
-          "date": "2026-11-23",
-          "value": 88.91
-        },
-        {
-          "date": "2026-11-24",
-          "value": 87.12
-        }
-      ],
-      "022430": [
-        {
-          "date": "2026-08-27",
-          "value": 100.0
-        },
-        {
-          "date": "2026-08-28",
-          "value": 99.51
-        },
-        {
-          "date": "2026-08-31",
-          "value": 99.83
-        },
-        {
-          "date": "2026-09-01",
-          "value": 99.32
-        },
-        {
-          "date": "2026-09-02",
-          "value": 97.91
-        },
-        {
-          "date": "2026-09-03",
-          "value": 98.08
-        },
-        {
-          "date": "2026-09-04",
-          "value": 97.63
-        },
-        {
-          "date": "2026-09-07",
-          "value": 98.43
-        },
-        {
-          "date": "2026-09-08",
-          "value": 98.18
-        },
-        {
-          "date": "2026-09-09",
-          "value": 98.4
-        },
-        {
-          "date": "2026-09-10",
-          "value": 97.82
-        },
-        {
           "date": "2026-09-11",
-          "value": 96.86
+          "value": 97.33
         },
         {
           "date": "2026-09-14",
-          "value": 96.33
+          "value": 96.8
         },
         {
           "date": "2026-09-15",
-          "value": 95.84
+          "value": 96.31
         },
         {
           "date": "2026-09-16",
-          "value": 96.73
+          "value": 97.21
         },
         {
           "date": "2026-09-17",
-          "value": 96.38
+          "value": 96.85
         },
         {
           "date": "2026-09-18",
-          "value": 97.56
+          "value": 98.04
         },
         {
           "date": "2026-09-21",
-          "value": 98.24
+          "value": 98.72
         },
         {
           "date": "2026-09-22",
-          "value": 98.32
+          "value": 98.8
         },
         {
           "date": "2026-09-23",
-          "value": 97.76
+          "value": 98.24
         },
         {
           "date": "2026-09-24",
-          "value": 95.96
+          "value": 96.43
         },
         {
           "date": "2026-09-28",
-          "value": 93.66
+          "value": 94.12
         },
         {
           "date": "2026-09-29",
-          "value": 93.87
+          "value": 94.33
         },
         {
           "date": "2026-09-30",
-          "value": 94.05
+          "value": 94.51
         },
         {
           "date": "2026-10-08",
-          "value": 92.69
+          "value": 93.14
         },
         {
           "date": "2026-10-09",
-          "value": 92.85
+          "value": 93.31
         },
         {
           "date": "2026-10-12",
-          "value": 91.78
+          "value": 92.23
         },
         {
           "date": "2026-10-13",
-          "value": 91.59
+          "value": 92.04
         },
         {
           "date": "2026-10-14",
-          "value": 90.25
+          "value": 90.69
         },
         {
           "date": "2026-10-15",
-          "value": 88.83
+          "value": 89.26
         },
         {
           "date": "2026-10-16",
-          "value": 88.95
+          "value": 89.38
         },
         {
           "date": "2026-10-19",
-          "value": 89.07
+          "value": 89.5
         },
         {
           "date": "2026-10-20",
-          "value": 88.85
+          "value": 89.29
         },
         {
           "date": "2026-10-21",
-          "value": 88.19
+          "value": 88.63
         },
         {
           "date": "2026-10-22",
-          "value": 86.46
+          "value": 86.88
         },
         {
           "date": "2026-10-23",
-          "value": 88.2
+          "value": 88.63
         },
         {
           "date": "2026-10-26",
-          "value": 87.81
+          "value": 88.24
         },
         {
           "date": "2026-10-27",
-          "value": 86.41
+          "value": 86.83
         },
         {
           "date": "2026-10-28",
-          "value": 87.38
+          "value": 87.8
         },
         {
           "date": "2026-10-29",
-          "value": 86.11
+          "value": 86.53
         },
         {
           "date": "2026-10-30",
-          "value": 84.59
+          "value": 85.0
         },
         {
           "date": "2026-11-02",
-          "value": 85.45
+          "value": 85.87
         },
         {
           "date": "2026-11-03",
-          "value": 85.04
+          "value": 85.46
         },
         {
           "date": "2026-11-04",
-          "value": 87.5
+          "value": 87.93
         },
         {
           "date": "2026-11-05",
-          "value": 88.09
+          "value": 88.52
         },
         {
           "date": "2026-11-06",
-          "value": 86.61
+          "value": 87.04
         },
         {
           "date": "2026-11-09",
-          "value": 86.56
+          "value": 86.98
         },
         {
           "date": "2026-11-10",
-          "value": 86.75
+          "value": 87.18
         },
         {
           "date": "2026-11-11",
-          "value": 87.26
+          "value": 87.69
         },
         {
           "date": "2026-11-12",
-          "value": 86.4
+          "value": 86.83
         },
         {
           "date": "2026-11-13",
-          "value": 85.43
+          "value": 85.85
         },
         {
           "date": "2026-11-16",
-          "value": 84.22
+          "value": 84.64
         },
         {
           "date": "2026-11-17",
-          "value": 84.07
+          "value": 84.48
         },
         {
           "date": "2026-11-18",
-          "value": 84.14
+          "value": 84.55
         },
         {
           "date": "2026-11-19",
-          "value": 84.1
+          "value": 84.51
         },
         {
           "date": "2026-11-20",
-          "value": 82.86
+          "value": 83.26
         },
         {
           "date": "2026-11-23",
-          "value": 83.33
+          "value": 83.73
         },
         {
           "date": "2026-11-24",
-          "value": 83.31
+          "value": 83.72
         },
         {
           "date": "2026-11-25",
-          "value": 81.53
+          "value": 81.93
+        },
+        {
+          "date": "2026-11-26",
+          "value": 81.87
         }
       ],
       "012734": [
         {
-          "date": "2026-08-27",
+          "date": "2026-08-28",
           "value": 100.0
         },
         {
-          "date": "2026-08-28",
-          "value": 98.96
-        },
-        {
           "date": "2026-08-31",
-          "value": 101.56
+          "value": 102.63
         },
         {
           "date": "2026-09-01",
-          "value": 101.01
+          "value": 102.08
         },
         {
           "date": "2026-09-02",
-          "value": 99.28
+          "value": 100.33
         },
         {
           "date": "2026-09-03",
-          "value": 98.85
+          "value": 99.89
         },
         {
           "date": "2026-09-04",
-          "value": 97.39
+          "value": 98.42
         },
         {
           "date": "2026-09-07",
-          "value": 99.91
+          "value": 100.96
         },
         {
           "date": "2026-09-08",
-          "value": 98.56
+          "value": 99.6
         },
         {
           "date": "2026-09-09",
-          "value": 98.06
+          "value": 99.1
         },
         {
           "date": "2026-09-10",
-          "value": 97.0
+          "value": 98.03
         },
         {
           "date": "2026-09-11",
-          "value": 96.89
+          "value": 97.91
         },
         {
           "date": "2026-09-14",
-          "value": 95.19
+          "value": 96.19
         },
         {
           "date": "2026-09-15",
-          "value": 95.3
+          "value": 96.31
         },
         {
           "date": "2026-09-16",
-          "value": 98.35
+          "value": 99.38
         },
         {
           "date": "2026-09-17",
-          "value": 97.93
+          "value": 98.97
         },
         {
           "date": "2026-09-18",
-          "value": 100.48
+          "value": 101.54
         },
         {
           "date": "2026-09-21",
-          "value": 101.51
+          "value": 102.58
         },
         {
           "date": "2026-09-22",
-          "value": 103.05
+          "value": 104.14
         },
         {
           "date": "2026-09-23",
-          "value": 102.3
+          "value": 103.37
         },
         {
           "date": "2026-09-24",
-          "value": 100.37
+          "value": 101.43
         },
         {
           "date": "2026-09-28",
-          "value": 96.08
+          "value": 97.1
         },
         {
           "date": "2026-09-29",
-          "value": 96.25
+          "value": 97.26
         },
         {
           "date": "2026-09-30",
-          "value": 94.81
+          "value": 95.81
         },
         {
           "date": "2026-10-08",
-          "value": 92.0
+          "value": 92.97
         },
         {
           "date": "2026-10-09",
-          "value": 92.13
+          "value": 93.11
         },
         {
           "date": "2026-10-12",
-          "value": 89.5
+          "value": 90.45
         },
         {
           "date": "2026-10-13",
-          "value": 89.21
+          "value": 90.15
         },
         {
           "date": "2026-10-14",
-          "value": 86.24
+          "value": 87.15
         },
         {
           "date": "2026-10-15",
-          "value": 83.3
+          "value": 84.18
         },
         {
           "date": "2026-10-16",
-          "value": 83.63
+          "value": 84.51
         },
         {
           "date": "2026-10-19",
-          "value": 83.95
+          "value": 84.83
         },
         {
           "date": "2026-10-20",
-          "value": 84.91
+          "value": 85.8
         },
         {
           "date": "2026-10-21",
-          "value": 85.53
+          "value": 86.44
         },
         {
           "date": "2026-10-22",
-          "value": 82.84
+          "value": 83.71
         },
         {
           "date": "2026-10-23",
-          "value": 86.22
+          "value": 87.13
         },
         {
           "date": "2026-10-26",
-          "value": 85.44
+          "value": 86.34
         },
         {
           "date": "2026-10-27",
-          "value": 82.3
+          "value": 83.17
         },
         {
           "date": "2026-10-28",
-          "value": 84.95
+          "value": 85.84
         },
         {
           "date": "2026-10-29",
-          "value": 81.47
+          "value": 82.33
         },
         {
           "date": "2026-10-30",
-          "value": 77.35
+          "value": 78.17
         },
         {
           "date": "2026-11-02",
-          "value": 78.88
+          "value": 79.72
         },
         {
           "date": "2026-11-03",
-          "value": 75.57
+          "value": 76.36
         },
         {
           "date": "2026-11-04",
-          "value": 80.76
+          "value": 81.61
         },
         {
           "date": "2026-11-05",
-          "value": 81.63
+          "value": 82.49
         },
         {
           "date": "2026-11-06",
-          "value": 78.61
+          "value": 79.44
         },
         {
           "date": "2026-11-09",
-          "value": 79.2
+          "value": 80.03
         },
         {
           "date": "2026-11-10",
-          "value": 80.49
+          "value": 81.33
         },
         {
           "date": "2026-11-11",
-          "value": 83.16
+          "value": 84.04
         },
         {
           "date": "2026-11-12",
-          "value": 82.4
+          "value": 83.27
         },
         {
           "date": "2026-11-13",
-          "value": 80.9
+          "value": 81.75
         },
         {
           "date": "2026-11-16",
-          "value": 76.95
+          "value": 77.76
         },
         {
           "date": "2026-11-17",
-          "value": 75.81
+          "value": 76.61
         },
         {
           "date": "2026-11-18",
-          "value": 76.82
+          "value": 77.63
         },
         {
           "date": "2026-11-19",
-          "value": 75.33
+          "value": 76.13
         },
         {
           "date": "2026-11-20",
-          "value": 72.07
+          "value": 72.83
         },
         {
           "date": "2026-11-23",
-          "value": 73.95
+          "value": 74.73
         },
         {
           "date": "2026-11-24",
-          "value": 74.43
+          "value": 75.21
+        },
+        {
+          "date": "2026-11-25",
+          "value": 72.36
+        },
+        {
+          "date": "2026-11-26",
+          "value": 72.4
         }
       ],
       "008326": [
         {
-          "date": "2026-08-27",
+          "date": "2026-08-28",
           "value": 100.0
         },
         {
+          "date": "2026-08-31",
+          "value": 101.27
+        },
+        {
+          "date": "2026-09-01",
+          "value": 98.82
+        },
+        {
+          "date": "2026-09-02",
+          "value": 97.16
+        },
+        {
+          "date": "2026-09-03",
+          "value": 96.91
+        },
+        {
+          "date": "2026-09-04",
+          "value": 94.82
+        },
+        {
+          "date": "2026-09-07",
+          "value": 101.5
+        },
+        {
+          "date": "2026-09-08",
+          "value": 100.79
+        },
+        {
+          "date": "2026-09-09",
+          "value": 102.12
+        },
+        {
+          "date": "2026-09-10",
+          "value": 101.64
+        },
+        {
+          "date": "2026-09-11",
+          "value": 102.1
+        },
+        {
+          "date": "2026-09-14",
+          "value": 99.9
+        },
+        {
+          "date": "2026-09-15",
+          "value": 99.48
+        },
+        {
+          "date": "2026-09-16",
+          "value": 103.84
+        },
+        {
+          "date": "2026-09-17",
+          "value": 104.02
+        },
+        {
+          "date": "2026-09-18",
+          "value": 106.37
+        },
+        {
+          "date": "2026-09-21",
+          "value": 107.27
+        },
+        {
+          "date": "2026-09-22",
+          "value": 106.51
+        },
+        {
+          "date": "2026-09-23",
+          "value": 105.82
+        },
+        {
+          "date": "2026-09-24",
+          "value": 102.61
+        },
+        {
+          "date": "2026-09-28",
+          "value": 94.97
+        },
+        {
+          "date": "2026-09-29",
+          "value": 95.88
+        },
+        {
+          "date": "2026-09-30",
+          "value": 95.08
+        },
+        {
+          "date": "2026-10-08",
+          "value": 89.96
+        },
+        {
+          "date": "2026-10-09",
+          "value": 88.41
+        },
+        {
+          "date": "2026-10-12",
+          "value": 84.13
+        },
+        {
+          "date": "2026-10-13",
+          "value": 86.01
+        },
+        {
+          "date": "2026-10-14",
+          "value": 83.0
+        },
+        {
+          "date": "2026-10-15",
+          "value": 79.28
+        },
+        {
+          "date": "2026-10-16",
+          "value": 78.81
+        },
+        {
+          "date": "2026-10-19",
+          "value": 78.48
+        },
+        {
+          "date": "2026-10-20",
+          "value": 78.62
+        },
+        {
+          "date": "2026-10-21",
+          "value": 80.11
+        },
+        {
+          "date": "2026-10-22",
+          "value": 75.25
+        },
+        {
+          "date": "2026-10-23",
+          "value": 76.25
+        },
+        {
+          "date": "2026-10-26",
+          "value": 72.85
+        },
+        {
+          "date": "2026-10-27",
+          "value": 70.53
+        },
+        {
+          "date": "2026-10-28",
+          "value": 73.86
+        },
+        {
+          "date": "2026-10-29",
+          "value": 67.73
+        },
+        {
+          "date": "2026-10-30",
+          "value": 62.94
+        },
+        {
+          "date": "2026-11-02",
+          "value": 63.19
+        },
+        {
+          "date": "2026-11-03",
+          "value": 58.43
+        },
+        {
+          "date": "2026-11-04",
+          "value": 63.55
+        },
+        {
+          "date": "2026-11-05",
+          "value": 62.42
+        },
+        {
+          "date": "2026-11-06",
+          "value": 58.66
+        },
+        {
+          "date": "2026-11-09",
+          "value": 59.85
+        },
+        {
+          "date": "2026-11-10",
+          "value": 61.42
+        },
+        {
+          "date": "2026-11-11",
+          "value": 66.44
+        },
+        {
+          "date": "2026-11-12",
+          "value": 65.3
+        },
+        {
+          "date": "2026-11-13",
+          "value": 61.17
+        },
+        {
+          "date": "2026-11-16",
+          "value": 56.26
+        },
+        {
+          "date": "2026-11-17",
+          "value": 54.97
+        },
+        {
+          "date": "2026-11-18",
+          "value": 56.69
+        },
+        {
+          "date": "2026-11-19",
+          "value": 56.4
+        },
+        {
+          "date": "2026-11-20",
+          "value": 53.71
+        },
+        {
+          "date": "2026-11-23",
+          "value": 56.21
+        },
+        {
+          "date": "2026-11-24",
+          "value": 56.49
+        },
+        {
+          "date": "2026-11-25",
+          "value": 54.49
+        },
+        {
+          "date": "2026-11-26",
+          "value": 55.65
+        }
+      ],
+      "016370": [
+        {
           "date": "2026-08-28",
-          "value": 98.54
+          "value": 100.0
         },
         {
           "date": "2026-08-31",
-          "value": 99.79
+          "value": 100.05
         },
         {
           "date": "2026-09-01",
@@ -2375,937 +2613,703 @@
         },
         {
           "date": "2026-09-02",
-          "value": 95.75
+          "value": 96.16
         },
         {
           "date": "2026-09-03",
-          "value": 95.5
+          "value": 96.43
         },
         {
           "date": "2026-09-04",
-          "value": 93.44
-        },
-        {
-          "date": "2026-09-07",
-          "value": 100.02
-        },
-        {
-          "date": "2026-09-08",
-          "value": 99.32
-        },
-        {
-          "date": "2026-09-09",
-          "value": 100.63
-        },
-        {
-          "date": "2026-09-10",
-          "value": 100.16
-        },
-        {
-          "date": "2026-09-11",
-          "value": 100.62
-        },
-        {
-          "date": "2026-09-14",
-          "value": 98.45
-        },
-        {
-          "date": "2026-09-15",
-          "value": 98.03
-        },
-        {
-          "date": "2026-09-16",
-          "value": 102.33
-        },
-        {
-          "date": "2026-09-17",
-          "value": 102.51
-        },
-        {
-          "date": "2026-09-18",
-          "value": 104.82
-        },
-        {
-          "date": "2026-09-21",
-          "value": 105.7
-        },
-        {
-          "date": "2026-09-22",
-          "value": 104.96
-        },
-        {
-          "date": "2026-09-23",
-          "value": 104.28
-        },
-        {
-          "date": "2026-09-24",
-          "value": 101.12
-        },
-        {
-          "date": "2026-09-28",
-          "value": 93.59
-        },
-        {
-          "date": "2026-09-29",
-          "value": 94.48
-        },
-        {
-          "date": "2026-09-30",
-          "value": 93.69
-        },
-        {
-          "date": "2026-10-08",
-          "value": 88.65
-        },
-        {
-          "date": "2026-10-09",
-          "value": 87.12
-        },
-        {
-          "date": "2026-10-12",
-          "value": 82.9
-        },
-        {
-          "date": "2026-10-13",
-          "value": 84.76
-        },
-        {
-          "date": "2026-10-14",
-          "value": 81.79
-        },
-        {
-          "date": "2026-10-15",
-          "value": 78.13
-        },
-        {
-          "date": "2026-10-16",
-          "value": 77.66
-        },
-        {
-          "date": "2026-10-19",
-          "value": 77.34
-        },
-        {
-          "date": "2026-10-20",
-          "value": 77.47
-        },
-        {
-          "date": "2026-10-21",
-          "value": 78.94
-        },
-        {
-          "date": "2026-10-22",
-          "value": 74.15
-        },
-        {
-          "date": "2026-10-23",
-          "value": 75.14
-        },
-        {
-          "date": "2026-10-26",
-          "value": 71.79
-        },
-        {
-          "date": "2026-10-27",
-          "value": 69.51
-        },
-        {
-          "date": "2026-10-28",
-          "value": 72.79
-        },
-        {
-          "date": "2026-10-29",
-          "value": 66.74
-        },
-        {
-          "date": "2026-10-30",
-          "value": 62.03
-        },
-        {
-          "date": "2026-11-02",
-          "value": 62.27
-        },
-        {
-          "date": "2026-11-03",
-          "value": 57.58
-        },
-        {
-          "date": "2026-11-04",
-          "value": 62.62
-        },
-        {
-          "date": "2026-11-05",
-          "value": 61.51
-        },
-        {
-          "date": "2026-11-06",
-          "value": 57.81
-        },
-        {
-          "date": "2026-11-09",
-          "value": 58.98
-        },
-        {
-          "date": "2026-11-10",
-          "value": 60.53
-        },
-        {
-          "date": "2026-11-11",
-          "value": 65.47
-        },
-        {
-          "date": "2026-11-12",
-          "value": 64.35
-        },
-        {
-          "date": "2026-11-13",
-          "value": 60.28
-        },
-        {
-          "date": "2026-11-16",
-          "value": 55.44
-        },
-        {
-          "date": "2026-11-17",
-          "value": 54.17
-        },
-        {
-          "date": "2026-11-18",
-          "value": 55.87
-        },
-        {
-          "date": "2026-11-19",
-          "value": 55.58
-        },
-        {
-          "date": "2026-11-20",
-          "value": 52.92
-        },
-        {
-          "date": "2026-11-23",
-          "value": 55.39
-        },
-        {
-          "date": "2026-11-24",
-          "value": 55.67
-        }
-      ],
-      "016370": [
-        {
-          "date": "2026-08-27",
-          "value": 100.0
-        },
-        {
-          "date": "2026-08-28",
-          "value": 98.43
-        },
-        {
-          "date": "2026-08-31",
-          "value": 98.48
-        },
-        {
-          "date": "2026-09-01",
-          "value": 95.85
-        },
-        {
-          "date": "2026-09-02",
-          "value": 94.65
-        },
-        {
-          "date": "2026-09-03",
           "value": 94.92
         },
         {
-          "date": "2026-09-04",
-          "value": 93.44
-        },
-        {
           "date": "2026-09-07",
-          "value": 101.01
+          "value": 102.62
         },
         {
           "date": "2026-09-08",
-          "value": 100.73
+          "value": 102.33
         },
         {
           "date": "2026-09-09",
-          "value": 101.83
+          "value": 103.45
         },
         {
           "date": "2026-09-10",
-          "value": 102.5
+          "value": 104.13
         },
         {
           "date": "2026-09-11",
-          "value": 101.94
+          "value": 103.57
         },
         {
           "date": "2026-09-14",
-          "value": 99.38
+          "value": 100.97
         },
         {
           "date": "2026-09-15",
-          "value": 99.1
+          "value": 100.68
         },
         {
           "date": "2026-09-16",
-          "value": 104.21
+          "value": 105.87
         },
         {
           "date": "2026-09-17",
-          "value": 104.51
+          "value": 106.17
         },
         {
           "date": "2026-09-18",
-          "value": 107.05
+          "value": 108.76
         },
         {
           "date": "2026-09-21",
-          "value": 107.91
+          "value": 109.63
         },
         {
           "date": "2026-09-22",
-          "value": 106.07
+          "value": 107.76
         },
         {
           "date": "2026-09-23",
-          "value": 106.06
+          "value": 107.75
         },
         {
           "date": "2026-09-24",
-          "value": 102.89
+          "value": 104.53
         },
         {
           "date": "2026-09-28",
-          "value": 94.89
+          "value": 96.4
         },
         {
           "date": "2026-09-29",
-          "value": 96.53
+          "value": 98.07
         },
         {
           "date": "2026-09-30",
-          "value": 96.55
+          "value": 98.09
         },
         {
           "date": "2026-10-08",
-          "value": 89.25
+          "value": 90.67
         },
         {
           "date": "2026-10-09",
-          "value": 88.16
+          "value": 89.57
         },
         {
           "date": "2026-10-12",
-          "value": 83.62
+          "value": 84.95
         },
         {
           "date": "2026-10-13",
-          "value": 86.17
+          "value": 87.54
         },
         {
           "date": "2026-10-14",
-          "value": 82.69
+          "value": 84.01
         },
         {
           "date": "2026-10-15",
-          "value": 78.28
+          "value": 79.52
         },
         {
           "date": "2026-10-16",
-          "value": 77.42
+          "value": 78.65
         },
         {
           "date": "2026-10-19",
-          "value": 76.81
+          "value": 78.03
         },
         {
           "date": "2026-10-20",
-          "value": 76.68
+          "value": 77.9
         },
         {
           "date": "2026-10-21",
-          "value": 78.56
+          "value": 79.81
         },
         {
           "date": "2026-10-22",
-          "value": 72.62
+          "value": 73.78
         },
         {
           "date": "2026-10-23",
-          "value": 73.47
+          "value": 74.64
         },
         {
           "date": "2026-10-26",
-          "value": 70.17
+          "value": 71.29
         },
         {
           "date": "2026-10-27",
-          "value": 68.06
+          "value": 69.15
         },
         {
           "date": "2026-10-28",
-          "value": 72.29
+          "value": 73.44
         },
         {
           "date": "2026-10-29",
-          "value": 64.63
+          "value": 65.66
         },
         {
           "date": "2026-10-30",
-          "value": 59.78
+          "value": 60.73
         },
         {
           "date": "2026-11-02",
-          "value": 59.79
+          "value": 60.75
         },
         {
           "date": "2026-11-03",
-          "value": 53.74
+          "value": 54.6
         },
         {
           "date": "2026-11-04",
-          "value": 59.28
+          "value": 60.22
         },
         {
           "date": "2026-11-05",
-          "value": 56.56
+          "value": 57.46
         },
         {
           "date": "2026-11-06",
-          "value": 52.63
+          "value": 53.47
         },
         {
           "date": "2026-11-09",
-          "value": 53.29
+          "value": 54.14
         },
         {
           "date": "2026-11-10",
-          "value": 54.88
+          "value": 55.75
         },
         {
           "date": "2026-11-11",
-          "value": 60.91
+          "value": 61.88
         },
         {
           "date": "2026-11-12",
-          "value": 60.21
+          "value": 61.17
         },
         {
           "date": "2026-11-13",
-          "value": 56.07
+          "value": 56.96
         },
         {
           "date": "2026-11-16",
-          "value": 51.16
+          "value": 51.98
         },
         {
           "date": "2026-11-17",
-          "value": 49.7
+          "value": 50.49
         },
         {
           "date": "2026-11-18",
-          "value": 50.48
+          "value": 51.29
         },
         {
           "date": "2026-11-19",
-          "value": 50.74
+          "value": 51.55
         },
         {
           "date": "2026-11-20",
-          "value": 48.08
+          "value": 48.85
         },
         {
           "date": "2026-11-23",
-          "value": 50.45
+          "value": 51.25
         },
         {
           "date": "2026-11-24",
-          "value": 50.67
+          "value": 51.48
         },
         {
           "date": "2026-11-25",
-          "value": 49.6
+          "value": 50.39
         }
       ],
       "012043": [
         {
-          "date": "2026-08-27",
+          "date": "2026-08-28",
           "value": 100.0
         },
         {
-          "date": "2026-08-28",
-          "value": 100.81
-        },
-        {
           "date": "2026-08-31",
-          "value": 99.91
+          "value": 99.11
         },
         {
           "date": "2026-09-01",
-          "value": 101.87
+          "value": 101.05
         },
         {
           "date": "2026-09-02",
-          "value": 100.62
+          "value": 99.82
         },
         {
           "date": "2026-09-03",
-          "value": 100.23
+          "value": 99.43
         },
         {
           "date": "2026-09-04",
-          "value": 103.16
+          "value": 102.33
         },
         {
           "date": "2026-09-07",
-          "value": 102.76
+          "value": 101.94
         },
         {
           "date": "2026-09-08",
-          "value": 102.51
+          "value": 101.69
         },
         {
           "date": "2026-09-09",
-          "value": 101.41
+          "value": 100.59
         },
         {
           "date": "2026-09-10",
-          "value": 99.52
+          "value": 98.72
         },
         {
           "date": "2026-09-11",
-          "value": 97.97
-        },
-        {
-          "date": "2026-09-14",
-          "value": 97.95
-        },
-        {
-          "date": "2026-09-15",
-          "value": 97.54
-        },
-        {
-          "date": "2026-09-16",
-          "value": 97.42
-        },
-        {
-          "date": "2026-09-17",
           "value": 97.19
         },
         {
+          "date": "2026-09-14",
+          "value": 97.17
+        },
+        {
+          "date": "2026-09-15",
+          "value": 96.76
+        },
+        {
+          "date": "2026-09-16",
+          "value": 96.64
+        },
+        {
+          "date": "2026-09-17",
+          "value": 96.41
+        },
+        {
           "date": "2026-09-18",
-          "value": 97.86
+          "value": 97.07
         },
         {
           "date": "2026-09-21",
-          "value": 98.99
+          "value": 98.19
         },
         {
           "date": "2026-09-22",
-          "value": 98.89
+          "value": 98.1
         },
         {
           "date": "2026-09-23",
-          "value": 98.87
+          "value": 98.08
         },
         {
           "date": "2026-09-24",
-          "value": 97.21
+          "value": 96.44
         },
         {
           "date": "2026-09-28",
-          "value": 96.96
-        },
-        {
-          "date": "2026-09-29",
-          "value": 96.57
-        },
-        {
-          "date": "2026-09-30",
-          "value": 99.08
-        },
-        {
-          "date": "2026-10-08",
-          "value": 99.06
-        },
-        {
-          "date": "2026-10-09",
-          "value": 99.47
-        },
-        {
-          "date": "2026-10-12",
-          "value": 99.59
-        },
-        {
-          "date": "2026-10-13",
-          "value": 98.66
-        },
-        {
-          "date": "2026-10-14",
-          "value": 98.41
-        },
-        {
-          "date": "2026-10-15",
-          "value": 99.17
-        },
-        {
-          "date": "2026-10-16",
-          "value": 100.05
-        },
-        {
-          "date": "2026-10-19",
-          "value": 100.55
-        },
-        {
-          "date": "2026-10-20",
-          "value": 99.77
-        },
-        {
-          "date": "2026-10-21",
-          "value": 97.42
-        },
-        {
-          "date": "2026-10-22",
           "value": 96.18
         },
         {
+          "date": "2026-09-29",
+          "value": 95.8
+        },
+        {
+          "date": "2026-09-30",
+          "value": 98.29
+        },
+        {
+          "date": "2026-10-08",
+          "value": 98.26
+        },
+        {
+          "date": "2026-10-09",
+          "value": 98.67
+        },
+        {
+          "date": "2026-10-12",
+          "value": 98.79
+        },
+        {
+          "date": "2026-10-13",
+          "value": 97.87
+        },
+        {
+          "date": "2026-10-14",
+          "value": 97.62
+        },
+        {
+          "date": "2026-10-15",
+          "value": 98.38
+        },
+        {
+          "date": "2026-10-16",
+          "value": 99.25
+        },
+        {
+          "date": "2026-10-19",
+          "value": 99.75
+        },
+        {
+          "date": "2026-10-20",
+          "value": 98.97
+        },
+        {
+          "date": "2026-10-21",
+          "value": 96.64
+        },
+        {
+          "date": "2026-10-22",
+          "value": 95.41
+        },
+        {
           "date": "2026-10-23",
-          "value": 98.53
+          "value": 97.74
         },
         {
           "date": "2026-10-26",
-          "value": 100.07
+          "value": 99.27
         },
         {
           "date": "2026-10-27",
-          "value": 98.66
+          "value": 97.87
         },
         {
           "date": "2026-10-28",
-          "value": 96.91
+          "value": 96.14
         },
         {
           "date": "2026-10-29",
-          "value": 98.09
+          "value": 97.3
         },
         {
           "date": "2026-10-30",
-          "value": 102.88
+          "value": 102.06
         },
         {
           "date": "2026-11-02",
-          "value": 106.36
+          "value": 105.51
         },
         {
           "date": "2026-11-03",
-          "value": 108.06
+          "value": 107.2
         },
         {
           "date": "2026-11-04",
-          "value": 106.15
+          "value": 105.3
         },
         {
           "date": "2026-11-05",
-          "value": 107.62
+          "value": 106.76
         },
         {
           "date": "2026-11-06",
-          "value": 106.98
+          "value": 106.12
         },
         {
           "date": "2026-11-09",
-          "value": 106.24
+          "value": 105.39
         },
         {
           "date": "2026-11-10",
-          "value": 106.08
+          "value": 105.23
         },
         {
           "date": "2026-11-11",
-          "value": 103.04
+          "value": 102.22
         },
         {
           "date": "2026-11-12",
-          "value": 103.29
+          "value": 102.47
         },
         {
           "date": "2026-11-13",
-          "value": 105.0
+          "value": 104.16
         },
         {
           "date": "2026-11-16",
-          "value": 106.04
+          "value": 105.19
         },
         {
           "date": "2026-11-17",
-          "value": 106.43
+          "value": 105.58
         },
         {
           "date": "2026-11-18",
-          "value": 105.07
+          "value": 104.23
         },
         {
           "date": "2026-11-19",
-          "value": 105.07
+          "value": 104.23
         },
         {
           "date": "2026-11-20",
-          "value": 103.32
+          "value": 102.49
         },
         {
           "date": "2026-11-23",
-          "value": 103.18
+          "value": 102.35
         },
         {
           "date": "2026-11-24",
-          "value": 103.02
+          "value": 102.19
+        },
+        {
+          "date": "2026-11-25",
+          "value": 103.09
+        },
+        {
+          "date": "2026-11-26",
+          "value": 102.06
         }
       ]
     },
     "portfolio_return_indexed": [
       {
-        "date": "2026-08-27",
+        "date": "2026-08-28",
         "value": 100.0
       },
       {
-        "date": "2026-08-28",
-        "value": 99.26
-      },
-      {
         "date": "2026-08-31",
-        "value": 98.67
+        "value": 99.41
       },
       {
         "date": "2026-09-01",
-        "value": 98.28
+        "value": 99.02
       },
       {
         "date": "2026-09-02",
-        "value": 97.01
+        "value": 97.74
       },
       {
         "date": "2026-09-03",
-        "value": 97.79
+        "value": 98.52
       },
       {
         "date": "2026-09-04",
-        "value": 97.39
+        "value": 98.12
       },
       {
         "date": "2026-09-07",
-        "value": 97.51
+        "value": 98.24
       },
       {
         "date": "2026-09-08",
-        "value": 97.59
+        "value": 98.32
       },
       {
         "date": "2026-09-09",
-        "value": 97.13
+        "value": 97.86
       },
       {
         "date": "2026-09-10",
-        "value": 96.31
+        "value": 97.03
       },
       {
         "date": "2026-09-11",
-        "value": 95.0
+        "value": 95.71
       },
       {
         "date": "2026-09-14",
-        "value": 95.58
+        "value": 96.3
       },
       {
         "date": "2026-09-15",
-        "value": 94.88
+        "value": 95.59
       },
       {
         "date": "2026-09-16",
-        "value": 95.48
+        "value": 96.19
       },
       {
         "date": "2026-09-17",
-        "value": 95.52
+        "value": 96.23
       },
       {
         "date": "2026-09-18",
-        "value": 96.54
+        "value": 97.26
       },
       {
         "date": "2026-09-21",
-        "value": 97.8
+        "value": 98.53
       },
       {
         "date": "2026-09-22",
-        "value": 97.65
+        "value": 98.38
       },
       {
         "date": "2026-09-23",
-        "value": 97.51
+        "value": 98.24
       },
       {
         "date": "2026-09-24",
-        "value": 95.63
+        "value": 96.34
       },
       {
         "date": "2026-09-28",
-        "value": 94.1
+        "value": 94.8
       },
       {
         "date": "2026-09-29",
-        "value": 94.21
+        "value": 94.91
       },
       {
         "date": "2026-09-30",
-        "value": 95.41
+        "value": 96.13
       },
       {
         "date": "2026-10-08",
-        "value": 93.2
+        "value": 93.89
       },
       {
         "date": "2026-10-09",
-        "value": 93.6
+        "value": 94.3
       },
       {
         "date": "2026-10-12",
-        "value": 92.58
+        "value": 93.28
       },
       {
         "date": "2026-10-13",
-        "value": 92.11
+        "value": 92.8
       },
       {
         "date": "2026-10-14",
-        "value": 90.8
+        "value": 91.48
       },
       {
         "date": "2026-10-15",
-        "value": 89.95
+        "value": 90.62
       },
       {
         "date": "2026-10-16",
-        "value": 89.82
+        "value": 90.5
       },
       {
         "date": "2026-10-19",
-        "value": 90.44
+        "value": 91.12
       },
       {
         "date": "2026-10-20",
-        "value": 90.82
+        "value": 91.5
       },
       {
         "date": "2026-10-21",
-        "value": 90.47
+        "value": 91.15
       },
       {
         "date": "2026-10-22",
-        "value": 88.78
+        "value": 89.44
       },
       {
         "date": "2026-10-23",
-        "value": 90.52
+        "value": 91.2
       },
       {
         "date": "2026-10-26",
-        "value": 90.46
+        "value": 91.13
       },
       {
         "date": "2026-10-27",
-        "value": 88.59
+        "value": 89.25
       },
       {
         "date": "2026-10-28",
-        "value": 89.86
+        "value": 90.53
       },
       {
         "date": "2026-10-29",
-        "value": 88.88
+        "value": 89.54
       },
       {
         "date": "2026-10-30",
-        "value": 87.74
+        "value": 88.4
       },
       {
         "date": "2026-11-02",
-        "value": 88.31
+        "value": 88.97
       },
       {
         "date": "2026-11-03",
-        "value": 87.85
+        "value": 88.51
       },
       {
         "date": "2026-11-04",
-        "value": 90.98
+        "value": 91.66
       },
       {
         "date": "2026-11-05",
-        "value": 92.44
+        "value": 93.14
       },
       {
         "date": "2026-11-06",
-        "value": 90.79
+        "value": 91.47
       },
       {
         "date": "2026-11-09",
-        "value": 91.04
+        "value": 91.72
       },
       {
         "date": "2026-11-10",
-        "value": 91.31
+        "value": 91.99
       },
       {
         "date": "2026-11-11",
-        "value": 91.21
+        "value": 91.89
       },
       {
         "date": "2026-11-12",
-        "value": 89.96
+        "value": 90.64
       },
       {
         "date": "2026-11-13",
-        "value": 88.87
+        "value": 89.53
       },
       {
         "date": "2026-11-16",
-        "value": 87.61
+        "value": 88.26
       },
       {
         "date": "2026-11-17",
-        "value": 87.11
+        "value": 87.77
       },
       {
         "date": "2026-11-18",
-        "value": 86.35
+        "value": 86.99
       },
       {
         "date": "2026-11-19",
-        "value": 86.02
+        "value": 86.66
       },
       {
         "date": "2026-11-20",
-        "value": 83.84
+        "value": 84.47
       },
       {
         "date": "2026-11-23",
-        "value": 85.69
+        "value": 86.33
       },
       {
         "date": "2026-11-24",
-        "value": 85.36
+        "value": 86.0
       },
       {
         "date": "2026-11-25",
-        "value": 83.69
+        "value": 84.32
+      },
+      {
+        "date": "2026-11-26",
+        "value": 84.08
       }
     ],
     "portfolio_market_value": [
-      {
-        "date": "2026-08-27",
-        "value": 18924.24
-      },
       {
         "date": "2026-08-28",
         "value": 18783.7
@@ -3537,6 +3541,10 @@
       {
         "date": "2026-11-25",
         "value": 15838.28
+      },
+      {
+        "date": "2026-11-26",
+        "value": 15793.33
       }
     ],
     "benchmark_return_indexed": [],
@@ -3630,24 +3638,24 @@
     "core_target_pct": 60.0,
     "satellite_target_pct": 40.0,
     "hedge_target_pct": 0.0,
-    "core_actual_pct": 36.67,
-    "core_broad_actual_pct": 36.3,
+    "core_actual_pct": 36.79,
+    "core_broad_actual_pct": 36.42,
     "core_growth_actual_pct": 0.37,
-    "satellite_actual_pct": 63.33,
+    "satellite_actual_pct": 63.21,
     "hedge_actual_pct": 0.0,
     "unclassified_pct": 0.0,
-    "managed_market_value": 15838.29,
+    "managed_market_value": 15793.33,
     "excluded_market_value": 0.0,
     "exclude_hedge_from_allocation": true,
     "rebalance_threshold_pct": 5.0,
     "needs_rebalance": true,
     "hints": [
       "定投/旁路仓（如 270042）不计入 60/40 再平衡",
-      "宽基核心（含真宽基+成长增强） 实际 36.7% 低于目标 60%（偏离 -23.3%），建议优先买入 110020 沪深300 与 022430 中证A500",
-      "行业卫星合计 实际 63.3% 高于目标 40%（偏离 +23.3%），建议减卫星、利润转入真宽基（110020/022430）",
+      "宽基核心（含真宽基+成长增强） 实际 36.8% 低于目标 60%（偏离 -23.2%），建议优先买入 110020 沪深300 与 022430 中证A500",
+      "行业卫星合计 实际 63.2% 高于目标 40%（偏离 +23.2%），建议减卫星、利润转入真宽基（110020/022430）",
       "卫星层方案 B（双卫星）：目标主仓 25% + 次席 15% = 合计 40%（相对管理仓）",
-      "卫星合计 63.3% 高于 40%，建议减仓，利润优先转入真宽基 110020/022430",
-      "主卫星 012737 广发创新药产业ETF联接A 占管理仓 32.7% 高于目标 25%，建议减至约 25%，腾出份额给次席或回宽基",
+      "卫星合计 63.2% 高于 40%，建议减仓，利润优先转入真宽基 110020/022430",
+      "主卫星 012737 广发创新药产业ETF联接A 占管理仓 32.6% 高于目标 25%，建议减至约 25%，腾出份额给次席或回宽基",
       "卫星超过 2 只（020290），方案 B 仅保留主+次；其余建议减仓并入主/次或转回宽基",
       "轮动纪律：每月最多换行业 1 次；持有满 30 天再换；换出时先回宽基再进新行业。"
     ],
@@ -3656,30 +3664,30 @@
       "total_target_pct": 40.0,
       "primary_target_pct": 25.0,
       "secondary_target_pct": 15.0,
-      "total_actual_pct": 63.33,
-      "primary_actual_pct": 32.69,
-      "secondary_actual_pct": 15.98,
-      "overflow_pct": 14.66,
+      "total_actual_pct": 63.21,
+      "primary_actual_pct": 32.61,
+      "secondary_actual_pct": 16.19,
+      "overflow_pct": 14.41,
       "primary": {
         "fund_code": "012737",
         "fund_name": "广发创新药产业ETF联接A",
-        "market_value": 5178.08,
-        "managed_pct": 32.69,
+        "market_value": 5149.49,
+        "managed_pct": 32.61,
         "slot": "primary"
       },
       "secondary": {
         "fund_code": "004253",
         "fund_name": "国泰黄金ETF联接C",
-        "market_value": 2530.86,
-        "managed_pct": 15.98,
+        "market_value": 2557.66,
+        "managed_pct": 16.19,
         "slot": "secondary"
       },
       "others": [
         {
           "fund_code": "020290",
           "fund_name": "国泰中证机器人ETF联接C",
-          "market_value": 2321.84,
-          "managed_pct": 14.66,
+          "market_value": 2276.14,
+          "managed_pct": 14.41,
           "slot": "overflow"
         }
       ],
@@ -3694,8 +3702,8 @@
       "needs_adjust": true,
       "hints": [
         "卫星层方案 B（双卫星）：目标主仓 25% + 次席 15% = 合计 40%（相对管理仓）",
-        "卫星合计 63.3% 高于 40%，建议减仓，利润优先转入真宽基 110020/022430",
-        "主卫星 012737 广发创新药产业ETF联接A 占管理仓 32.7% 高于目标 25%，建议减至约 25%，腾出份额给次席或回宽基",
+        "卫星合计 63.2% 高于 40%，建议减仓，利润优先转入真宽基 110020/022430",
+        "主卫星 012737 广发创新药产业ETF联接A 占管理仓 32.6% 高于目标 25%，建议减至约 25%，腾出份额给次席或回宽基",
         "卫星超过 2 只（020290），方案 B 仅保留主+次；其余建议减仓并入主/次或转回宽基",
         "轮动纪律：每月最多换行业 1 次；持有满 30 天再换；换出时先回宽基再进新行业。"
       ]
@@ -3744,6 +3752,7 @@
     "benchmark_index": "000300.SH"
   },
   "report_dates": [
+    "2026-11-26",
     "2026-11-25",
     "2026-11-24",
     "2026-11-23",
